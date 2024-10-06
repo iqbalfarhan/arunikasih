@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Paket;
 
 use App\Livewire\Forms\PaketForm;
+use App\Models\Fitur;
 use App\Models\Kategori;
 use App\Models\Paket;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -70,7 +71,8 @@ class Actions extends Component
     public function render()
     {
         return view('livewire.pages.paket.actions', [
-            'kategoris' => Kategori::pluck('name', 'id')
+            'kategoris' => Kategori::pluck('name', 'id'),
+            'fiturs' => $this->form->kategori_id ? Fitur::where('kategori_id', $this->form->kategori_id)->pluck('name', 'id') : collect()
         ]);
     }
 }

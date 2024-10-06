@@ -50,9 +50,15 @@
                         </a>
                     </li>
                 @endcan
-                @can('home')
+                @can('undangan.index')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('undangan.index') }}" @class([
+                            'active' => Route::is([
+                                'undangan.index',
+                                'undangan.create',
+                                'undangan.show',
+                            ]),
+                        ]) wire:navigate>
                             <x-tabler-bookmarks class="size-5" />
                             <span>Undangan</span>
                         </a>
@@ -62,7 +68,7 @@
                     <li>
                         <a href="{{ route('home') }}" wire:navigate>
                             <x-tabler-credit-card class="size-5" />
-                            <span>Pemasukan</span>
+                            <span>Pembayaran</span>
                         </a>
                     </li>
                 @endcan
@@ -121,9 +127,9 @@
                     </li>
                 @endcan
                 <li></li>
-                @can('home')
+                @can('tema.index')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('tema.index') }}" @class(['active' => Route::is('tema.index')]) wire:navigate>
                             <x-tabler-message class="size-5" />
                             <span>Styling & Tema</span>
                         </a>

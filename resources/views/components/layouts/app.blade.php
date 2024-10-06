@@ -10,6 +10,7 @@
     </head>
 
     <body>
+
         @auth
             <div class="drawer lg:drawer-open min-h-screen bg-base-200">
                 <input id="drawer" type="checkbox" class="drawer-toggle" />
@@ -26,7 +27,9 @@
 
         @guest
             <div class="flex flex-col gap-10 items-center justify-center h-screen bg-base-300">
-                <h1 class="text-3xl font-bold text-center">{{ config('app.name') }}</h1>
+                <a href="{{ route('welcome') }}" wire:navigate>
+                    <h1 class="text-3xl font-bold text-center">{{ config('app.name') }}</h1>
+                </a>
 
                 {{ $slot }}
 

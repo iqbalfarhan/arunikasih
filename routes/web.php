@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', \App\Livewire\Welcome::class)->name('welcome');
 
 Route::get('logout',  function(){
     Auth::logout();
@@ -29,4 +27,8 @@ Route::middleware('auth')->group(function(){
     Route::get('/bank', \App\Livewire\Pages\Bank\Index::class)->name('bank.index');
     Route::get('/fitur', \App\Livewire\Pages\Fitur\Index::class)->name('fitur.index');
     Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
+    Route::get('/tema', \App\Livewire\Pages\Tema\Index::class)->name('tema.index');
+    Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
+    Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
+    Route::get('/undangan/{undangan}', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');
 });

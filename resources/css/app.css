@@ -66,4 +66,12 @@
   .sidebar {
     @apply border-r-2 border-base-300 bg-base-100;
   }
+
+  .landing {
+    @apply space-y-32;
+  }
+
+  .landing .content-wrapper {
+    @apply max-w-5xl mx-auto space-y-12;
+  }
 }
