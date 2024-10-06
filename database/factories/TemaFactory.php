@@ -19,7 +19,7 @@ class TemaFactory extends Factory
     {
         return [
             'name' => fake()->word(),
-            'kategori_id' => fake()->randomElement(Kategori::class),
+            'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
         ];
     }
 }

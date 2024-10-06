@@ -12,6 +12,7 @@ class Undangan extends Model
     protected $fillable = [
         'name',
         'slug',
+        'user_id',
         'tema_id',
         'kategori_id',
         'paket_id',
@@ -19,4 +20,24 @@ class Undangan extends Model
         'paid',
         'data',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function tema()
+    {
+        return $this->belongsTo(Tema::class);
+    }
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
+
+    public function paket()
+    {
+        return $this->belongsTo(Paket::class);
+    }
 }

@@ -58,6 +58,27 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">Informasi undangan</h3>
+
+            <div class="grid grid-cols-2 py-4 gap-6">
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nama undangan</span>
+                    </div>
+                    <input type="text" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.name'),
+                    ]) wire:model="form.name"
+                        placeholder="contoh : pernikahan Galih dan ratna" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Link undangan</span>
+                    </div>
+                    <div class="input input-bordered flex items-center">
+                        <span>{{ url(Str::slug('galih dan ratna')) }}</span>
+                    </div>
+                </label>
+            </div>
         </div>
     </div>
     <div class="flex">

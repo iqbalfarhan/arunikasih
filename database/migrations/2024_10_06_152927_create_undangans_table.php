@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->index();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('tema_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('paket_id')->nullable()->constrained()->nullOnDelete();

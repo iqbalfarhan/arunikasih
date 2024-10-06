@@ -24,6 +24,8 @@ class DatabaseSeeder extends Seeder
             BankSeeder::class,
             FiturSeeder::class,
             PaketSeeder::class,
+            TemaSeeder::class,
+            UndanganSeeder::class,
         ]);
     }
 }

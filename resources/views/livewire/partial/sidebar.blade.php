@@ -130,7 +130,7 @@
                 @can('tema.index')
                     <li>
                         <a href="{{ route('tema.index') }}" @class(['active' => Route::is('tema.index')]) wire:navigate>
-                            <x-tabler-message class="size-5" />
+                            <x-tabler-palette class="size-5" />
                             <span>Styling & Tema</span>
                         </a>
                     </li>
