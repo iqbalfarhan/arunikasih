@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Livewire\Forms;
+
+use App\Models\{{ capitalServiceName }};
+use Illuminate\Support\Facades\File;
+use Livewire\Attributes\Validate;
+use Livewire\Form;
+
+class {{ capitalServiceName }}Form extends Form
+{
+    public ?{{ capitalServiceName }} ${{ lowerServiceName }};
+
+    public function set{{ capitalServiceName }}({{ capitalServiceName }} ${{ lowerServiceName }}){
+        $this->{{ lowerServiceName }} = ${{ lowerServiceName }};
+
+        //
+    }
+
+    public function store(){
+        $valid = $this->validate([
+            //
+        ]);
+
+        {{ capitalServiceName }}::create($valid);
+
+        $this->reset();
+    }
+
+    public function update(){
+        $valid = $this->validate([
+            //
+        ]);
+
+        $this->{{ lowerServiceName }}->update($valid);
+
+        $this->reset();
+    }
+
+}

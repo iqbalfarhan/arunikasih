@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Montserrat Alternates', sans-serif;
+    @apply font-semibold scrollbar-hide;
+  }
+  thead {
+    @apply border-b-4 border-base-300 bg-base-200/50;
+  }
+  pre {
+    @apply mockup-code;
+  }
+}
+
+@layer components {
+  .page-wrapper {
+    @apply container w-full max-w-6xl mx-auto p-6 space-y-6;
+  }
+
+  .table-wrapper {
+    @apply border-2 border-base-300 rounded-xl bg-base-100 overflow-x-auto whitespace-nowrap;
+  }
+
+  .input-bordered,
+  .textarea-bordered,
+  .select-bordered,
+  .btn-bordered {
+    @apply border-2 border-base-300;
+  }
+
+  .input-error,
+  .textarea-error,
+  .select-error {
+    @apply border-2 border-error;
+  }
+
+  .textarea {
+    @apply scrollbar-hide;
+  }
+
+  .table-filter-wrapper {
+    @apply flex flex-col md:flex-row md:items-center md:justify-between gap-2;
+  }
+
+  .modal {
+    @apply backdrop-blur-sm;
+  }
+
+  .card {
+    @apply border-2 border-base-300 bg-base-100 w-full;
+  }
+
+  .navbar {
+    @apply border-b-2 border-base-300 bg-base-100;
+  }
+
+  input[type='checkbox'].toggle:not(:checked) {
+    @apply opacity-50;
+  }
+
+  .sidebar {
+    @apply border-r-2 border-base-300 bg-base-100;
+  }
+}
