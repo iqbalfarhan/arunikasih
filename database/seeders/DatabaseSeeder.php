@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             AyatSeeder::class,
             KategoriSeeder::class,
             BankSeeder::class,
+            FiturSeeder::class,
         ]);
     }
 }

@@ -96,9 +96,9 @@
                     </li>
                 @endcan
                 <li></li>
-                @can('home')
+                @can('fitur.index')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('fitur.index') }}" @class(['active' => Route::is('fitur.index')]) wire:navigate>
                             <x-tabler-list class="size-5" />
                             <span>Daftar Fitur</span>
                         </a>
