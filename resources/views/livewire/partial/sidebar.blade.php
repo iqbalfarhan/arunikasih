@@ -104,9 +104,9 @@
                         </a>
                     </li>
                 @endcan
-                @can('home')
+                @can('paket.index')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('paket.index') }}" @class(['active' => Route::is('paket.index')]) wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Paket & Harga</span>
                         </a>
@@ -115,8 +115,8 @@
                 @can('kategori.index')
                     <li>
                         <a href="{{ route('kategori.index') }}" @class(['active' => Route::is('kategori.index')]) wire:navigate>
-                            <x-tabler-credit-card class="size-5" />
-                            <span>Kategori</span>
+                            <x-tabler-tags class="size-5" />
+                            <span>Kategori Undangan</span>
                         </a>
                     </li>
                 @endcan

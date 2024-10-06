@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Fitur extends Model
+class Paket extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
+        'price',
         'description',
-        'kategori_id'
+        'kategori_id',
     ];
 
-    public function kategori()
+    public function Kategori()
     {
         return $this->belongsTo(Kategori::class);
     }

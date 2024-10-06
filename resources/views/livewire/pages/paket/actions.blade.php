@@ -2,31 +2,41 @@
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
         <form class="modal-box max-w-sm" wire:submit="simpan">
-            <div class="card-title">Form fitur</div>
+            <div class="card-title">Form paket</div>
             <div class="py-4 space-y-2">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Nama fitur</span>
+                        <span class="label-text">Nama paket</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.name'),
                     ]) wire:model="form.name"
-                        placeholder="Nama lengkap fitur" />
+                        placeholder="Nama lengkap paket" />
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">description</span>
+                        <span class="label-text">harga paket</span>
+                    </div>
+                    <input type="text" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.price'),
+                    ]) wire:model="form.price"
+                        placeholder="Nama lengkap paket" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Description</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.description'),
                     ]) wire:model="form.description"
-                        placeholder="Nama lengkap fitur" />
+                        placeholder="Nama lengkap paket" />
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Kategori</span>
+                        <span class="label-text">Nama kategori</span>
                     </div>
                     <select @class([
                         'select select-bordered',

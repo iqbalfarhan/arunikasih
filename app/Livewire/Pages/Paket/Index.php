@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Livewire\Pages\Paket;
+
+use App\Models\Kategori;
+use App\Models\Paket;
+use Livewire\Component;
+
+class Index extends Component
+{
+    public $no = 1;
+    public $cari;
+
+    protected $listeners = ['reload' => '$refresh'];
+
+    public function render()
+    {
+        return view('livewire.pages.paket.index', [
+            'datas' => Paket::when($this->cari, function($q){
+                return $q->where('kategori_id', '=', $this->cari);
+            })->orderBy('price')->get(),
+            'kategoris' => Kategori::pluck('name', 'id')
+        ]);
+    }
+}

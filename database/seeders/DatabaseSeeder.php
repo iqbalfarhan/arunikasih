@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             KategoriSeeder::class,
             BankSeeder::class,
             FiturSeeder::class,
+            PaketSeeder::class,
         ]);
     }
 }

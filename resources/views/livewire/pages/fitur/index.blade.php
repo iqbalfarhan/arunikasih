@@ -18,7 +18,7 @@
                 <th>No</th>
                 <th>name</th>
                 <th>description</th>
-                <th>ketegori_id</th>
+                <th>Kategori</th>
                 @canany(['fitur.edit', 'fitur.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -29,7 +29,7 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->description }}</td>
-                        <td>{{ $data->kategori_id }}</td>
+                        <td>{{ $data->kategori->name ?? '' }}</td>
                         @canany(['fitur.edit', 'fitur.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

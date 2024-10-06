@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire\Pages\Fitur;
+namespace App\Livewire\Pages\Paket;
 
-use App\Livewire\Forms\FiturForm;
-use App\Models\Fitur;
+use App\Livewire\Forms\PaketForm;
 use App\Models\Kategori;
+use App\Models\Paket;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -13,42 +13,42 @@ class Actions extends Component
 {
     use LivewireAlert;
     public $show = false;
-    public ?Fitur $fitur;
-    public FiturForm $form;
+    public ?Paket $paket;
+    public PaketForm $form;
 
-    #[On("createFitur")]
-    public function createFitur()
+    #[On("createPaket")]
+    public function createPaket()
     {
         $this->show = true;
     }
 
-    #[On("editFitur")]
-    public function editFitur(Fitur $fitur)
+    #[On("editPaket")]
+    public function editPaket(Paket $paket)
     {
         $this->show = true;
-        $this->form->setFitur($fitur);
+        $this->form->setPaket($paket);
     }
 
-    #[On("deleteFitur")]
-    public function deleteFitur(Fitur $fitur)
+    #[On("deletePaket")]
+    public function deletePaket(Paket $paket)
     {
-        $fitur->delete();
+        $paket->delete();
         $this->dispatch('reload');
-        $this->alert('success', 'Data fitur berhasil dihapus');
+        $this->alert('success', 'Data paket berhasil dihapus');
     }
 
     #[On("deleteAccount")]
-    public function deleteAccount(Fitur $fitur)
+    public function deleteAccount(Paket $paket)
     {
-        $fitur->delete();
+        $paket->delete();
         $this->dispatch('reload');
-        $this->flash('success', 'Data fitur berhasil dihapus');
+        $this->flash('success', 'Data paket berhasil dihapus');
 
         $this->redirect(route('login'), navigate:true);
     }
 
     public function simpan(){
-        if (isset($this->form->fitur)) {
+        if (isset($this->form->paket)) {
             $this->form->update();
         }
         else{
@@ -56,7 +56,7 @@ class Actions extends Component
         }
 
         $this->resetForm();
-        $this->alert('success', 'Data fitur berhasil disimpan');
+        $this->alert('success', 'Data paket berhasil disimpan');
         $this->dispatch('reload');
     }
 
@@ -69,7 +69,7 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.fitur.actions', [
+        return view('livewire.pages.paket.actions', [
             'kategoris' => Kategori::pluck('name', 'id')
         ]);
     }

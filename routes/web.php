@@ -28,4 +28,5 @@ Route::middleware('auth')->group(function(){
     Route::get('/kategori', \App\Livewire\Pages\Kategori\Index::class)->name('kategori.index');
     Route::get('/bank', \App\Livewire\Pages\Bank\Index::class)->name('bank.index');
     Route::get('/fitur', \App\Livewire\Pages\Fitur\Index::class)->name('fitur.index');
+    Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
 });
