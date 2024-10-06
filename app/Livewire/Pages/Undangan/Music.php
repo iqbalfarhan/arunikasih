@@ -3,10 +3,9 @@
 namespace App\Livewire\Pages\Undangan;
 
 use App\Models\Undangan;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class Show extends Component
+class Music extends Component
 {
     public Undangan $undangan;
 
@@ -17,7 +16,7 @@ class Show extends Component
 
     public function render()
     {
-        return view('livewire.pages.undangan.show')->layout('components.layouts.undangan', [
+        return view('livewire.pages.undangan.music')->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);
     }

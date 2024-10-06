@@ -28,7 +28,14 @@ Route::middleware('auth')->group(function(){
     Route::get('/fitur', \App\Livewire\Pages\Fitur\Index::class)->name('fitur.index');
     Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
     Route::get('/tema', \App\Livewire\Pages\Tema\Index::class)->name('tema.index');
+
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
-    Route::get('/undangan/{undangan}', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');
+
+    Route::prefix("/undangan/{undangan}")->group(function(){
+        Route::get('/', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');
+        Route::get('/setting', \App\Livewire\Pages\Undangan\Setting::class)->name('undangan.setting');
+        Route::get('/cover', \App\Livewire\Pages\Undangan\Cover::class)->name('undangan.cover');
+        Route::get('/pengantin', \App\Livewire\Pages\Undangan\Pengantin::class)->name('undangan.pengantin');
+    });
 });

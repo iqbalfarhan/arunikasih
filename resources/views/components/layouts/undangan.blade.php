@@ -19,7 +19,9 @@
             </div>
             <div class="drawer-side scrollbar-hide">
                 <label for="drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-                @livewire('partial.bagan')
+                @livewire('partial.bagan', [
+                    'undangan' => $undangan,
+                ])
             </div>
         </div>
 

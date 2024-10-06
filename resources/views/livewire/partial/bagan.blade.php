@@ -9,21 +9,15 @@
         <h2 class="menu-title">Dashboard</h2>
         <ul>
             <li>
-                <a class="active">
+                <a href="{{ route('undangan.show', $undangan) }}" @class(['active' => Route::is('undangan.show')]) wire:navigate>
                     <x-tabler-notebook class="size-5" />
-                    <span>Dashboard</span>
+                    <span>Resume Undangan</span>
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.setting', $undangan) }}" @class(['active' => Route::is('undangan.setting')]) wire:navigate>
                     <x-tabler-palette class="size-5" />
-                    <span>Pilihan tema</span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <x-tabler-music class="size-5" />
-                    <span>Pilihan music</span>
+                    <span>Tema & Audio</span>
                 </a>
             </li>
         </ul>
@@ -32,17 +26,16 @@
     <li>
         <h2 class="menu-title">Bagan undangan</h2>
         <ul>
-
             <li>
-                <a>
+                <a href="{{ route('undangan.cover', $undangan) }}" @class(['active' => Route::is('undangan.cover')]) wire:navigate>
                     <x-tabler-notebook class="size-5" />
                     <span>Sampul Cover</span>
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.pengantin', $undangan) }}" @class(['active' => Route::is('undangan.pengantin')]) wire:navigate>
                     <x-tabler-users class="size-5" />
-                    <span>Pengantin</span>
+                    <span>Profile Pengantin</span>
                 </a>
             </li>
             <li>
@@ -86,11 +79,16 @@
     <li>
         <h2 class="menu-title">Pengaturan</h2>
         <ul>
-
             <li>
                 <a>
                     <x-tabler-device-mobile class="size-5" />
-                    <span>Preview</span>
+                    <span>Mobile Preview</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <x-tabler-device-desktop class="size-5" />
+                    <span>Desktop Preview</span>
                 </a>
             </li>
             <li>
