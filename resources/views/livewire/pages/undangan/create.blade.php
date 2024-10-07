@@ -12,8 +12,8 @@
                     </div>
                     <select @class([
                         'select select-bordered',
-                        'select-error' => $errors->first('form.name'),
-                    ]) wire:model="form.name">
+                        'select-error' => $errors->first('form.kategori_id'),
+                    ]) wire:model.live="form.kategori_id">
                         <option value="">Pilih jenis undangan</option>
                         @foreach ($kategoris as $katid => $katname)
                             <option value="{{ $katid }}">{{ $katname }}</option>
@@ -26,11 +26,11 @@
                     </div>
                     <select @class([
                         'select select-bordered',
-                        'select-error' => $errors->first('form.name'),
-                    ]) wire:model="form.name">
+                        'select-error' => $errors->first('form.paket_id'),
+                    ]) wire:model="form.paket_id">
                         <option value="">Pilih jenis undangan</option>
-                        @foreach ($kategoris as $katid => $katname)
-                            <option value="{{ $katid }}">{{ $katname }}</option>
+                        @foreach ($pakets as $paketid => $paketname)
+                            <option value="{{ $paketid }}">{{ $paketname }}</option>
                         @endforeach
                     </select>
                 </label>
@@ -67,7 +67,7 @@
                     <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.name'),
-                    ]) wire:model="form.name"
+                    ]) wire:model.live="form.name"
                         placeholder="contoh : pernikahan Galih dan ratna" />
                 </label>
                 <label class="form-control">
@@ -75,14 +75,14 @@
                         <span class="label-text">Link undangan</span>
                     </div>
                     <div class="input input-bordered flex items-center">
-                        <span>{{ url(Str::slug('galih dan ratna')) }}</span>
+                        <span>{{ url(Str::slug($form->name)) }}</span>
                     </div>
                 </label>
             </div>
         </div>
     </div>
     <div class="flex">
-        <button class="btn btn-primary">
+        <button class="btn btn-primary" wire:click='simpan'>
             <x-tabler-arrow-right class="size-5" />
             <span>Selanjutnya</span>
         </button>

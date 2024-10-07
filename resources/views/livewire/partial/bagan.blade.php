@@ -20,11 +20,29 @@
                     <span>Tema & Audio</span>
                 </a>
             </li>
+            <li>
+                <a>
+                    <x-tabler-message class="size-5" />
+                    <span>Ucapan & Doa</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <x-tabler-users class="size-5" />
+                    <span>Daftar tamu</span>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <x-tabler-send class="size-5" />
+                    <span>Publish Undangan</span>
+                </a>
+            </li>
         </ul>
     </li>
 
     <li>
-        <h2 class="menu-title">Bagan undangan</h2>
+        <h2 class="menu-title">Bagan undangan pernikahan</h2>
         <ul>
             <li>
                 <a href="{{ route('undangan.cover', $undangan) }}" @class(['active' => Route::is('undangan.cover')]) wire:navigate>
@@ -58,12 +76,6 @@
             </li>
             <li>
                 <a>
-                    <x-tabler-message class="size-5" />
-                    <span>Ucapan & Doa</span>
-                </a>
-            </li>
-            <li>
-                <a>
                     <x-tabler-video class="size-5" />
                     <span>Live Streaming</span>
                 </a>
@@ -72,35 +84,6 @@
                 <a>
                     <x-tabler-gift class="size-5" />
                     <span>Hadiah & Rekening</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <h2 class="menu-title">Pengaturan</h2>
-        <ul>
-            <li>
-                <a>
-                    <x-tabler-device-mobile class="size-5" />
-                    <span>Mobile Preview</span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <x-tabler-device-desktop class="size-5" />
-                    <span>Desktop Preview</span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <x-tabler-send class="size-5" />
-                    <span>Publish Undangan</span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <x-tabler-users class="size-5" />
-                    <span>Daftar tamu</span>
                 </a>
             </li>
         </ul>

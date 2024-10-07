@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
+    Route::get('/preview/{undangan}', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.preview');
 
     Route::prefix("/undangan/{undangan}")->group(function(){
         Route::get('/', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');

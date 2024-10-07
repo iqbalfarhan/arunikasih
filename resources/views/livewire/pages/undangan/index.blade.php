@@ -25,8 +25,7 @@
                     </div>
                     <div class="space-y-4">
                         <div>
-                            <span class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}
-                                {{ $data->tema->name ?? '' }}</span>
+                            <span class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</span>
                             <h3 class="font-bold">{{ $data->name }}</h3>
                         </div>
                         <p class="text-xs opacity-50 line-clamp-3">

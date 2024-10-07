@@ -36,16 +36,6 @@ class Actions extends Component
         $this->alert('success', 'Data undangan berhasil dihapus');
     }
 
-    #[On("deleteAccount")]
-    public function deleteAccount(Undangan $undangan)
-    {
-        $undangan->delete();
-        $this->dispatch('reload');
-        $this->flash('success', 'Data undangan berhasil dihapus');
-
-        $this->redirect(route('login'), navigate:true);
-    }
-
     public function simpan(){
         if (isset($this->form->undangan)) {
             $this->form->update();

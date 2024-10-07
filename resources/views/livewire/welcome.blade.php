@@ -152,12 +152,10 @@
                             </div>
                             <p class="opacity-50 line-clamp-3">{{ fake()->words(fake()->numberBetween(5, 15), true) }}
                             </p>
-                            <div class="flex">
-                                <x-tabler-star-filled class="size-5 text-warning" />
-                                <x-tabler-star-filled class="size-5 text-warning" />
-                                <x-tabler-star-filled class="size-5 text-warning" />
-                                <x-tabler-star-filled class="size-5 text-warning" />
-                                <x-tabler-star-filled class="size-5 text-warning" />
+                            <div class="flex gap-2">
+                                @for ($j = 0; $j < 5; $j++)
+                                    <x-tabler-star-filled class="size-5 text-warning" />
+                                @endfor
                             </div>
                         </div>
                     </div>

@@ -21,6 +21,13 @@ class Undangan extends Model
         'data',
     ];
 
+    protected function casts()
+    {
+        return [
+            'data' => 'array',
+        ];
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -39,5 +46,10 @@ class Undangan extends Model
     public function paket()
     {
         return $this->belongsTo(Paket::class);
+    }
+
+    public function getLinkAttribute()
+    {
+        return url($this->kategori->name, $this->slug);
     }
 }
