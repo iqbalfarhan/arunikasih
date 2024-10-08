@@ -27,7 +27,14 @@
                         <h3 class="card-title flex-1 line-clamp-1">{{ $data->name }}</h3>
                     </div>
 
-                    <p class="text-sm opacity-50 my-4 line-clamp-3">{{ $data->description }}</p>
+                    <div class="space-y-4 my-4">
+                        <p class="text-sm opacity-50 line-clamp-3">{{ $data->description }}</p>
+                        <ul class="text-sm opacity-50 list list-disc list-inside">
+                            @foreach ($data->fiturs->pluck('name') as $fitur)
+                                <li class="list-item">{{ $fitur }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
 
                     <div class="card-actions justify-between">
                         <div class="text-success text-lg">{{ Number::currency($data->price, 'IDR') }}</div>

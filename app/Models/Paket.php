@@ -20,4 +20,9 @@ class Paket extends Model
     {
         return $this->belongsTo(Kategori::class);
     }
+
+    public function fiturs()
+    {
+        return $this->belongsToMany(Fitur::class, 'paket_fitur');
+    }
 }

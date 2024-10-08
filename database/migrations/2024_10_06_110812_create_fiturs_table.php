@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();
+            $table->json('default_value')->nullable();
             $table->timestamps();
         });
     }

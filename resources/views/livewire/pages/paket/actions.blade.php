@@ -58,7 +58,8 @@
                         @foreach ($fiturs as $fiturid => $fiturname)
                             <div class="form-control">
                                 <label class="label cursor-pointer justify-start gap-2">
-                                    <input type="checkbox" class="checkbox checkbox-sm" />
+                                    <input type="checkbox" value="{{ $fiturid }}" wire:model="features"
+                                        class="checkbox checkbox-sm" />
                                     <span class="label-text">{{ $fiturname }}</span>
                                 </label>
                             </div>

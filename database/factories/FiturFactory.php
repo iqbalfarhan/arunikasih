@@ -21,6 +21,7 @@ class FiturFactory extends Factory
             'name' => fake()->word(),
             'description' => fake()->sentence(),
             'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
+            'default_value' => null,
         ];
     }
 }

@@ -13,6 +13,17 @@ class KategoriSeeder extends Seeder
      */
     public function run(): void
     {
-        Kategori::factory(3)->create();
+        $datas = [
+            "pernikahan",
+            "syukuran",
+            "khitanan",
+            "ulang tahun",
+        ];
+
+        foreach ($datas as $data) {
+            Kategori::create([
+                'name' => $data
+            ]);
+        }
     }
 }

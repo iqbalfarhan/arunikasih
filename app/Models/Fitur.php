@@ -12,7 +12,8 @@ class Fitur extends Model
     protected $fillable = [
         'name',
         'description',
-        'kategori_id'
+        'kategori_id',
+        'default_value',
     ];
 
     public function kategori()

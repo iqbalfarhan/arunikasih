@@ -6,7 +6,12 @@ export default {
     './resources/**/*.vue',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        handlee: ['Handlee'],
+        sanchez: ['Sanchez'],
+      },
+    },
   },
   plugins: [
     require('daisyui'),

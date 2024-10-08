@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', $lang ?? app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', $lang ?? app()->getLocale()) }}" data-theme="{{ $undangan->tema->name }}">
 
     <head>
         <meta charset="utf-8">

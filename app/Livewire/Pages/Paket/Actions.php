@@ -16,6 +16,7 @@ class Actions extends Component
     public $show = false;
     public ?Paket $paket;
     public PaketForm $form;
+    public $features = [];
 
     #[On("createPaket")]
     public function createPaket()
@@ -48,8 +49,12 @@ class Actions extends Component
         $this->redirect(route('login'), navigate:true);
     }
 
-    public function simpan(){
+    public function simpan()
+    {
         if (isset($this->form->paket)) {
+            $paket = Paket::find($this->form->paket->id);
+            $paket->fiturs()->detach();
+            $paket->fiturs()->attach($this->features);
             $this->form->update();
         }
         else{

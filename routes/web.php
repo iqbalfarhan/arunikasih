@@ -39,5 +39,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/setting', \App\Livewire\Pages\Undangan\Setting::class)->name('undangan.setting');
         Route::get('/cover', \App\Livewire\Pages\Undangan\Cover::class)->name('undangan.cover');
         Route::get('/pengantin', \App\Livewire\Pages\Undangan\Pengantin::class)->name('undangan.pengantin');
+        Route::get('/preview', \App\Livewire\Pages\Undangan\Preview::class)->name('undangan.preview');
     });
 });
