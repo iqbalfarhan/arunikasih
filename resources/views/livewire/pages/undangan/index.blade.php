@@ -12,33 +12,64 @@
         @endcan
     </div>
 
-    <div class="grid md:grid-cols-4 gap-6">
-        @foreach ($datas as $data)
-            <a href="{{ route('undangan.show', $data) }}"
-                class="card bg-gradient-to-br from-base-100 to-base-300 hover:opacity-75"
-                data-theme="{{ $data->tema->name ?? '' }}">
-                <div class="card-body space-y-20">
-                    <div class="avatar">
-                        <div class="ring-primary ring-offset-base-200 w-16 bg-neutral rounded-full ring ring-offset-2">
-                            <img src="https://robohash.org/{{ $data->name }}" alt="">
-                        </div>
-                    </div>
-                    <div class="space-y-4">
-                        <div>
-                            <span class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</span>
-                            <h3 class="font-bold">{{ $data->name }}</h3>
-                        </div>
-                        <p class="text-xs opacity-50 line-clamp-3">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Est repudiandae maxime quis sint
-                            repellat! Nostrum aliquam ex commodi, delectus hic at quae laborum maiores iure natus
-                            aliquid
-                            non debitis ut!
-                        </p>
-
-                        <div class="text-xs">{{ $data->created_at->diffForHumans() }}</div>
-                    </div>
-                </div>
-            </a>
-        @endforeach
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <th>No</th>
+                <th>Judul undangan</th>
+                <th>Kategori</th>
+                <th>Sudah dibayar</th>
+                @canany(['tema.edit', 'tema.delete'])
+                    <th class="text-center">Actions</th>
+                @endcanany
+            </thead>
+            <tbody>
+                @foreach ($datas as $data)
+                    <tr wire:key="{{ $data->id }}">
+                        <td>{{ $no++ }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <a href="{{ route('undangan.show', $data) }}">{{ $data->name }}</a>
+                                <span class="opacity-50 text-xs">{{ $data->slug }}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span class="opacity-50 text-xs">{{ $data->kategori->name }}</span>
+                                <span>{{ $data->paket->name }}</span>
+                            </div>
+                        </td>
+                        <td>{{ $data->paid ? 'Terbayar' : 'Belum' }}</td>
+                        @canany(['undangan.edit', 'undangan.delete'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('undangan.show')
+                                        <a href="{{ route('undangan.show', $data) }}" class="btn btn-xs btn-bordered"
+                                            wire:click="$dispatch('editUndangan', {undangan: {{ $data->id }}})">
+                                            <x-tabler-eye class="size-4" />
+                                            <span>Detail</span>
+                                        </a>
+                                    @endcan
+                                    @can('undangan.edit')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('editUndangan', {undangan: {{ $data->id }}})">
+                                            <x-tabler-edit class="size-4" />
+                                        </button>
+                                    @endcan
+                                    @can('undangan.delete')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('deleteUndangan', {undangan: {{ $data->id }}})">
+                                            <x-tabler-trash class="size-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
+
+    @livewire('pages.undangan.actions')
 </div>

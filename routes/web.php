@@ -28,10 +28,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/fitur', \App\Livewire\Pages\Fitur\Index::class)->name('fitur.index');
     Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
     Route::get('/tema', \App\Livewire\Pages\Tema\Index::class)->name('tema.index');
+    Route::get('/rating', \App\Livewire\Pages\Rating\Index::class)->name('rating.index');
 
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
-    Route::get('/preview/{undangan}', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.preview');
+    Route::get('/undangan/mine', \App\Livewire\Pages\Undangan\Mine::class)->name('undangan.mine');
 
     Route::prefix("/undangan/{undangan}")->group(function(){
         Route::get('/', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');

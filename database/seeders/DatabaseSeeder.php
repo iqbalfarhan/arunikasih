@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             PaketSeeder::class,
             TemaSeeder::class,
             UndanganSeeder::class,
+            TamuSeeder::class,
         ]);
     }
 }

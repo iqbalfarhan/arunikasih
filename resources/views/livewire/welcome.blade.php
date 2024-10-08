@@ -138,32 +138,36 @@
                 </h2>
                 <p class="opacity-50 text-xl">Here's what people are saying about using Livewire.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-6">
+            <div class="columns-3 gap-6 space-y-6">
                 @for ($i = 0; $i < 9; $i++)
-                    <div class="card bg-base-200">
-                        <div class="card-body space-y-4">
-                            <div class="flex items-start gap-2">
-                                <div class="avatar">
-                                    <div class="rounded-full w-8 bg-neutral">
-                                        <img src="https://robohash.org/{{ fake()->name() }}" alt="">
+                    <div class="card bg-base-200 break-inside-avoid">
+                        <div class="card-body space-y-3 justify-center">
+                            <div class="flex gap-3 items-center justify-center">
+                                <div class="flex justify-center items-center w-8">
+                                    <div class="avatar justify-center flex-none">
+                                        <div class="rounded-full w-8 bg-success">
+                                            <img src="https://robohash.org/{{ fake()->name() }}" alt="">
+                                        </div>
                                     </div>
                                 </div>
-                                <h3 class="card-title">{{ fake()->name() }}</h3>
+                                <div class="flex-1 justify-start gap-4">
+                                    <h3 class="line-clamp-1">{{ fake()->firstName() }} {{ fake()->lastName() }}</h3>
+                                    <div class="flex gap-1">
+                                        @for ($j = 0; $j < 5; $j++)
+                                            <x-tabler-star-filled class="size-3 text-warning" />
+                                        @endfor
+                                    </div>
+                                </div>
                             </div>
-                            <p class="opacity-50 line-clamp-3">{{ fake()->words(fake()->numberBetween(5, 15), true) }}
+                            <p class="opacity-75 text-sm">
+                                {{ fake()->words(fake()->numberBetween(5, 15), true) }}
                             </p>
-                            <div class="flex gap-2">
-                                @for ($j = 0; $j < 5; $j++)
-                                    <x-tabler-star-filled class="size-5 text-warning" />
-                                @endfor
-                            </div>
                         </div>
                     </div>
                 @endfor
             </div>
-
         </div>
     </section>
 
-    <section></section>
+    <footer></footer>
 </div>

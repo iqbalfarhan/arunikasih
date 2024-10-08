@@ -33,6 +33,10 @@ class PermissionSeeder extends Seeder
             'permission.create'     => [],
             'permission.edit'       => [],
             'permission.delete'     => [],
+            'rating.index'          => ['user'],
+            'rating.create'         => ['user'],
+            'rating.edit'           => ['user'],
+            'rating.delete'         => ['user'],
         ];
 
         foreach ($datas as $data => $roles) {
