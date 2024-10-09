@@ -18,13 +18,15 @@ class Undangan extends Model
         'paket_id',
         'shared',
         'paid',
-        'data',
+        'event_date'
     ];
 
     protected function casts()
     {
         return [
-            'data' => 'array',
+            'paid' => 'boolean',
+            'shared' => 'boolean',
+            'event_date' => 'date',
         ];
     }
 
@@ -51,5 +53,15 @@ class Undangan extends Model
     public function getLinkAttribute()
     {
         return url($this->kategori->name, $this->slug);
+    }
+
+    public function tamus()
+    {
+        return $this->hasMany(Tamu::class);
+    }
+
+    public function pengantins()
+    {
+        return $this->hasMany(Pengantin::class);
     }
 }

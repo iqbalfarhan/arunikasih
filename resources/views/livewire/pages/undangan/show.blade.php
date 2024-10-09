@@ -29,10 +29,12 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <h3 class="card-title">
-                    <x-tabler-message class="size-5" />
-                    <span>Ucapan & doa</span>
-                </h3>
+                <a href="{{ route('undangan.preview', $undangan) }}" wire:navigate>
+                    <h3 class="card-title">
+                        <x-tabler-device-mobile class="size-5" />
+                        <span>Preview undangan</span>
+                    </h3>
+                </a>
                 <p class="text-sm opacity-50 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Optio, dolore?
                 </p>
@@ -51,6 +53,8 @@
             </div>
         </div>
     </div>
+
+    <pre>@json($undangan, JSON_PRETTY_PRINT)</pre>
 
     @livewire('pages.undangan.actions')
 </div>

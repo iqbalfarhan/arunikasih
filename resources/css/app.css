@@ -13,7 +13,7 @@
   thead {
     @apply border-b-4 border-base-300 bg-base-200/50;
   }
-  pre {
+  .prose pre {
     @apply mockup-code;
   }
 }
@@ -52,6 +52,10 @@
     @apply backdrop-blur-sm;
   }
 
+  .modal-box {
+    @apply scrollbar-hide;
+  }
+
   .card {
     @apply border-2 border-base-300 bg-base-100 w-full;
   }
@@ -76,17 +80,25 @@
     @apply max-w-5xl mx-auto space-y-12;
   }
 
+  .publish {
+    @apply !font-sanchez font-normal text-lg;
+  }
   .publish p {
     @apply font-sanchez font-normal text-lg;
   }
-
+  .publish section.card {
+    @apply border-0 bg-transparent py-14 max-w-2xl mx-auto;
+  }
+  .publish section.card .card-body {
+    @apply flex items-center justify-center text-center space-y-6;
+  }
   .publish h1 {
-    @apply text-6xl font-bold my-12 text-primary font-handlee;
+    @apply text-6xl font-bold text-primary font-handlee;
   }
   .publish h2 {
-    @apply text-5xl font-bold my-12 text-primary font-handlee;
+    @apply text-5xl font-bold text-primary font-handlee text-center;
   }
   .publish h3 {
-    @apply text-4xl font-bold my-12 text-base-content font-handlee;
+    @apply text-4xl font-bold text-primary font-handlee text-center;
   }
 }

@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('paket_id')->nullable()->constrained()->nullOnDelete();
             $table->boolean('shared')->default(false);
             $table->boolean('paid')->default(false);
-            $table->json('data')->nullable();
+            $table->date('event_date');
             $table->timestamps();
         });
     }

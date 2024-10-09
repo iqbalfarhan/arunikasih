@@ -1,138 +1,179 @@
-<div class="publish bg-primary/5">
-    <div class="">
-        <div class="w-full h-screen flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <p>Undangan pernikahan</p>
+<div class="publish">
+    <input type="checkbox" id="cover" @checked($cover) class="modal-toggle" />
+    <div class="modal" role="dialog">
+        <div class="modal-box max-w-lg h-screen text-center bg-base-100">
+            <div class="flex flex-col h-full gap-6">
+                <div class="flex-1 flex flex-col justify-center items-center space-y-6">
+                    <p>Undangan {{ $undangan->kategori->name }}</p>
+                    <div class="avatar">
+                        <div class="w-36 bg-neutral rounded-full">
+                            <img src="https://robohash.org/iqbal&prana" alt="">
+                        </div>
+                    </div>
+                    <h2>{{ $undangan->name }}</h2>
+                    @livewire('partial.countdown')
+                    <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
+                </div>
+                <div class="flex-none">
+                    <label for="cover" class="btn btn-block btn-primary">
+                        <x-tabler-mail class="size-5" />
+                        <span>Buka undangan</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="card min-h-screen">
+        <div class="card-body items-center text-center">
+            <div class="space-y-6">
+                <p>Undangan {{ $undangan->kategori->name }}</p>
+                <div class="avatar">
+                    <div class="w-28 bg-neutral mask mask-hexagon-2">
+                        <img src="https://imgs.search.brave.com/RdGFv7pW5uQUwEgUy8VxAPc7b8ozWesjscUMSRkgH9A/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZWtycGljdHVyZXMu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIxLzAyL0VLUi1Q/aWN0dXJlcy1QcmUt/V2VkZGluZy1waG90/b3Nob3RvLUJhbWZv/cmQtRWRnZTUtMTAy/NHg2ODMuanBn"
+                            alt="">
+                    </div>
+                </div>
                 <h1>{{ $undangan->name }}</h1>
                 <p>Assalamualaikum warohmatullohi wabarokatuh.</p>
-                <p class="italic">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan
-                    pasangan-pasangan
-                    untukmu dari
-                    jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu
-                    rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran
-                    Allah) bagi kaum yang berpikir.”.<br />
-                    (~ QS. Ar Rum Ayat 21 ~)</p>
-                <p>Melalui undangan ini kami, mengundang bapak, ibu dan rekan sekalian untuk menghadiri acara pernikahan
+                <p class="italic">“Dan segala sesuatu Kami ciptakan berpasang-pasangan supaya kamu mengingat kebesaran
+                    Allah.”.<br />
+                    (~ QS. Adz Dzariyyat Ayat 49 ~)</p>
+                <p>Melalui undangan ini kami, mengundang bapak, ibu dan rekan sekalian untuk menghadiri acara
+                    {{ $undangan->kategori->name }}
                     kami :</p>
             </div>
         </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <div class="space-y-10">
                 <h2>Pengantin</h2>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="card border-0 bg-transparent">
-                        <div class="card-body text-center items-center space-y-4">
-                            <div class="avatar">
-                                <div class="w-28 bg-neutral rounded-box">
-                                    <img src="https://robohash.org/iqbal" alt="">
+                <p>Kami yang berbahagia</p>
+                <div class="grid md:grid-cols-2">
+                    @foreach ($undangan->pengantins as $pengantin)
+                        <div class="card border-0 bg-transparent">
+                            <div class="card-body text-center items-center space-y-4">
+                                <div class="avatar">
+                                    <div class="w-32 bg-neutral rounded-full">
+                                        <img src="https://robohash.org/{{ $pengantin->name }}" alt="">
+                                    </div>
                                 </div>
+                                <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
+                                <p>{{ $pengantin->text }}</p>
                             </div>
-                            <h3 class="text-3xl font-semibold">Iqbal Farhan Syuhada</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, nesciunt?</p>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Tanggal Acara</h2>
+            <p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
+
+            @livewire('partial.countdown')
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="card bg-base-200 border-0">
+                    <figure>
+                        <img src="https://imgs.search.brave.com/4lnbEvN0-68Ykv4sfRq7Vp49qBE4GVY76xOcxRmBCyA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVt/ZWZpc2hlci5jb20v/YmxvZy9kYXJrLWFk/bWluLndlYnA"
+                            alt="">
+                    </figure>
+                    <div class="card-body">
+                        <div class="flex flex-col items-center gap-2">
+                            <h5 class="card-title text-center">Akad Nikah</h5>
+                            <p>Gedung Kesenian Balikpapan jam 08:00 sampai dengan 10:00</p>
                         </div>
                     </div>
-                    <div class="card border-0 bg-transparent">
-                        <div class="card-body text-center items-center space-y-4">
-                            <div class="avatar">
-                                <div class="w-28 bg-neutral rounded-box">
-                                    <img src="https://robohash.org/prana" alt="">
-                                </div>
-                            </div>
-                            <h3 class="text-3xl font-semibold">Prana dian adriyani</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, provident!</p>
+                </div>
+                <div class="card bg-base-200 border-0">
+                    <figure>
+                        <img src="https://imgs.search.brave.com/4lnbEvN0-68Ykv4sfRq7Vp49qBE4GVY76xOcxRmBCyA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly90aGVt/ZWZpc2hlci5jb20v/YmxvZy9kYXJrLWFk/bWluLndlYnA"
+                            alt="">
+                    </figure>
+                    <div class="card-body">
+                        <div class="flex flex-col items-center gap-2">
+                            <h4 class="card-title">Resepsi</h4>
+                            <p>Gedung Kesenian Balikpapan jam 08:00 sampai dengan 10:00</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Tanggal Acara</h2>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Moment Kami</h2>
 
-                <div class="grid auto-cols-max grid-flow-col gap-5 text-center items-center justify-center">
-                    <div class="flex flex-col">
-                        <span class="countdown font-mono text-5xl">
-                            <span style="--value:15;"></span>
-                        </span>
-                        Hari
+            <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
+
+            <div class="columns-1 md:columns-2 space-y-4">
+                @foreach ($images as $image)
+                    <div class="break-inside-avoid">
+                        <img src="{{ $image }}" alt="" class="w-full rounded-box">
                     </div>
-                    <div class="flex flex-col">
-                        <span class="countdown font-mono text-5xl">
-                            <span style="--value:10;"></span>
-                        </span>
-                        Jam
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Perjalanan kisah cinta</h2>
+            <p>Setiap langkah dalam perjalanan cinta kami menyimpan cerita berharga. Di sini, kami berbagi momen
+                istimewa dari awal pertemuan hingga hari bahagia.</p>
+        </div>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Ucapan Syukur</h2>
+
+            <p>Kami bersyukur atas kehadiran serta ucapan selamat dari tamu yang membuat hari istimewa kami semakin
+                berarti.</p>
+
+            <div class="flex flex-col text-left">
+                <div class="chat chat-start">
+                    <div class="chat-bubble chat-bubble-secondary">What kind of nonsense is this</div>
+                </div>
+                <div class="chat chat-start">
+                    <div class="chat-bubble chat-bubble-secondary">
+                        Put me on the Council and not make me a Master!??
                     </div>
-                    <div class="flex flex-col">
-                        <span class="countdown font-mono text-5xl">
-                            <span style="--value:24;"></span>
-                        </span>
-                        Menit
+                </div>
+                <div class="chat chat-start">
+                    <div class="chat-bubble chat-bubble-secondary">
+                        That's never been done in the history of the Jedi. It's insulting!
+                    </div>
+                </div>
+                <div class="chat chat-start">
+                    <div class="chat-bubble chat-bubble-secondary">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, aperiam!
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Moment Kami</h2>
-            </div>
-        </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Perjalanan kisah cinta</h2>
 
-
-            </div>
+            <button class="btn btn-primary btn-circle">
+                <x-tabler-edit />
+            </button>
         </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Ucapan Syukur</h2>
-
-                <div class="flex flex-col text-left">
-                    <div class="chat chat-start">
-                        <div class="chat-bubble chat-bubble-secondary">What kind of nonsense is this</div>
-                    </div>
-                    <div class="chat chat-start">
-                        <div class="chat-bubble chat-bubble-secondary">
-                            Put me on the Council and not make me a Master!??
-                        </div>
-                    </div>
-                    <div class="chat chat-start">
-                        <div class="chat-bubble chat-bubble-secondary">
-                            That's never been done in the history of the Jedi. It's insulting!
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Live streaming</h2>
+            <p>Saksikan runtutan acara kami di live streaming berikut ini.
         </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Live streaming</h2>
-                <p>Saksikan runtutan acara kami di live streaming berikut ini.
-            </div>
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <h2>Hadiah</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis minima nulla deserunt dignissimos unde
+                accusamus quis, corporis maxime aspernatur magni iusto architecto accusantium quo, iure culpa sequi vero
+                perferendis laboriosam?</p>
         </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h2>Hadiah</h2>
-            </div>
-        </div>
-    </div>
-    <div class="py-24">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
+    </section>
+    <section class="card">
+        <div class="card-body items-center text-center">
+            <div class="space-y-10">
                 <h2>Protokol kesehatan</h2>
                 <p>Dalam upaya mengurangi penyebaran Covid 19 pada masa pandemi, kami harapkan kedatangan para tamu
                     undangan agar menjalankan protokol yang berlaku.</p>
@@ -153,11 +194,11 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="py-24 h-screen bg-primary">
-        <div class="w-full flex items-center justify-center p-6 flex-col">
-            <div class="container max-w-2xl space-y-6 text-center">
-                <h3>Terimakasih</h3>
+    </section>
+    <section class="card">
+        <div class="card-body">
+            <div class="space-y-10">
+                <h2>Terimakasih</h2>
 
                 <div class="avatar">
                     <div class="w-28 bg-neutral rounded-full">
@@ -169,7 +210,15 @@
                     memberikan do'a restu kepada kami</p>
 
                 <p>Wassalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+                <div>
+                    <label for="cover" class="btn btn-primary">
+                        <x-tabler-mail class="size-5" />
+                        <span>Tutup undangan</span>
+                    </label>
+                </div>
+                <p class="!text-base opacity-50">Undangan ini dibuat dengan <span class="text-red-500">❤</span>
+                    oleh<br>arunikasih.com</p>
             </div>
         </div>
-    </div>
+    </section>
 </div>

@@ -31,7 +31,7 @@ class UndanganFactory extends Factory
             'paket_id' => fake()->randomElement(Paket::pluck('id')),
             'shared' => fake()->boolean(),
             'paid' => fake()->boolean(),
-            'data' => null,
+            'event_date' => fake()->date('Y-m-d', "2024-12-31"),
         ];
     }
 }

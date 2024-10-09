@@ -11,11 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fiturs', function (Blueprint $table) {
+        Schema::create('pengantins', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('undangan_id')->constrained()->cascadeOnDelete();
+            $table->enum('gender', ['pria', 'wanita']);
             $table->string('name');
-            $table->string('description');
-            $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('father');
+            $table->string('mother');
+            $table->string('child');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fiturs');
+        Schema::dropIfExists('pengantins');
     }
 };

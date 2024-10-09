@@ -40,7 +40,7 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">description</span>
+                        <span class="label-text">Default value</span>
                     </div>
                     <textarea type="text" @class([
                         'textarea textarea-bordered',

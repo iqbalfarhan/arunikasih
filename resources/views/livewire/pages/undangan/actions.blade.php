@@ -14,6 +14,16 @@
                     ]) wire:model="form.name"
                         placeholder="Nama lengkap undangan" />
                 </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nama undangan</span>
+                    </div>
+                    <input type="date" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.event_date'),
+                    ]) wire:model="form.event_date"
+                        placeholder="Nama lengkap undangan" />
+                </label>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

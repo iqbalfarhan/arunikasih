@@ -12,7 +12,7 @@ class Show extends Component
 
     public function mount(Undangan $undangan)
     {
-        $this->undangan = $undangan;
+        $this->undangan = Undangan::with('tamus', 'user', 'tema', 'paket', 'kategori', 'pengantins')->find($undangan->id);
     }
 
     public function render()

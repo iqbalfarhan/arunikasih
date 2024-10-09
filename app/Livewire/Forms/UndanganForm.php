@@ -19,7 +19,7 @@ class UndanganForm extends Form
     public $paket_id;
     public $shared = false;
     public $paid = false;
-    public $data;
+    public $event_date;
 
     public function setUndangan(Undangan $undangan){
         $this->undangan = $undangan;
@@ -32,7 +32,7 @@ class UndanganForm extends Form
         $this->paket_id = $undangan->paket_id;
         $this->shared = $undangan->shared;
         $this->paid = $undangan->paid;
-        $this->data = $undangan->data;
+        $this->event_date = $undangan->event_date->format('Y-m-d');
     }
 
     public function store(){
@@ -45,7 +45,7 @@ class UndanganForm extends Form
             'paket_id' => 'required',
             'shared' => 'required',
             'paid' => 'required',
-            'data' => 'required',
+            'event_date' => '',
         ]);
 
         Undangan::create($valid);
@@ -63,7 +63,7 @@ class UndanganForm extends Form
             'paket_id' => 'required',
             'shared' => 'required',
             'paid' => 'required',
-            'data' => 'required',
+            'event_date' => '',
         ]);
 
         $this->undangan->update($valid);

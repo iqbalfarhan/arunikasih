@@ -5,6 +5,7 @@ export default {
     './resources/**/*.js',
     './resources/**/*.vue',
   ],
+  mode: 'jit',
   theme: {
     extend: {
       fontFamily: {

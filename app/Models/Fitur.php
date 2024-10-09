@@ -16,6 +16,13 @@ class Fitur extends Model
         'default_value',
     ];
 
+    public function casts()
+    {
+        return [
+            'default_value' => 'array',
+        ];
+    }
+
     public function kategori()
     {
         return $this->belongsTo(Kategori::class);

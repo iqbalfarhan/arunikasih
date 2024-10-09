@@ -2,12 +2,17 @@
 
 namespace App\Livewire\Pages\Undangan;
 
+use App\Models\Pengantin as PengantinModel;
 use App\Models\Undangan;
-use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Pengantin extends Component
 {
+    public $no = 1;
+    public $cari;
+
+    protected $listeners = ['reload' => '$refresh'];
+
     public Undangan $undangan;
 
     public function mount(Undangan $undangan)
@@ -17,7 +22,9 @@ class Pengantin extends Component
 
     public function render()
     {
-        return view('livewire.pages.undangan.pengantin')->layout('components.layouts.undangan', [
+        return view('livewire.pages.undangan.pengantin', [
+            'datas' => PengantinModel::where('undangan_id', $this->undangan->id)->get()
+        ])->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);
     }

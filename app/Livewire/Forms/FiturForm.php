@@ -21,7 +21,7 @@ class FiturForm extends Form
         $this->name = $fitur->name;
         $this->description = $fitur->description;
         $this->kategori_id = $fitur->kategori_id;
-        $this->default_value = $fitur->default_value;
+        $this->default_value = json_encode($fitur->default_value);
     }
 
     public function store(){
