@@ -81,10 +81,10 @@
   }
 
   .publish {
-    @apply !font-sanchez font-normal text-lg;
+    @apply !font-sanchez font-normal;
   }
   .publish p {
-    @apply font-sanchez font-normal text-lg;
+    @apply font-sanchez font-normal;
   }
   .publish section.card {
     @apply border-0 bg-transparent py-14 max-w-2xl mx-auto;

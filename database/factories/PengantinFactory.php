@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Undangan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class PengantinFactory extends Factory
     {
         $gender = fake()->randomElement(['pria', 'wanita']);
         return [
-            'gender' => $gender ,
+            'undangan_id' => fake()->randomElement(Undangan::pluck('id')),
+            'gender' => $gender,
             'name' => $gender == "pria" ? fake()->firstNameMale() : fake()->firstNameFemale(),
             'father' => fake()->name("male"),
             'mother' => fake()->name("female"),

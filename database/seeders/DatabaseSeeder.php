@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             TemaSeeder::class,
             UndanganSeeder::class,
             TamuSeeder::class,
+            PengantinSeeder::class,
+            EventSeeder::class
         ]);
     }
 }

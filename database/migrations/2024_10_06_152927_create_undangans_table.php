@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('tema_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('paket_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('ayat_id')->nullable()->constrained()->nullOnDelete();
             $table->boolean('shared')->default(false);
             $table->boolean('paid')->default(false);
             $table->date('event_date');

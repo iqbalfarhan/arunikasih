@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tamus', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
             $table->foreignId('undangan_id')->constrained()->cascadeOnDelete();
-            $table->boolean('present')->default(false);
-            $table->text('message')->nullable();
-            $table->text('reply')->nullable();
+            $table->string('name');
+            $table->string('location_name');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('datetime');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tamus');
+        Schema::dropIfExists('events');
     }
 };

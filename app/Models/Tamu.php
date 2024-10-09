@@ -14,5 +14,6 @@ class Tamu extends Model
         "undangan_id",
         "present",
         "message",
+        "reply",
     ];
 }

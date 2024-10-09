@@ -42,19 +42,12 @@
         </div>
     </div>
 
-    <div class="card card-compact">
-        <div class="card-body">
-            <div class="flex justify-between items-center">
-                <span>{{ $undangan->link }}</span>
-                <button class="btn btn-xs">
-                    <x-tabler-copy class="size-4" />
-                    <span>Copy</span>
-                </button>
+    <div class="mockup-phone">
+        <div class="camera"></div>
+        <div class="display">
+            <div class="artboard artboard-demo phone-1">
+                <iframe src="{{ route('undangan.preview', $undangan) }}" class="w-full h-full"></iframe>
             </div>
         </div>
     </div>
-
-    <pre>@json($undangan, JSON_PRETTY_PRINT)</pre>
-
-    @livewire('pages.undangan.actions')
 </div>

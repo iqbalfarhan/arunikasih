@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Ayat;
 use App\Models\Kategori;
 use App\Models\Paket;
 use App\Models\Tema;
@@ -21,7 +22,7 @@ class UndanganFactory extends Factory
      */
     public function definition(): array
     {
-        $title = implode(" ", [fake()->firstNameMale(), 'dan', fake()->firstNameFemale()]);
+        $title = implode(" ", [fake()->firstNameMale(), '&', fake()->firstNameFemale()]);
         return [
             'name' => $title,
             'slug' => Str::slug($title),
@@ -29,6 +30,7 @@ class UndanganFactory extends Factory
             'tema_id' => fake()->randomElement(Tema::pluck('id')),
             'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
             'paket_id' => fake()->randomElement(Paket::pluck('id')),
+            'ayat_id' => fake()->randomElement(Ayat::pluck('id')),
             'shared' => fake()->boolean(),
             'paid' => fake()->boolean(),
             'event_date' => fake()->date('Y-m-d', "2024-12-31"),

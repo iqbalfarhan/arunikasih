@@ -57,7 +57,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.acara', $undangan) }}" @class(['active' => Route::is('undangan.acara')]) wire:navigate>
                     <x-tabler-clock class="size-5" />
                     <span>Akad & Resepsi</span>
                 </a>

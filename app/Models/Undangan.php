@@ -16,6 +16,7 @@ class Undangan extends Model
         'tema_id',
         'kategori_id',
         'paket_id',
+        'ayat_id',
         'shared',
         'paid',
         'event_date'
@@ -50,6 +51,11 @@ class Undangan extends Model
         return $this->belongsTo(Paket::class);
     }
 
+    public function ayat()
+    {
+        return $this->belongsTo(Ayat::class);
+    }
+
     public function getLinkAttribute()
     {
         return url($this->kategori->name, $this->slug);
@@ -63,5 +69,10 @@ class Undangan extends Model
     public function pengantins()
     {
         return $this->hasMany(Pengantin::class);
+    }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }

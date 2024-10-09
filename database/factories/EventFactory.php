@@ -6,9 +6,9 @@ use App\Models\Undangan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tamu>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Event>
  */
-class TamuFactory extends Factory
+class EventFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,11 +18,12 @@ class TamuFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
             'undangan_id' => fake()->randomElement(Undangan::pluck('id')),
-            'present' => fake()->boolean(),
-            'message' => fake()->sentence(),
-            'reply' => fake()->sentence(),
+            'name' => fake()->words(2, true),
+            'location_name' => fake()->company(),
+            'latitude' => fake()->latitude(),
+            'longitude' => fake()->longitude(),
+            'datetime' => fake()->dateTime(),
         ];
     }
 }

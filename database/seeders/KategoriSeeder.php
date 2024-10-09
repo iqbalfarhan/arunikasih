@@ -18,6 +18,7 @@ class KategoriSeeder extends Seeder
             "syukuran",
             "khitanan",
             "ulang tahun",
+            "aqiqah",
         ];
 
         foreach ($datas as $data) {

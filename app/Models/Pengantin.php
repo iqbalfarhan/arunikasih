@@ -22,7 +22,7 @@ class Pengantin extends Model
     public function getTextAttribute()
     {
         return implode(" ", [
-            "Anak",
+            $this->gender == "pria" ? "Putra" : "Putri",
             $this->child,
             "dari bapak",
             $this->father,
