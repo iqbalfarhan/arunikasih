@@ -1,7 +1,11 @@
 <div class="publish">
-    <img src="{{ url('ornament/plantornament.png') }}" alt=""
-        class="fixed top-0 right-0 w-full max-w-2xl opacity-15 rotate-180">
-    <img src="{{ url('ornament/plantornament.png') }}" alt="" class="fixed bottom-0 w-full max-w-2xl opacity-15">
+    <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
+        class="fixed top-0 left-0 max-w-lg opacity-10">
+    <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
+        class="fixed bottom-0 left-0 max-w-lg opacity-10">
+    <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
+        class="fixed bottom-0 right-0 max-w-lg opacity-10">
+
     @if ($cover)
         <section class="card min-h-screen">
             <div class="card-body">
