@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Undangan;
 
 use App\Livewire\Forms\UndanganForm;
+use App\Models\Kategori;
 use App\Models\Undangan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
@@ -58,6 +59,8 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.undangan.actions');
+        return view('livewire.pages.undangan.actions', [
+            'kategoris' => Kategori::pluck('name', 'id')
+        ]);
     }
 }

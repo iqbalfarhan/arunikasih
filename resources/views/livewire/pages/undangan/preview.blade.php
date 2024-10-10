@@ -1,10 +1,10 @@
 <div class="publish">
-    <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
-        class="fixed top-0 left-0 max-w-lg opacity-10">
+    {{-- <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
+        class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
     <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
-        class="fixed bottom-0 left-0 max-w-lg opacity-10">
+        class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
     <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
-        class="fixed bottom-0 right-0 max-w-lg opacity-10">
+        class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20"> --}}
 
     @if ($cover)
         <section class="card min-h-screen">
@@ -58,7 +58,7 @@
                     </p>
                     <div class="grid md:grid-cols-2">
                         @foreach ($undangan->pengantins as $pengantin)
-                            <div class="card border-0 bg-transparent">
+                            <div class="card border-0 bg-transparent" wire:transition>
                                 <div class="card-body text-center items-center space-y-2">
                                     <div class="avatar">
                                         <div class="w-32 bg-neutral rounded-full">
@@ -108,9 +108,9 @@
                 <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
 
                 <div class="columns-1 md:columns-2 space-y-4">
-                    @foreach ($images as $image)
+                    @foreach ($undangan->galleries->pluck('filename') as $image)
                         <div class="break-inside-avoid">
-                            <img src="{{ $image }}" alt="" class="w-full rounded-box">
+                            <img src="{{ Storage::url($image) }}" alt="" class="w-full rounded-box">
                         </div>
                     @endforeach
                 </div>
@@ -201,7 +201,7 @@
                 </div>
             </div>
         </section>
-        <section class="card">
+        <section class="card min-h-screen">
             <div class="card-body">
                 <div class="space-y-10">
                     <h2>Terimakasih</h2>
@@ -229,4 +229,10 @@
             </div>
         </section>
     @endif
+
+    <div class="toast toast-start">
+        <button class="btn btn-primary btn-circle">
+            <x-tabler-player-play />
+        </button>
+    </div>
 </div>

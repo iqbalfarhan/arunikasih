@@ -63,7 +63,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.media', $undangan) }}" @class(['active' => Route::is('undangan.media')]) wire:navigate>
                     <x-tabler-photo class="size-5" />
                     <span>Gallery Prewedding</span>
                 </a>

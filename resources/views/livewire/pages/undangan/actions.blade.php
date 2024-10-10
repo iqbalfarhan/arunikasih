@@ -6,6 +6,20 @@
             <div class="py-4 space-y-2">
                 <label class="form-control">
                     <div class="label">
+                        <span class="label-text">Kategori undangan</span>
+                    </div>
+                    <select type="text" @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.kategori_id'),
+                    ]) wire:model="form.kategori_id">
+                        <option value=""></option>
+                        @foreach ($kategoris as $katid => $katname)
+                            <option value="{{ $katid }}">{{ $katname }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
                         <span class="label-text">Nama undangan</span>
                     </div>
                     <input type="text" @class([

@@ -41,5 +41,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/pengantin', \App\Livewire\Pages\Undangan\Pengantin::class)->name('undangan.pengantin');
         Route::get('/preview', \App\Livewire\Pages\Undangan\Preview::class)->name('undangan.preview');
         Route::get('/acara', \App\Livewire\Pages\Undangan\Acara::class)->name('undangan.acara');
+        Route::get('/media', \App\Livewire\Pages\Undangan\Media::class)->name('undangan.media');
     });
 });

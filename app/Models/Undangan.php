@@ -75,4 +75,9 @@ class Undangan extends Model
     {
         return $this->hasMany(Event::class);
     }
+
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class);
+    }
 }
