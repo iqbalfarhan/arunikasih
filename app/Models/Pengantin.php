@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Pengantin extends Model
 {
@@ -29,5 +30,10 @@ class Pengantin extends Model
             "dan ibu",
             $this->mother,
         ]);
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->photo ? Storage::url($this->photo) : ($this->gender == "pria" ? url('nouser.jpg') : url("nouserfemale.jpg"));
     }
 }

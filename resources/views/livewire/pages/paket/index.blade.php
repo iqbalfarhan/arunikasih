@@ -20,7 +20,7 @@
 
     <div class="grid grid-cols-3 gap-6">
         @foreach ($datas as $data)
-            <div class="card">
+            <div class="card h-fit" wire:transition>
                 <div class="card-body">
                     <div class="flex flex-col items-start">
                         <button class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</button>

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Undangan extends Model
 {
@@ -19,7 +20,8 @@ class Undangan extends Model
         'ayat_id',
         'shared',
         'paid',
-        'event_date'
+        'event_date',
+        'photo',
     ];
 
     protected function casts()
@@ -59,6 +61,11 @@ class Undangan extends Model
     public function getLinkAttribute()
     {
         return url($this->kategori->name, $this->slug);
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->photo ? Storage::url($this->photo) : url('nocover.jpg');
     }
 
     public function tamus()

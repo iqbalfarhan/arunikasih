@@ -20,7 +20,7 @@ class EventFactory extends Factory
         return [
             'undangan_id' => fake()->randomElement(Undangan::pluck('id')),
             'name' => fake()->words(2, true),
-            'location_name' => fake()->company(),
+            'location_name' => fake()->city(),
             'latitude' => fake()->latitude(),
             'longitude' => fake()->longitude(),
             'datetime' => fake()->dateTime(),

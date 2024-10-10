@@ -23,13 +23,14 @@ class UndanganFactory extends Factory
     public function definition(): array
     {
         $title = implode(" ", [fake()->firstNameMale(), '&', fake()->firstNameFemale()]);
+        $kat_id = fake()->randomElement(Kategori::pluck('id'));
         return [
             'name' => $title,
             'slug' => Str::slug($title),
             'user_id' => fake()->randomElement(User::pluck('id')),
             'tema_id' => fake()->randomElement(Tema::pluck('id')),
-            'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
-            'paket_id' => fake()->randomElement(Paket::pluck('id')),
+            'kategori_id' => $kat_id,
+            'paket_id' => fake()->randomElement(Paket::where('kategori_id', $kat_id)->pluck('id')),
             'ayat_id' => fake()->randomElement(Ayat::pluck('id')),
             'shared' => fake()->boolean(),
             'paid' => fake()->boolean(),

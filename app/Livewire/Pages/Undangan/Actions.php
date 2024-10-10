@@ -8,11 +8,13 @@ use App\Models\Undangan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Actions extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithFileUploads;
     public $show = false;
+    public $photo;
     public ?Undangan $undangan;
     public UndanganForm $form;
 
@@ -37,8 +39,12 @@ class Actions extends Component
         $this->alert('success', 'Data undangan berhasil dihapus');
     }
 
-    public function simpan(){
+    public function simpan()
+    {
         if (isset($this->form->undangan)) {
+            if ($this->photo) {
+                $this->form->photo = $this->photo->store($this->form->undangan->id);
+            }
             $this->form->update();
         }
         else{

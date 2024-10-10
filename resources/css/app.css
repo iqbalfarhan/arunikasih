@@ -81,13 +81,13 @@
   }
 
   .publish {
-    @apply !font-sanchez font-normal;
+    @apply !font-sanchez font-normal md:text-lg lg:text-xl;
   }
   .publish p {
     @apply font-sanchez font-normal;
   }
   .publish section.card {
-    @apply border-0 bg-transparent py-14 max-w-2xl mx-auto;
+    @apply border-0 bg-transparent py-14 max-w-4xl mx-auto;
   }
   .publish section.card .card-body {
     @apply flex items-center justify-center text-center space-y-6;

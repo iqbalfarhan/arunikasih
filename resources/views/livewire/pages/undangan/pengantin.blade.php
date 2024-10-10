@@ -30,7 +30,16 @@
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->gender }}</td>
-                        <td>{{ $data->name }}</td>
+                        <td>
+                            <div class="flex items-center gap-2">
+                                <div class="avatar">
+                                    <div class="w-6 rounded-full">
+                                        <img src="{{ $data->image }}" alt="">
+                                    </div>
+                                </div>
+                                {{ $data->name }}
+                            </div>
+                        </td>
                         <td>{{ $data->child }}</td>
                         <td>{{ $data->father }}</td>
                         <td>{{ $data->mother }}</td>

@@ -30,13 +30,22 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Nama undangan</span>
+                        <span class="label-text">Tanggal acara</span>
                     </div>
                     <input type="date" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.event_date'),
                     ]) wire:model="form.event_date"
                         placeholder="Nama lengkap undangan" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Photo cover</span>
+                    </div>
+                    <input type="file" @class([
+                        'file-input file-input-bordered',
+                        'file-input-error' => $errors->first('photo'),
+                    ]) wire:model="photo" accept="image/*" />
                 </label>
             </div>
             <div class="modal-action justify-between">

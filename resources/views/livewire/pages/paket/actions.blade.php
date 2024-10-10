@@ -7,6 +7,20 @@
                 <div class="space-y-2 flex-1">
                     <label class="form-control">
                         <div class="label">
+                            <span class="label-text">Nama kategori</span>
+                        </div>
+                        <select @class([
+                            'select select-bordered',
+                            'select-error' => $errors->first('form.kategori_id'),
+                        ]) wire:model.live="form.kategori_id">
+                            <option value="">Kategori paket</option>
+                            @foreach ($kategoris as $katid => $katname)
+                                <option value="{{ $katid }}">{{ $katname }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                    <label class="form-control">
+                        <div class="label">
                             <span class="label-text">Nama paket</span>
                         </div>
                         <input type="text" @class([
@@ -29,25 +43,11 @@
                         <div class="label">
                             <span class="label-text">Description</span>
                         </div>
-                        <input type="text" @class([
-                            'input input-bordered',
-                            'input-error' => $errors->first('form.description'),
-                        ]) wire:model="form.description"
-                            placeholder="Nama lengkap paket" />
-                    </label>
-                    <label class="form-control">
-                        <div class="label">
-                            <span class="label-text">Nama kategori</span>
-                        </div>
-                        <select @class([
-                            'select select-bordered',
-                            'select-error' => $errors->first('form.kategori_id'),
-                        ]) wire:model.live="form.kategori_id">
-                            <option value="">Kategori paket</option>
-                            @foreach ($kategoris as $katid => $katname)
-                                <option value="{{ $katid }}">{{ $katname }}</option>
-                            @endforeach
-                        </select>
+                        <textarea type="text" @class([
+                            'textarea textarea-bordered',
+                            'textarea-error' => $errors->first('form.description'),
+                        ]) wire:model="form.description" placeholder="Deskripsi paket"
+                            rows="5"></textarea>
                     </label>
                 </div>
                 <div class="space-y-2 flex-1">

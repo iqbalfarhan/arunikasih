@@ -16,6 +16,11 @@ class FiturSeeder extends Seeder
     {
         $datas = [
             [
+                'name' => 'cover undangan',
+                'description' => 'Halaman awal undangan, disini terdapat label nama tamu yang diundang',
+                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+            ],
+            [
                 'name' => 'data pengantin',
                 'description' => 'data pengantin pria dan pengantin wanita',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,

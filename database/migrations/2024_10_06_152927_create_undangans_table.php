@@ -23,6 +23,7 @@ return new class extends Migration
             $table->boolean('shared')->default(false);
             $table->boolean('paid')->default(false);
             $table->date('event_date');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

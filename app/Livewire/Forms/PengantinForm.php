@@ -41,6 +41,10 @@ class PengantinForm extends Form
             'child' => 'required',
         ]);
 
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
+
         Pengantin::create($valid);
 
         $this->reset();
@@ -55,6 +59,10 @@ class PengantinForm extends Form
             'mother' => 'required',
             'child' => 'required',
         ]);
+
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
 
         $this->pengantin->update($valid);
 

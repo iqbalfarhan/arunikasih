@@ -22,7 +22,7 @@ class TamuFactory extends Factory
             'undangan_id' => fake()->randomElement(Undangan::pluck('id')),
             'present' => fake()->boolean(),
             'message' => fake()->sentence(),
-            'reply' => fake()->sentence(),
+            'reply' => fake()->boolean() ? fake()->sentence() : null,
         ];
     }
 }

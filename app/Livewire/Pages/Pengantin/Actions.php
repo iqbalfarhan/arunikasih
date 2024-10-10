@@ -7,11 +7,13 @@ use App\Models\Pengantin;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Actions extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithFileUploads;
     public $show = false;
+    public $photo;
     public ?Pengantin $pengantin;
     public PengantinForm $form;
 
@@ -37,17 +39,11 @@ class Actions extends Component
         $this->alert('success', 'Data pengantin berhasil dihapus');
     }
 
-    #[On("deleteAccount")]
-    public function deleteAccount(Pengantin $pengantin)
-    {
-        $pengantin->delete();
-        $this->dispatch('reload');
-        $this->flash('success', 'Data pengantin berhasil dihapus');
-
-        $this->redirect(route('login'), navigate:true);
-    }
-
     public function simpan(){
+        if ($this->photo) {
+            $this->form->photo = $this->photo->store($this->form->undangan_id);
+        }
+
         if (isset($this->form->pengantin)) {
             $this->form->update();
         }

@@ -55,6 +55,15 @@
                         'input-error' => $errors->first('form.mother'),
                     ]) wire:model="form.mother" />
                 </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Photo</span>
+                    </div>
+                    <input type="file" @class([
+                        'file-input file-input-bordered',
+                        'file-input-error' => $errors->first('photo'),
+                    ]) wire:model="photo" accept="images/*" />
+                </label>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

@@ -9,16 +9,18 @@
     @if ($cover == true)
         <section class="card min-h-screen">
             <div class="card-body">
-                <div class="space-y-10">
+                <div class="space-y-12">
                     <p>Undangan {{ $undangan->kategori->name }}</p>
                     <div class="avatar">
-                        <div class="w-32 bg-neutral rounded-full">
-                            <img src="https://robohash.org/iqbal&prana" alt="">
+                        <div class="w-32 rounded-full">
+                            <img src="{{ $undangan->image }}" alt="">
                         </div>
                     </div>
                     <h2>{{ $undangan->name }}</h2>
-                    @livewire('partial.countdown')
-                    <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
+                    <div class="">
+                        @livewire('partial.countdown')
+                        <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
+                    </div>
                     <button wire:click="toggleCover" class="btn btn-primary">
                         <x-tabler-mail class="size-5" />
                         <span>Buka undangan</span>
@@ -33,9 +35,8 @@
                 <div class="space-y-6">
                     <p>Undangan {{ $undangan->kategori->name }}</p>
                     <div class="avatar">
-                        <div class="w-32 bg-neutral rounded-full">
-                            <img src="https://imgs.search.brave.com/RdGFv7pW5uQUwEgUy8VxAPc7b8ozWesjscUMSRkgH9A/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/ZWtycGljdHVyZXMu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIxLzAyL0VLUi1Q/aWN0dXJlcy1QcmUt/V2VkZGluZy1waG90/b3Nob3RvLUJhbWZv/cmQtRWRnZTUtMTAy/NHg2ODMuanBn"
-                                alt="">
+                        <div class="w-32 rounded-full">
+                            <img src="{{ $undangan->image }}" alt="">
                         </div>
                     </div>
                     <h1>{{ $undangan->name }}</h1>
@@ -64,7 +65,7 @@
                                 <div class="card-body text-center items-center space-y-2">
                                     <div class="avatar">
                                         <div class="w-32 bg-neutral rounded-full">
-                                            <img src="https://robohash.org/{{ $pengantin->name }}" alt="">
+                                            <img src="{{ $pengantin->image }}" alt="">
                                         </div>
                                     </div>
                                     <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
@@ -111,7 +112,7 @@
 
                 <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
 
-                <div class="columns-1 md:columns-2 space-y-4">
+                <div class="columns-1 md:columns-2 lg:columns-3 space-y-4">
                     @foreach ($undangan->galleries->pluck('filename') as $image)
                         <div class="break-inside-avoid">
                             <img src="{{ Storage::url($image) }}" alt="" class="w-full rounded-box">
@@ -235,8 +236,8 @@
                     <h2>Terimakasih</h2>
 
                     <div class="avatar">
-                        <div class="w-32 bg-neutral rounded-full">
-                            <img src="https://robohash.org/iqbal&prana" alt="">
+                        <div class="w-32 rounded-full">
+                            <img src="{{ $undangan->image }}" alt="">
                         </div>
                     </div>
 

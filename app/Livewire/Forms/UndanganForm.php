@@ -21,6 +21,7 @@ class UndanganForm extends Form
     public $shared = false;
     public $paid = false;
     public $event_date;
+    public $photo;
 
     public function setUndangan(Undangan $undangan){
         $this->undangan = $undangan;
@@ -51,6 +52,10 @@ class UndanganForm extends Form
             'event_date' => '',
         ]);
 
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
+
         Undangan::create($valid);
 
         $this->reset();
@@ -69,6 +74,10 @@ class UndanganForm extends Form
             'paid' => 'required',
             'event_date' => '',
         ]);
+
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
 
         $this->undangan->update($valid);
 
