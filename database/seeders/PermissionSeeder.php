@@ -37,6 +37,16 @@ class PermissionSeeder extends Seeder
             'rating.create'         => ['user'],
             'rating.edit'           => ['user'],
             'rating.delete'         => ['user'],
+            'rating.mine'           => ['user'],
+            'tamu.index'            => ['user'],
+            'tamu.create'           => ['user'],
+            'tamu.edit'             => ['user'],
+            'tamu.delete'           => ['user'],
+            'undangan.index'        => ['user'],
+            'undangan.edit'         => ['user'],
+            'undangan.delete'       => ['user'],
+            'undangan.show'         => ['user'],
+            'undangan.mine'         => ['user'],
         ];
 
         foreach ($datas as $data => $roles) {

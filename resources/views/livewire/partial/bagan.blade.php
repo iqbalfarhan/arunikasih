@@ -1,10 +1,19 @@
 <ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6">
-    <li>
-        <a href="{{ route('undangan.index') }}">
-            <x-tabler-arrow-left class="size-5" />
-            <span>Kembali</span>
-        </a>
-    </li>
+    @role('user')
+        <li>
+            <a href="{{ route('undangan.mine') }}">
+                <x-tabler-arrow-left class="size-5" />
+                <span>Undangan saya</span>
+            </a>
+        </li>
+    @else
+        <li>
+            <a href="{{ route('undangan.index') }}">
+                <x-tabler-arrow-left class="size-5" />
+                <span>Kembali</span>
+            </a>
+        </li>
+    @endrole
     <li>
         <h2 class="menu-title">Dashboard</h2>
         <ul>
@@ -17,17 +26,11 @@
             <li>
                 <a href="{{ route('undangan.setting', $undangan) }}" @class(['active' => Route::is('undangan.setting')]) wire:navigate>
                     <x-tabler-palette class="size-5" />
-                    <span>Tema & Audio</span>
+                    <span>Tema Tampilan</span>
                 </a>
             </li>
             <li>
-                <a>
-                    <x-tabler-message class="size-5" />
-                    <span>Ucapan & Doa</span>
-                </a>
-            </li>
-            <li>
-                <a>
+                <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
                     <x-tabler-users class="size-5" />
                     <span>Daftar tamu</span>
                 </a>
@@ -69,7 +72,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.story', $undangan) }}" @class(['active' => Route::is('undangan.story')]) wire:navigate>
                     <x-tabler-heart class="size-5" />
                     <span>Kisah Cinta</span>
                 </a>

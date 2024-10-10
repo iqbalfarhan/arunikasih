@@ -18,7 +18,7 @@ class BankFactory extends Factory
     {
         return [
             'name' => fake()->company(),
-            'filename' => fake()->name(),
+            'filename' => fake()->filePath(),
         ];
     }
 }

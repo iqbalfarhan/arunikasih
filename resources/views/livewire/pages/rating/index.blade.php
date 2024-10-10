@@ -28,7 +28,7 @@
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->user->name }}</td>
-                        <td>{{ $data->insight }}</td>
+                        <td>{{ Str::limit($data->insight, 40) }}</td>
                         <td>
                             <div class="rating rating-sm">
                                 <input type="radio" @checked($data->rate == 1)

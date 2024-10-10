@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             PermissionSeeder::class,
 
             MusicSeeder::class,
+            RatingSeeder::class,
             AyatSeeder::class,
             KategoriSeeder::class,
             BankSeeder::class,

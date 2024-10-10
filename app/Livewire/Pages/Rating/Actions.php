@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Rating;
 
 use App\Livewire\Forms\RatingForm;
 use App\Models\Rating;
+use Illuminate\Support\Facades\Auth;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -63,6 +64,11 @@ class Actions extends Component
         $this->show = false;
         $this->form->reset();
         $this->dispatch('reload');
+    }
+
+    public function mount()
+    {
+        $this->form->user_id = Auth::id();
     }
 
 

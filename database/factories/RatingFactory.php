@@ -19,7 +19,7 @@ class RatingFactory extends Factory
     {
         return [
             'user_id' => fake()->randomElement(User::pluck('id')),
-            'insight' => fake()->sentence(),
+            'insight' => fake()->sentences(fake()->numberBetween(2, 4), true),
             'rate' => fake()->numberBetween(3, 5),
         ];
     }

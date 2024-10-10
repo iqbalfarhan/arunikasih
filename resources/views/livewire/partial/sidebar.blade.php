@@ -27,9 +27,9 @@
                         </a>
                     </li>
                 @endcan
-                @can('rating.index')
+                @can('rating.mine')
                     <li>
-                        <a href="{{ route('rating.index') }}" @class(['active' => Route::is('rating.index')]) wire:navigate>
+                        <a href="{{ route('rating.mine') }}" @class(['active' => Route::is('rating.mine')]) wire:navigate>
                             <x-tabler-message class="size-5" />
                             <span>Penilaian & Saran</span>
                         </a>
@@ -69,6 +69,14 @@
                         <a href="{{ route('home') }}" wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Pembayaran</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('rating.index')
+                    <li>
+                        <a href="{{ route('rating.index') }}" @class(['active' => Route::is('rating.index')]) wire:navigate>
+                            <x-tabler-message class="size-5" />
+                            <span>Testimoni Client</span>
                         </a>
                     </li>
                 @endcan

@@ -29,7 +29,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('undangan.preview', $undangan) }}" wire:navigate>
+                <a href="{{ route('undangan.preview', $undangan) }}" target="_blank">
                     <h3 class="card-title">
                         <x-tabler-device-mobile class="size-5" />
                         <span>Preview undangan</span>
@@ -38,15 +38,6 @@
                 <p class="text-sm opacity-50 line-clamp-2">Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Optio, dolore?
                 </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="mockup-phone">
-        <div class="camera"></div>
-        <div class="display">
-            <div class="artboard artboard-demo phone-1">
-                <iframe src="{{ route('undangan.preview', $undangan) }}" class="w-full h-full"></iframe>
             </div>
         </div>
     </div>

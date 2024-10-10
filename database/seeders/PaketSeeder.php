@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kategori;
 use App\Models\Paket;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,6 +14,10 @@ class PaketSeeder extends Seeder
      */
     public function run(): void
     {
-        Paket::factory(8)->create();
+        foreach (Kategori::pluck('id') as $kat) {
+            Paket::factory(3)->create([
+                'kategori_id' => $kat
+            ]);
+        }
     }
 }

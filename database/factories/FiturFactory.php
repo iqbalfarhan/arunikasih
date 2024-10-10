@@ -18,10 +18,9 @@ class FiturFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->word(),
+            'name' => fake()->words(2, true),
             'description' => fake()->sentence(),
-            'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
-            'default_value' => null,
+            'kategori_id' => fake()->randomElement(Kategori::whereNot('id', 1)->pluck('id')),
         ];
     }
 }

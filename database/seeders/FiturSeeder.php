@@ -55,5 +55,7 @@ class FiturSeeder extends Seeder
         foreach ($datas as $data) {
             Fitur::updateOrCreate(["name" => $data['name']],$data);
         }
+
+        Fitur::factory(30)->create();
     }
 }

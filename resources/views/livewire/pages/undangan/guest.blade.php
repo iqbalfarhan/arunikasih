@@ -16,7 +16,9 @@
         <table class="table">
             <thead>
                 <th>No</th>
-                <th>Other</th>
+                <th>Name</th>
+                <th>Hadir</th>
+                <th>Pesan</th>
                 @canany(['tamu.edit', 'tamu.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -25,7 +27,9 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
-                        <td></td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->present ? 'Hadir' : '' }}</td>
+                        <td>{{ $data->message }}</td>
                         @canany(['tamu.edit', 'tamu.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

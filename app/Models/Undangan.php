@@ -80,4 +80,9 @@ class Undangan extends Model
     {
         return $this->hasMany(Gallery::class);
     }
+
+    public function kisahs()
+    {
+        return $this->hasMany(Kisah::class);
+    }
 }

@@ -14,7 +14,9 @@
         <div class="drawer lg:drawer-open min-h-screen bg-base-200">
             <input id="drawer" type="checkbox" class="drawer-toggle" />
             <div class="drawer-content">
-                @livewire('partial.navbar')
+                @livewire('partial.detailnav', [
+                    'undangan' => $undangan,
+                ])
                 {{ $slot }}
             </div>
             <div class="drawer-side scrollbar-hide">

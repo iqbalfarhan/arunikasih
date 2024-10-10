@@ -1,12 +1,12 @@
 <div class="publish">
-    {{-- <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
+    <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
         class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
     <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
         class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
     <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
-        class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20"> --}}
+        class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
 
-    @if ($cover)
+    @if ($cover == true)
         <section class="card min-h-screen">
             <div class="card-body">
                 <div class="space-y-10">
@@ -27,6 +27,7 @@
             </div>
         </section>
     @else
+        {{-- cover --}}
         <section class="card min-h-screen">
             <div class="card-body items-center text-center">
                 <div class="space-y-6">
@@ -49,6 +50,7 @@
                 </div>
             </div>
         </section>
+        {{-- pengantin --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <div class="space-y-10">
@@ -74,6 +76,7 @@
                 </div>
             </div>
         </section>
+        {{-- event --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Tanggal Acara</h2>
@@ -101,6 +104,7 @@
                 </div>
             </div>
         </section>
+        {{-- momnet kami --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Moment Kami</h2>
@@ -116,13 +120,33 @@
                 </div>
             </div>
         </section>
+        {{-- kisah --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Perjalanan kisah cinta</h2>
                 <p>Setiap langkah dalam perjalanan cinta kami menyimpan cerita berharga. Di sini, kami berbagi momen
                     istimewa dari awal pertemuan hingga hari bahagia.</p>
+
+                <ul class="timeline timeline-vertical">
+                    @foreach ($undangan->kisahs as $kisah)
+                        <li>
+                            @if ($loop->first == false)
+                                <hr>
+                            @endif
+                            <div class="timeline-start">{{ $kisah->title }}</div>
+                            <div class="timeline-middle">
+                                <x-tabler-arrow-right class="size-4" />
+                            </div>
+                            <div class="timeline-end timeline-box text-left">{{ $kisah->content }}</div>
+                            @if ($loop->last == false)
+                                <hr>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </section>
+        {{-- ucapan --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Ucapan Syukur</h2>
@@ -162,6 +186,7 @@
                 </button>
             </div>
         </section>
+        {{-- live streaming --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Saksikan Momen Berharga Kami</h2>
@@ -170,6 +195,7 @@
                     dan resepsi, sehingga Anda bisa ikut merayakan cinta kami meski dari jauh.</p>
             </div>
         </section>
+        {{-- hadiah --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <h2>Hadiah kasih</h2>
@@ -177,6 +203,7 @@
                     selamat. Kehadiran Anda adalah anugerah terindah bagi kami.</p>
             </div>
         </section>
+        {{-- protokol --}}
         <section class="card">
             <div class="card-body items-center text-center">
                 <div class="space-y-10">
@@ -201,6 +228,7 @@
                 </div>
             </div>
         </section>
+        {{-- terimakasih --}}
         <section class="card min-h-screen">
             <div class="card-body">
                 <div class="space-y-10">
