@@ -15,6 +15,7 @@ class Setting extends Component
     public function mount(Undangan $undangan)
     {
         $this->undangan = $undangan;
+        $this->ayat = $undangan->ayat;
     }
 
     public function updateTema($temaId)

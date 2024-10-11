@@ -13,15 +13,13 @@
                         <button class="card card-compact bg-base-200 cursor-pointer border-0 text-left"
                             data-theme="{{ $tema->name }}" wire:click="updateTema({{ $tema->id }})">
                             <div class="card-body">
-                                <div class="flex justify-between">
+                                <div class="flex justify-between w-full">
                                     <h4 class="card-title text-base capitalize">{{ $tema->name }}</h4>
                                     @if ($undangan->tema_id == $tema->id)
                                         <x-tabler-circle-check class="text-primary" />
                                     @endif
                                 </div>
-                                <p class="text-xs opacity-50 line-clamp-2">Lorem ipsum dolor sit amet, consectetur
-                                    adipisicing elit.
-                                    Sequi, laborum.
+                                <p class="text-xs opacity-50 line-clamp-2">Lorem ipsum dolor sit amet.
                                 </p>
                                 <div class="flex gap-1">
                                     @foreach (['bg-primary', 'bg-success', 'bg-warning', 'bg-error', 'bg-info'] as $color)
@@ -87,10 +85,18 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">Pilihan ayat</h3>
-            <div class="py-4">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur sequi rem fugit ducimus
-                architecto, ex commodi nam possimus? Nam, quas officiis iusto non tempora cupiditate quod fugiat
-                delectus voluptates distinctio.
+            <div class="grid grid-cols-3 gap-4 py-4">
+                @foreach ($ayats as $ayat)
+                    <div @class([
+                        'card card-compact',
+                        'border-primary text-primary' => $ayat->id == $undangan->ayat_id,
+                    ]) wire:click="updateAyat({{ $ayat->id }})">
+                        <div class="card-body">
+                            <h3 class="card-title">{{ $ayat->surah }}</h3>
+                            <p class="opacity-50 line-clamp-3">{{ $ayat->content }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

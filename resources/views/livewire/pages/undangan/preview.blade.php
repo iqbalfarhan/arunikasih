@@ -1,19 +1,32 @@
 <div class="publish">
-    <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
-        class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-    <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
-        class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-    <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
-        class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
+    <div>
+        <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
+            class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
+        <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
+            class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
+        <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
+            class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
+    </div>
+    {{-- <div>
+        <img src="{{ url('ornament/lovepartial/lovetopleft.png') }}" alt=""
+            class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
+        <img src="{{ url('ornament/lovepartial/lovebottomleft.png') }}" alt=""
+            class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
+        <img src="{{ url('ornament/lovepartial/lovebottomright.png') }}" alt=""
+            class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
+    </div> --}}
 
-    @if ($cover == true)
+    @if ($cover)
         <section class="card min-h-screen">
             <div class="card-body">
                 <div class="space-y-12">
                     <p>Undangan {{ $undangan->kategori->name }}</p>
-                    <div class="avatar">
-                        <div class="w-32 rounded-full">
-                            <img src="{{ $undangan->image }}" alt="">
+                    <div class="flex relative justify-center items-center">
+                        <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                        <div class="avatar absolute">
+                            <div class="w-40 rounded-full">
+                                <img src="{{ $undangan->image }}" alt="">
+                            </div>
                         </div>
                     </div>
                     <h2>{{ $undangan->name }}</h2>
@@ -30,20 +43,25 @@
         </section>
     @else
         {{-- cover --}}
-        <section class="card min-h-screen">
+        <section id="cover" class="card min-h-screen">
             <div class="card-body items-center text-center">
-                <div class="space-y-6">
+                <div class="space-y-10">
                     <p>Undangan {{ $undangan->kategori->name }}</p>
-                    <div class="avatar">
-                        <div class="w-32 rounded-full">
-                            <img src="{{ $undangan->image }}" alt="">
+                    <div class="flex relative justify-center items-center">
+                        <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                        <div class="avatar absolute">
+                            <div class="w-40 rounded-full">
+                                <img src="{{ $undangan->image }}" alt="">
+                            </div>
                         </div>
                     </div>
                     <h1>{{ $undangan->name }}</h1>
                     <p>Assalamualaikum warohmatullohi wabarokatuh.</p>
                     @if ($undangan->ayat)
-                        <p class="italic">“{{ $undangan->ayat->content }}”.<br />
-                            (~ {{ $undangan->ayat->surah }} ~)</p>
+                        <div class="italic space-y-2">
+                            <p>“{{ $undangan->ayat->content }}”.</p>
+                            <p>(~ {{ $undangan->ayat->surah }} ~)</p>
+                        </div>
                     @endif
                     <p>Melalui undangan ini kami, mengundang bapak, ibu dan rekan sekalian untuk menghadiri acara
                         {{ $undangan->kategori->name }}
@@ -52,7 +70,7 @@
             </div>
         </section>
         {{-- pengantin --}}
-        <section class="card">
+        <section id="pengantin" class="card">
             <div class="card-body items-center text-center">
                 <div class="space-y-10">
                     <h2>Kami yang berbahagia</h2>
@@ -63,11 +81,20 @@
                         @foreach ($undangan->pengantins as $pengantin)
                             <div class="card border-0 bg-transparent" wire:transition>
                                 <div class="card-body text-center items-center space-y-2">
-                                    <div class="avatar">
+                                    <div class="flex relative justify-center items-center">
+                                        <img src="{{ url('ornament/circleornament2.png') }}" alt=""
+                                            class="w-48 z-10">
+                                        <div class="avatar absolute">
+                                            <div class="w-40 rounded-full">
+                                                <img src="{{ $pengantin->image }}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="avatar">
                                         <div class="w-32 bg-neutral rounded-full">
                                             <img src="{{ $pengantin->image }}" alt="">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
                                     <p>{{ $pengantin->text }}</p>
                                 </div>
@@ -78,7 +105,7 @@
             </div>
         </section>
         {{-- event --}}
-        <section class="card">
+        <section id="event" class="card">
             <div class="card-body items-center text-center">
                 <h2>Tanggal Acara</h2>
                 <p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
@@ -105,14 +132,14 @@
                 </div>
             </div>
         </section>
-        {{-- momnet kami --}}
-        <section class="card">
+        {{-- moment kami --}}
+        <section id="moment" class="card">
             <div class="card-body items-center text-center">
                 <h2>Moment Kami</h2>
 
                 <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
 
-                <div class="columns-1 md:columns-2 lg:columns-3 space-y-4">
+                <div class="columns-2 md:columns-2 lg:columns-3 space-y-4">
                     @foreach ($undangan->galleries->pluck('filename') as $image)
                         <div class="break-inside-avoid">
                             <img src="{{ Storage::url($image) }}" alt="" class="w-full rounded-box">
@@ -122,7 +149,7 @@
             </div>
         </section>
         {{-- kisah --}}
-        <section class="card">
+        <section id="kisah" class="card">
             <div class="card-body items-center text-center">
                 <h2>Perjalanan kisah cinta</h2>
                 <p>Setiap langkah dalam perjalanan cinta kami menyimpan cerita berharga. Di sini, kami berbagi momen
@@ -148,7 +175,7 @@
             </div>
         </section>
         {{-- ucapan --}}
-        <section class="card">
+        <section id="ucapan" class="card">
             <div class="card-body items-center text-center">
                 <h2>Ucapan Syukur</h2>
 
@@ -175,7 +202,7 @@
             </div>
         </section>
         {{-- live streaming --}}
-        <section class="card">
+        <section id="streaming" class="card">
             <div class="card-body items-center text-center">
                 <h2>Saksikan Momen Berharga Kami</h2>
                 <p>Nikmati momen bahagia kami secara langsung! Temukan tautan di bawah ini untuk menyaksikan prosesi
@@ -184,7 +211,7 @@
             </div>
         </section>
         {{-- hadiah --}}
-        <section class="card">
+        <section id="hadiah" class="card">
             <div class="card-body items-center text-center">
                 <h2>Hadiah kasih</h2>
                 <p>Jika Anda ingin memberikan hadiah, kami menyediakan alamat pengiriman dan nomor rekening untuk ucapan
@@ -192,7 +219,7 @@
             </div>
         </section>
         {{-- protokol --}}
-        <section class="card">
+        <section id="protokol" class="card">
             <div class="card-body items-center text-center">
                 <div class="space-y-10">
                     <h2>Protokol kesehatan</h2>
@@ -217,14 +244,17 @@
             </div>
         </section>
         {{-- terimakasih --}}
-        <section class="card min-h-screen">
+        <section id="terimakasih" class="card min-h-screen">
             <div class="card-body">
                 <div class="space-y-10">
                     <h2>Terimakasih</h2>
 
-                    <div class="avatar">
-                        <div class="w-32 rounded-full">
-                            <img src="{{ $undangan->image }}" alt="">
+                    <div class="flex relative justify-center items-center">
+                        <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                        <div class="avatar absolute">
+                            <div class="w-40 rounded-full">
+                                <img src="{{ $undangan->image }}" alt="">
+                            </div>
                         </div>
                     </div>
 
@@ -245,10 +275,4 @@
             </div>
         </section>
     @endif
-
-    <div class="toast toast-start">
-        <button class="btn btn-primary btn-circle">
-            <x-tabler-player-play />
-        </button>
-    </div>
 </div>
