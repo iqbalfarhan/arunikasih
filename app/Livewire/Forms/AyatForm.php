@@ -12,12 +12,14 @@ class AyatForm extends Form
     public ?Ayat $ayat;
     public $surah;
     public $content;
+    public $kategori_id;
 
     public function setAyat(Ayat $ayat){
         $this->ayat = $ayat;
 
         $this->surah = $ayat->surah;
         $this->content = $ayat->content;
+        $this->kategori_id = $ayat->kategori_id;
     }
 
     public function store(){

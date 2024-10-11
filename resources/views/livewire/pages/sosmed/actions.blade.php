@@ -2,21 +2,21 @@
     <input type="checkbox" class="modal-toggle" @checked($show) />
     <div class="modal" role="dialog">
         <form class="modal-box max-w-sm" wire:submit="simpan">
-            <div class="card-title">Form bank</div>
+            <div class="card-title">Form sosmed</div>
             <div class="py-4 space-y-2">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Nama bank</span>
+                        <span class="label-text">Nama sosmed</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.name'),
                     ]) wire:model="form.name"
-                        placeholder="Nama lengkap bank" />
+                        placeholder="Nama lengkap sosmed" />
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Filename</span>
+                        <span class="label-text">Nama sosmed</span>
                     </div>
                     <input type="file" @class([
                         'file-input file-input-bordered',

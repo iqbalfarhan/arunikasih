@@ -93,4 +93,9 @@ class Undangan extends Model
     {
         return $this->hasMany(Kisah::class);
     }
+
+    public function streamings()
+    {
+        return $this->hasMany(Streaming::class);
+    }
 }

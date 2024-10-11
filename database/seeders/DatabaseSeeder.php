@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             PermissionSeeder::class,
 
+            KategoriSeeder::class,
             MusicSeeder::class,
             RatingSeeder::class,
             AyatSeeder::class,
-            KategoriSeeder::class,
             BankSeeder::class,
             FiturSeeder::class,
             PaketSeeder::class,

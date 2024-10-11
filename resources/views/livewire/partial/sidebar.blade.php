@@ -109,6 +109,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('sosmed.index')
+                    <li>
+                        <a href="{{ route('sosmed.index') }}" @class(['active' => Route::is('sosmed.index')]) wire:navigate>
+                            <x-tabler-message class="size-5" />
+                            <span>Social Media</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('fitur.index')
                     <li>
                         <a href="{{ route('fitur.index') }}" @class(['active' => Route::is('fitur.index')]) wire:navigate>

@@ -3,7 +3,9 @@
 namespace App\Livewire\Pages\Undangan;
 
 use App\Livewire\Forms\UndanganForm;
+use App\Models\Ayat;
 use App\Models\Kategori;
+use App\Models\Music;
 use App\Models\Paket;
 use App\Models\Tema;
 use Illuminate\Support\Facades\Auth;
@@ -21,11 +23,8 @@ class Create extends Component
         $this->form->slug = Str::slug($this->form->name);
         $this->form->user_id = Auth::id();
         $this->form->tema_id = Tema::get()->first()->id;
-        $this->form->data = [
-            "contoh"
-        ];
-
-        // dd($this->form);
+        $this->form->music_id = Music::get()->first()->id;
+        $this->form->ayat_id = Ayat::get()->first()->id;
 
         $this->form->store();
 

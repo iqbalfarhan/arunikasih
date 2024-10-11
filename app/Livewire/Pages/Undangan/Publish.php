@@ -6,25 +6,18 @@ use App\Models\Undangan;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class Preview extends Component
+class Publish extends Component
 {
-    public $cover = false;
-
     public Undangan $undangan;
 
     public function mount(Undangan $undangan)
     {
-        $this->undangan = $undangan;
-    }
-
-    public function toggleCover()
-    {
-        $this->cover = !$this->cover;
+        $this->undangan = Undangan::find($undangan->id);
     }
 
     public function render()
     {
-        return view('livewire.pages.undangan.preview')->layout('components.layouts.publish', [
+        return view('livewire.pages.undangan.publish')->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);
     }

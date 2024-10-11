@@ -40,7 +40,7 @@ class Setting extends Component
     {
         return view('livewire.pages.undangan.setting', [
             'temas' => Tema::get(),
-            'ayats' => Ayat::get(),
+            'ayats' => Ayat::where('kategori_id', $this->undangan->kategori_id)->get(),
             'musics' => Music::get(),
         ])->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,

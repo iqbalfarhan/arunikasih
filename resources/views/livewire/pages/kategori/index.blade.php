@@ -12,7 +12,7 @@
         @endcan
     </div>
 
-    <div class="table-wrapper">
+    <div class="table-wrapper max-w-lg mx-auto">
         <table class="table">
             <thead>
                 <th>No</th>

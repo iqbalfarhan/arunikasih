@@ -44,8 +44,7 @@
                             <td>
                                 <div class="flex gap-1 justify-center">
                                     @can('undangan.show')
-                                        <a href="{{ route('undangan.show', $data) }}" class="btn btn-xs btn-bordered"
-                                            wire:click="$dispatch('editUndangan', {undangan: {{ $data->id }}})">
+                                        <a href="{{ route('undangan.show', $data) }}" class="btn btn-xs btn-bordered">
                                             <x-tabler-eye class="size-4" />
                                             <span>Detail</span>
                                         </a>

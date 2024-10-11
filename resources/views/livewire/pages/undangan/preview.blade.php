@@ -1,20 +1,20 @@
 <div class="publish">
-    <div>
+    {{-- <div>
         <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
             class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
         <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
             class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
         <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
             class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
-    </div>
-    {{-- <div>
+    </div> --}}
+    <div class="z-0">
         <img src="{{ url('ornament/lovepartial/lovetopleft.png') }}" alt=""
             class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
         <img src="{{ url('ornament/lovepartial/lovebottomleft.png') }}" alt=""
             class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
         <img src="{{ url('ornament/lovepartial/lovebottomright.png') }}" alt=""
             class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
-    </div> --}}
+    </div>
 
     @if ($cover)
         <section class="card min-h-screen">
@@ -45,7 +45,7 @@
         {{-- cover --}}
         <section id="cover" class="card min-h-screen">
             <div class="card-body items-center text-center">
-                <div class="space-y-10">
+                <div class="space-y-6">
                     <p>Undangan {{ $undangan->kategori->name }}</p>
                     <div class="flex relative justify-center items-center">
                         <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
@@ -182,17 +182,26 @@
                 <p>Kami bersyukur atas kehadiran serta ucapan selamat dari tamu yang membuat hari istimewa kami semakin
                     berarti.</p>
 
-                <div class="flex flex-col text-left">
-                    @foreach ($undangan->tamus->take(5) as $tamu)
+                <div class="flex flex-col text-left text-base w-full">
+                    @foreach ($undangan->tamus->take(4) as $tamu)
                         <div class="chat chat-end">
-                            <div class="chat-bubble chat-bubble-secondary">
+                            <div class="chat-bubble chat-bubble-accent">
                                 <div class="chat-header">
                                     <span class="font-bold">{{ $tamu->name }}</span>
-                                    <time class="text-xs opacity-50">{{ $tamu->created_at->diffForHumans() }}</time>
                                 </div>
                                 {{ $tamu->message }}
                             </div>
                         </div>
+                        @if ($tamu->reply)
+                            <div class="chat chat-start">
+                                <div class="chat-bubble chat-bubble-secondary">
+                                    <div class="chat-header">
+                                        <span class="font-bold">{{ $undangan->name }}</span>
+                                    </div>
+                                    {{ $tamu->reply }}
+                                </div>
+                            </div>
+                        @endif
                     @endforeach
                 </div>
 
@@ -208,6 +217,23 @@
                 <p>Nikmati momen bahagia kami secara langsung! Temukan tautan di bawah ini untuk menyaksikan prosesi
                     akad
                     dan resepsi, sehingga Anda bisa ikut merayakan cinta kami meski dari jauh.</p>
+
+                <div class="grid grid-cols-3 gap-6">
+                    @foreach ($undangan->streamings as $stream)
+                        <div class="card bg-transparent border-0">
+                            <div class="card-body">
+                                <div class="avatar">
+                                    <div class="w-16">
+                                        <img src="{{ $stream->sosmed->image }}" alt="" class="w-full">
+                                    </div>
+                                </div>
+                                <a href="{{ $stream->url }}">
+                                    {{ $stream->sosmed->name }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </section>
         {{-- hadiah --}}

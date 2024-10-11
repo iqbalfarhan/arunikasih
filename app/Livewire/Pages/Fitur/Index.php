@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Fitur;
 
 use App\Models\Fitur;
+use App\Models\Kategori;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,7 +16,10 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.fitur.index', [
-            'datas' => Fitur::get()
+            'datas' => Fitur::when($this->cari, function($q){
+                return $q->where('kategori_id', $this->cari);
+            })->get(),
+            'kategoris' => Kategori::pluck('name', 'id')
         ]);
     }
 }

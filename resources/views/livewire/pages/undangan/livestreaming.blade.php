@@ -1,18 +1,13 @@
 <div class="page-wrapper">
     @livewire('partial.header', [
-        'title' => 'Fitur management',
+        'title' => 'Streaming management',
     ])
     <div class="table-filter-wrapper">
-        <select type="search" wire:model.live="cari" class="select select-bordered" placeholder="Pencarian">
-            <option value="">Kategori</option>
-            @foreach ($kategoris as $katid => $katname)
-                <option value="{{ $katid }}">{{ $katname }}</option>
-            @endforeach
-        </select>
-        @can('fitur.create')
-            <button class="btn btn-primary" wire:click="$dispatch('createFitur')">
+        <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
+        @can('streaming.create')
+            <button class="btn btn-primary" wire:click="$dispatch('createStreaming', {undangan_id: {{ $undangan->id }}})">
                 <x-tabler-plus class="size-5" />
-                <span>Tambah fitur</span>
+                <span>Tambah streaming</span>
             </button>
         @endcan
     </div>
@@ -21,10 +16,9 @@
         <table class="table">
             <thead>
                 <th>No</th>
-                <th>name</th>
-                <th>description</th>
-                <th>Kategori</th>
-                @canany(['fitur.edit', 'fitur.delete'])
+                <th>Social media</th>
+                <th>Url</th>
+                @canany(['streaming.edit', 'streaming.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
             </thead>
@@ -32,21 +26,20 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->name }}</td>
-                        <td>{{ $data->description }}</td>
-                        <td>{{ $data->kategori->name ?? '' }}</td>
-                        @canany(['fitur.edit', 'fitur.delete'])
+                        <td>{{ $data->sosmed->name }}</td>
+                        <td>{{ $data->url }}</td>
+                        @canany(['streaming.edit', 'streaming.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
-                                    @can('fitur.edit')
+                                    @can('streaming.edit')
                                         <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('editFitur', {fitur: {{ $data->id }}})">
+                                            wire:click="$dispatch('editStreaming', {streaming: {{ $data->id }}})">
                                             <x-tabler-edit class="size-4" />
                                         </button>
                                     @endcan
-                                    @can('fitur.delete')
+                                    @can('streaming.delete')
                                         <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('deleteFitur', {fitur: {{ $data->id }}})">
+                                            wire:click="$dispatch('deleteStreaming', {streaming: {{ $data->id }}})">
                                             <x-tabler-trash class="size-4" />
                                         </button>
                                     @endcan
@@ -59,5 +52,5 @@
         </table>
     </div>
 
-    @livewire('pages.fitur.actions')
+    @livewire('pages.streaming.actions')
 </div>

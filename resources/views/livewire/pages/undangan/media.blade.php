@@ -12,9 +12,9 @@
         @endcan
     </div>
 
-    <div class="columns-4 space-y-4">
+    <div class="grid md:grid-cols-4 gap-4">
         @foreach ($datas as $data)
-            <div class="card card-compact break-inside-avoid">
+            <div class="card card-compact">
                 <figure>
                     <img src="{{ Storage::url($data->filename) }}" class="w-full" alt="{{ $data->filename }}">
                 </figure>

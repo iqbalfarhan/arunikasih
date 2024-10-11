@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/fitur', \App\Livewire\Pages\Fitur\Index::class)->name('fitur.index');
     Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
     Route::get('/tema', \App\Livewire\Pages\Tema\Index::class)->name('tema.index');
+    Route::get('/sosmed', \App\Livewire\Pages\Sosmed\Index::class)->name('sosmed.index');
 
     Route::get('/rating', \App\Livewire\Pages\Rating\Index::class)->name('rating.index');
     Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
@@ -46,5 +47,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/media', \App\Livewire\Pages\Undangan\Media::class)->name('undangan.media');
         Route::get('/guest', \App\Livewire\Pages\Undangan\Guest::class)->name('undangan.guest');
         Route::get('/story', \App\Livewire\Pages\Undangan\Story::class)->name('undangan.story');
+        Route::get('/publish', \App\Livewire\Pages\Undangan\Publish::class)->name('undangan.publish');
+        Route::get('/livestreaming', \App\Livewire\Pages\Undangan\Livestreaming::class)->name('undangan.livestreaming');
     });
 });

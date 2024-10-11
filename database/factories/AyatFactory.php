@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Kategori;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,6 +18,7 @@ class AyatFactory extends Factory
     public function definition(): array
     {
         return [
+            'kategori_id' => fake()->randomElement(Kategori::pluck('id')),
             'surah' => fake()->words(3, true),
             'content' => fake()->sentences(2, true)
         ];

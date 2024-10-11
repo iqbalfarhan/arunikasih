@@ -36,7 +36,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.publish', $undangan) }}" @class(['active' => Route::is('undangan.publish')]) wire:navigate>
                     <x-tabler-send class="size-5" />
                     <span>Publish Undangan</span>
                 </a>
@@ -45,7 +45,7 @@
     </li>
 
     <li>
-        <h2 class="menu-title">Bagan undangan pernikahan</h2>
+        <h2 class="menu-title">Bagan Undangan</h2>
         <ul>
             <li>
                 <a href="{{ route('undangan.cover', $undangan) }}" @class(['active' => Route::is('undangan.cover')]) wire:navigate>
@@ -78,7 +78,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a href="{{ route('undangan.livestreaming', $undangan) }}" @class(['active' => Route::is('undangan.livestreaming')]) wire:navigate>
                     <x-tabler-video class="size-5" />
                     <span>Live Streaming</span>
                 </a>

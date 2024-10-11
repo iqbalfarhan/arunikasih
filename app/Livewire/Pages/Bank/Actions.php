@@ -7,11 +7,13 @@ use App\Models\Bank;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Actions extends Component
 {
-    use LivewireAlert;
+    use LivewireAlert, WithFileUploads;
     public $show = false;
+    public $photo;
     public ?Bank $bank;
     public BankForm $form;
 
@@ -36,17 +38,12 @@ class Actions extends Component
         $this->alert('success', 'Data bank berhasil dihapus');
     }
 
-    #[On("deleteAccount")]
-    public function deleteAccount(Bank $bank)
+    public function simpan()
     {
-        $bank->delete();
-        $this->dispatch('reload');
-        $this->flash('success', 'Data bank berhasil dihapus');
+        if ($this->photo) {
+            $this->form->filename = $this->photo->store('bank');
+        }
 
-        $this->redirect(route('login'), navigate:true);
-    }
-
-    public function simpan(){
         if (isset($this->form->bank)) {
             $this->form->update();
         }

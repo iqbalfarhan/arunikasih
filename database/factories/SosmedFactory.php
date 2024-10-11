@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Bank>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sosmed>
  */
-class BankFactory extends Factory
+class SosmedFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,8 @@ class BankFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->company(),
-            'filename' => null,
+            'name' => fake()->name(),
+            'photo' => null,
         ];
     }
 }
