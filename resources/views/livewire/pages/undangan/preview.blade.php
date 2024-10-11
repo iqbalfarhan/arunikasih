@@ -166,19 +166,6 @@
                                 {{ $tamu->message }}
                             </div>
                         </div>
-
-                        @if ($tamu->reply)
-                            <div class="chat chat-start">
-                                <div class="chat-bubble chat-bubble-secondary">
-                                    <div class="chat-header">
-                                        <span class="font-bold">{{ $undangan->name }}</span>
-                                        <time
-                                            class="text-xs opacity-50">{{ $tamu->created_at->diffForHumans() }}</time>
-                                    </div>
-                                    {{ $tamu->reply }}
-                                </div>
-                            </div>
-                        @endif
                     @endforeach
                 </div>
 
