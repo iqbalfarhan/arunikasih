@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Ayat;
 use App\Models\Kategori;
+use App\Models\Ornament;
 use App\Models\Paket;
 use App\Models\Tema;
 use App\Models\User;
@@ -32,6 +33,7 @@ class UndanganFactory extends Factory
             'kategori_id' => $kat_id,
             'paket_id' => fake()->randomElement(Paket::where('kategori_id', $kat_id)->pluck('id')),
             'ayat_id' => fake()->randomElement(Ayat::pluck('id')),
+            'ornament_id' => fake()->randomElement(Ornament::pluck('id')),
             'shared' => fake()->boolean(),
             'paid' => fake()->boolean(),
             'event_date' => fake()->date('Y-m-d', "2024-12-31"),
