@@ -60,6 +60,11 @@ class Undangan extends Model
         return $this->belongsTo(Ayat::class);
     }
 
+    public function ornament()
+    {
+        return $this->belongsTo(Ornament::class);
+    }
+
     public function getLinkAttribute()
     {
         return url($this->kategori->name, $this->slug);
