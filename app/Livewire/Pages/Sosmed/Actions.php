@@ -38,21 +38,12 @@ class Actions extends Component
         $this->alert('success', 'Data sosmed berhasil dihapus');
     }
 
-    #[On("deleteAccount")]
-    public function deleteAccount(Sosmed $sosmed)
-    {
-        $sosmed->delete();
-        $this->dispatch('reload');
-        $this->flash('success', 'Data sosmed berhasil dihapus');
-
-        $this->redirect(route('login'), navigate:true);
-    }
-
     public function simpan()
     {
-        if (isset($this->form->photo)) {
+        if ($this->photo) {
             $this->form->photo = $this->photo->store('sosmed');
         }
+
         if (isset($this->form->sosmed)) {
             $this->form->update();
         }

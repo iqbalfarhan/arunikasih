@@ -27,6 +27,10 @@ class SosmedForm extends Form
             'photo' => '',
         ]);
 
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
+
         Sosmed::create($valid);
 
         $this->reset();
@@ -37,6 +41,10 @@ class SosmedForm extends Form
             'name' => 'required',
             'photo' => '',
         ]);
+
+        if ($this->photo) {
+            $valid['photo'] = $this->photo;
+        }
 
         $this->sosmed->update($valid);
 

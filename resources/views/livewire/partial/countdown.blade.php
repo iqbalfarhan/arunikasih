@@ -5,21 +5,21 @@
         </span>
         <span class="text-sm">Hari</span>
     </div>
-    <span class="text-xl">:</span>
+    <span class="text-xl font-bold">:</span>
     <div class="flex flex-col items-center">
         <span class="countdown font-mono font-bold text-4xl">
             <span style="--value:10;"></span>
         </span>
         <span class="text-sm">Jam</span>
     </div>
-    <span class="text-xl">:</span>
+    <span class="text-xl font-bold">:</span>
     <div class="flex flex-col items-center">
         <span class="countdown font-mono font-bold text-4xl">
             <span style="--value:24;"></span>
         </span>
         <span class="text-sm">Menit</span>
     </div>
-    <span class="text-xl">:</span>
+    <span class="text-xl font-bold">:</span>
     <div class="flex flex-col items-center">
         <span class="countdown font-mono font-bold text-4xl">
             <span style="--value:24;"></span>
