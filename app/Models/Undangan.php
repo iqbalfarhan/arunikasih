@@ -19,6 +19,7 @@ class Undangan extends Model
         'paket_id',
         'ayat_id',
         'music_id',
+        'ornament_id',
         'shared',
         'paid',
         'event_date',

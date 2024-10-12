@@ -19,6 +19,7 @@ class UndanganForm extends Form
     public $paket_id;
     public $ayat_id;
     public $music_id;
+    public $ornament_id;
     public $shared = false;
     public $paid = false;
     public $event_date;
@@ -35,6 +36,7 @@ class UndanganForm extends Form
         $this->paket_id = $undangan->paket_id;
         $this->ayat_id = $undangan->ayat_id;
         $this->music_id = $undangan->music_id;
+        $this->ornament_id = $undangan->ornament_id;
         $this->shared = $undangan->shared;
         $this->paid = $undangan->paid;
         $this->event_date = $undangan->event_date->format('Y-m-d');
@@ -50,6 +52,7 @@ class UndanganForm extends Form
             'paket_id' => 'required',
             'ayat_id' => 'required',
             'music_id' => '',
+            'ornament_id' => '',
             'shared' => 'required',
             'paid' => 'required',
             'event_date' => '',
@@ -74,6 +77,7 @@ class UndanganForm extends Form
             'paket_id' => 'required',
             'ayat_id' => 'required',
             'music_id' => '',
+            'ornament_id' => '',
             'shared' => 'required',
             'paid' => 'required',
             'event_date' => '',

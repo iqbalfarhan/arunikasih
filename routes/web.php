@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/rating', \App\Livewire\Pages\Rating\Index::class)->name('rating.index');
     Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
+    Route::get('/ornamen', \App\Livewire\Pages\Ornament\Index::class)->name('ornamen.index');
 
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');

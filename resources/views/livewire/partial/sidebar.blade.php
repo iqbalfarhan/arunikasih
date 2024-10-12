@@ -149,6 +149,14 @@
                         </a>
                     </li>
                 @endcan
+                @can('ornamen.index')
+                    <li>
+                        <a href="{{ route('ornamen.index') }}" @class(['active' => Route::is('ornamen.index')]) wire:navigate>
+                            <x-tabler-leaf class="size-5" />
+                            <span>Ornament Hias</span>
+                        </a>
+                    </li>
+                @endcan
             </ul>
         </li>
     @endrole
