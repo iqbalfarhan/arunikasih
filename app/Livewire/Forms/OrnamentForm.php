@@ -22,11 +22,6 @@ class OrnamentForm extends Form
         $this->ornament = $ornament;
 
         $this->name = $ornament->name;
-        $this->ring = $ornament->ring;
-        $this->topleft = $ornament->topleft;
-        $this->topright = $ornament->topright;
-        $this->bottomleft = $ornament->bottomleft;
-        $this->bottomright = $ornament->bottomright;
     }
 
     public function store(){

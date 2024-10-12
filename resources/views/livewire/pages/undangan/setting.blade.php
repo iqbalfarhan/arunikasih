@@ -33,6 +33,31 @@
                 </div>
             </div>
         </div>
+        <div class="card-body space-y-4">
+            <h3 class="card-title">Pilih ornamen undangan</h3>
+            <div class="h-full max-h-80 overflow-y-auto scrollbar-hide rounded-box">
+                <div class="grid grid-cols-4 gap-4">
+                    @foreach ($ornaments as $ornament)
+                        <div @class([
+                            'card card-compact bg-base-200 cursor-pointer border-0 text-left opacity-50',
+                            'ring ring-primary ring-inset ring-4 opacity-100' =>
+                                $undangan->ornament_id == $ornament->id,
+                        ]) wire:click="updateOrnament({{ $ornament->id }})">
+                            <div class="card-body">
+                                <div class="flex justify-between w-full">
+                                    <div class="avatar">
+                                        <div class="w-16">
+                                            <img src="{{ Storage::url($ornament->ring) }}" alt="">
+                                        </div>
+                                    </div>
+                                    <h4 class="card-title text-base capitalize">{{ $ornament->name }}</h4>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
 
     @livewire('partial.header', [

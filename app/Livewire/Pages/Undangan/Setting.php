@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Undangan;
 
 use App\Models\Ayat;
 use App\Models\Music;
+use App\Models\Ornament;
 use App\Models\Tema;
 use App\Models\Undangan;
 use Livewire\Component;
@@ -21,6 +22,12 @@ class Setting extends Component
     public function updateTema($temaId)
     {
         $this->undangan->tema_id = $temaId;
+        $this->undangan->save();
+    }
+
+    public function updateOrnament($ornamentId)
+    {
+        $this->undangan->ornament_id = $ornamentId;
         $this->undangan->save();
     }
 
@@ -42,6 +49,7 @@ class Setting extends Component
             'temas' => Tema::get(),
             'ayats' => Ayat::where('kategori_id', $this->undangan->kategori_id)->get(),
             'musics' => Music::get(),
+            'ornaments' => Ornament::get(),
         ])->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);

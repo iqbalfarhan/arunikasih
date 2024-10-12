@@ -8,11 +8,11 @@
             class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
     </div> --}}
     <div class="z-0">
-        <img src="{{ url('ornament/lovepartial/lovetopleft.png') }}" alt=""
+        <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
             class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-        <img src="{{ url('ornament/lovepartial/lovebottomleft.png') }}" alt=""
+        <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
             class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-        <img src="{{ url('ornament/lovepartial/lovebottomright.png') }}" alt=""
+        <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""
             class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
     </div>
 
@@ -20,16 +20,16 @@
     <div class="modal" role="dialog">
         <div class="modal-box space-y-10 text-center flex flex-col items-center justify-center shadow-primary h-full">
             <div class="z-0">
-                <img src="{{ url('ornament/lovepartial/lovetopleft.png') }}" alt=""
+                <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
                     class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-                <img src="{{ url('ornament/lovepartial/lovebottomleft.png') }}" alt=""
+                <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
                     class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-                <img src="{{ url('ornament/lovepartial/lovebottomright.png') }}" alt=""
+                <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""
                     class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
             </div>
             <p>Undangan {{ $undangan->kategori->name }}</p>
             <div class="flex relative justify-center items-center">
-                <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
                 <div class="avatar absolute">
                     <div class="w-40 rounded-full">
                         <img src="{{ $undangan->image }}" alt="">
@@ -53,7 +53,7 @@
             <div class="space-y-6">
                 <p>Undangan {{ $undangan->kategori->name }}</p>
                 <div class="flex relative justify-center items-center">
-                    <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
                     <div class="avatar absolute">
                         <div class="w-40 rounded-full">
                             <img src="{{ $undangan->image }}" alt="">
@@ -87,7 +87,7 @@
                         <div class="card border-0 bg-transparent" wire:transition>
                             <div class="card-body text-center items-center space-y-2">
                                 <div class="flex relative justify-center items-center">
-                                    <img src="{{ url('ornament/circleornament2.png') }}" alt=""
+                                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt=""
                                         class="w-48 z-10">
                                     <div class="avatar absolute">
                                         <div class="w-40 rounded-full">
@@ -273,7 +273,7 @@
                 <h2>Terimakasih</h2>
 
                 <div class="flex relative justify-center items-center">
-                    <img src="{{ url('ornament/circleornament2.png') }}" alt="" class="w-48 z-10">
+                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
                     <div class="avatar absolute">
                         <div class="w-40 rounded-full">
                             <img src="{{ $undangan->image }}" alt="">
