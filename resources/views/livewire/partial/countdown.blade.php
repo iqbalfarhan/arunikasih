@@ -1,4 +1,4 @@
-<div class="grid auto-cols-max grid-flow-col gap-5 text-center items-center justify-center">
+<div class="grid auto-cols-max grid-flow-col gap-3 text-center items-center justify-center">
     <div class="flex flex-col items-center">
         <span class="countdown font-mono font-bold text-4xl">
             <span style="--value:15;"></span>

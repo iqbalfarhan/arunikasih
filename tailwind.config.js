@@ -4,6 +4,7 @@ export default {
     './resources/**/*.blade.php',
     './resources/**/*.js',
     './resources/**/*.vue',
+    './node_modules/flowbite/**/*.js',
   ],
   mode: 'jit',
   theme: {
@@ -18,6 +19,7 @@ export default {
     require('daisyui'),
     require('@tailwindcss/typography'),
     require('tailwind-scrollbar-hide'),
+    require('flowbite/plugin'),
   ],
   daisyui: {
     themes: [
