@@ -26,22 +26,25 @@
         @endauth
 
         @guest
-            <div class="flex flex-col gap-10 items-center justify-center h-screen bg-base-300">
-                <a href="{{ route('welcome') }}" wire:navigate>
-                    <h1 class="text-3xl font-bold text-center">{{ config('app.name') }}</h1>
-                </a>
-
-                {{ $slot }}
-
-                @if (Route::is('register'))
-                    <p class="text-sm opacity-50">Sudah punya akun? <a href="{{ route('login') }}"
-                            @class(['link'])>Masuk</a></p>
-                @elseif (Route::is('login'))
-                    @if (Route::has('register'))
-                        <p class="text-sm opacity-50">Belum punya akun? <a href="{{ route('register') }}"
-                                @class(['link'])>Daftar</a></p>
+            <div class="grid grid-cols-2 h-screen bg-base-300">
+                <div class="flex-1 overflow-hidden p-12">
+                    <img src="https://picsum.photos/200" alt="" class="h-full w-full rounded-box opacity-50 shadow">
+                </div>
+                <div class="flex-1 flex flex-col justify-center items-center space-y-10">
+                    <a href="{{ route('welcome') }}" wire:navigate>
+                        <h1 class="text-3xl font-bold text-center">{{ config('app.name') }}</h1>
+                    </a>
+                    {{ $slot }}
+                    @if (Route::is('register'))
+                        <p class="text-sm opacity-50">Sudah punya akun? <a href="{{ route('login') }}"
+                                @class(['link'])>Masuk</a></p>
+                    @elseif (Route::is('login'))
+                        @if (Route::has('register'))
+                            <p class="text-sm opacity-50">Belum punya akun? <a href="{{ route('register') }}"
+                                    @class(['link'])>Daftar</a></p>
+                        @endif
                     @endif
-                @endif
+                </div>
             </div>
         @endguest
 

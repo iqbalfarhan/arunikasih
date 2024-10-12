@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Preview extends Component
 {
-    public $cover = false;
+    public $cover = true;
 
     public Undangan $undangan;
 

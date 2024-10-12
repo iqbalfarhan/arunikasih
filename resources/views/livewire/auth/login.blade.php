@@ -1,4 +1,4 @@
-<div class="card max-w-sm border-0 shadow-xl">
+<div class="card max-w-sm border-0">
     <form class="card-body" wire:submit="login">
         <div class="card-title">Login</div>
         <div class="py-4 space-y-1">
@@ -23,10 +23,12 @@
                 <span>Login</span>
             </button>
         </div>
-        <div class="divider"></div>
-        <button type="button" class="btn btn-block">
-            <x-tabler-brand-google-filled class="size-5" />
-            <span>Login dengan google</span>
-        </button>
+        <div class="divider my-6 text-xs opacity-50">Login dengan cara lain</div>
+        <div class="card-actions">
+            <button type="button" class="btn btn-block">
+                <img src="{{ url('images/g-logo.png') }}" alt="" class="size-5">
+                <span>Login dengan google</span>
+            </button>
+        </div>
     </form>
 </div>

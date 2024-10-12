@@ -27,10 +27,10 @@ class Welcome extends Component
     public function render()
     {
         return view('livewire.welcome', [
-            'ratings' => Rating::limit(6)->get(),
+            'ratings' => Rating::latest()->limit(6)->get(),
             'kategoris' => Kategori::pluck('name', 'id'),
             'fiturs' => Fitur::where('kategori_id', $this->kategori_id)->get(),
-            'pakets' => Paket::where('kategori_id', $this->kategori_id)->get(),
+            'pakets' => Paket::where('kategori_id', $this->kategori_id)->orderBy('price')->get(),
         ]);
     }
 }
