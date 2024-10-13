@@ -27,12 +27,23 @@ class OrnamentForm extends Form
     public function store(){
         $valid = $this->validate([
             'name' => 'required',
-            'ring' => '',
-            'topleft' => '',
-            'topright' => '',
-            'bottomleft' => '',
-            'bottomright' => '',
         ]);
+
+        if ($this->ring) {
+            $valid['ring'] = $this->ring;
+        }
+        if ($this->topleft) {
+            $valid['topleft'] = $this->topleft;
+        }
+        if ($this->topright) {
+            $valid['topright'] = $this->topright;
+        }
+        if ($this->bottomleft) {
+            $valid['bottomleft'] = $this->bottomleft;
+        }
+        if ($this->bottomright) {
+            $valid['bottomright'] = $this->bottomright;
+        }
 
         Ornament::create($valid);
 
@@ -42,12 +53,23 @@ class OrnamentForm extends Form
     public function update(){
         $valid = $this->validate([
             'name' => 'required',
-            'ring' => '',
-            'topleft' => '',
-            'topright' => '',
-            'bottomleft' => '',
-            'bottomright' => '',
         ]);
+
+        if ($this->ring) {
+            $valid['ring'] = $this->ring;
+        }
+        if ($this->topleft) {
+            $valid['topleft'] = $this->topleft;
+        }
+        if ($this->topright) {
+            $valid['topright'] = $this->topright;
+        }
+        if ($this->bottomleft) {
+            $valid['bottomleft'] = $this->bottomleft;
+        }
+        if ($this->bottomright) {
+            $valid['bottomright'] = $this->bottomright;
+        }
 
         $this->ornament->update($valid);
 

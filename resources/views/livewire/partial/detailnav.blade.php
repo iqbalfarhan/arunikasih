@@ -5,7 +5,7 @@
         </label>
     </div>
     <div class="navbar-center">
-        <a href="{{ route('home') }}" class="btn btn-ghost text-xl" wire:navigate>
+        <a href="{{ route('undangan.show', $undangan) }}" class="btn btn-ghost text-xl" wire:navigate>
             {{ $undangan->kategori->name }}
             {{ $undangan->name }}
         </a>

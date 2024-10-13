@@ -14,6 +14,21 @@
                     ]) wire:model.live="form.name"
                         placeholder="Nama lengkap tamu" />
                 </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Ucapan dari tamu</span>
+                    </div>
+                    <p class="text-sm p-4 rounded-box bg-base-300">{{ $form->message }}</p>
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Reply ucapan</span>
+                    </div>
+                    <textarea type="text" @class([
+                        'textarea textarea-bordered',
+                        'textarea-error' => $errors->first('form.reply'),
+                    ]) wire:model.live="form.reply" rows="5" placeholder="Balasan"></textarea>
+                </label>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

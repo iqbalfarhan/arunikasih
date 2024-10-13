@@ -29,10 +29,17 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->present ? 'Hadir' : '' }}</td>
-                        <td>{{ $data->message }}</td>
+                        <td>{{ Str::limit($data->message, 40) }}</td>
                         @canany(['tamu.edit', 'tamu.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
+                                    @can('tamu.edit')
+                                        <button class="btn btn-xs btn-bordered"
+                                            wire:click="$dispatch('editTamu', {tamu: {{ $data->id }}})">
+                                            <x-tabler-folder class="size-4" />
+                                            <span>Detail</span>
+                                        </button>
+                                    @endcan
                                     @can('tamu.edit')
                                         <button class="btn btn-xs btn-square btn-bordered"
                                             wire:click="$dispatch('editTamu', {tamu: {{ $data->id }}})">

@@ -21,7 +21,7 @@ class PengantinFactory extends Factory
         return [
             'undangan_id' => fake()->randomElement(Undangan::pluck('id')),
             'gender' => $gender,
-            'name' => $gender == "pria" ? fake()->firstNameMale() : fake()->firstNameFemale(),
+            'name' => $gender == "pria" ? fake()->firstNameMale() : fake()->firstNameFemale() + fake()->lastName(),
             'father' => fake()->name("male"),
             'mother' => fake()->name("female"),
             'child' => fake()->randomElement(['pertama', 'kedua', 'ketiga']),

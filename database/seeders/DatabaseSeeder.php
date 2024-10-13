@@ -30,7 +30,9 @@ class DatabaseSeeder extends Seeder
             TamuSeeder::class,
             PengantinSeeder::class,
             EventSeeder::class,
-            KisahSeeder::class
+            KisahSeeder::class,
+            SosmedSeeder::class,
+            StreamingSeeder::class,
         ]);
     }
 }

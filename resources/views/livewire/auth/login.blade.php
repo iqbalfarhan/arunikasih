@@ -7,14 +7,15 @@
                 'input-error' => $errors->first('email'),
             ])>
                 <x-tabler-at class="size-5" />
-                <input type="email" class="grow" placeholder="Username" wire:model="email" autocomplete="email" />
+                <input type="email" class="grow border-0" placeholder="Username" wire:model="email"
+                    autocomplete="email" />
             </label>
             <label @class([
                 'input input-bordered flex items-center gap-2',
                 'input-error' => $errors->first('password'),
             ])>
                 <x-tabler-key class="size-5" />
-                <input type="password" class="grow" placeholder="Password" wire:model="password" />
+                <input type="password" class="grow border-0" placeholder="Password" wire:model="password" />
             </label>
         </div>
         <div class="card-actions">

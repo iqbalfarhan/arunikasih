@@ -10,6 +10,8 @@
     <div class="z-0">
         <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
             class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
+        <img src="{{ Storage::url($undangan->ornament->topright) }}" alt=""
+            class="animate__animated animate__fadeInDown animate__faster fixed top-0 right-0 !opacity-20">
         <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
             class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
         <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""
@@ -22,6 +24,8 @@
             <div class="z-0">
                 <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
                     class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
+                <img src="{{ Storage::url($undangan->ornament->topright) }}" alt=""
+                    class="animate__animated animate__fadeInDown animate__faster fixed top-0 right-0 !opacity-20">
                 <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
                     class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
                 <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""

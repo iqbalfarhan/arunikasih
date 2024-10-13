@@ -12,7 +12,7 @@
                     @foreach ($temas as $tema)
                         <div @class([
                             'card card-compact bg-base-200 cursor-pointer border-0 text-left opacity-50',
-                            'ring ring-primary ring-inset ring-4 opacity-100' =>
+                            'ring ring-primary ring-inset ring-4 !opacity-100' =>
                                 $undangan->tema_id == $tema->id,
                         ]) data-theme="{{ $tema->name }}"
                             wire:click="updateTema({{ $tema->id }})">
@@ -40,7 +40,7 @@
                     @foreach ($ornaments as $ornament)
                         <div @class([
                             'card card-compact bg-base-200 cursor-pointer border-0 text-left opacity-50',
-                            'ring ring-primary ring-inset ring-4 opacity-100' =>
+                            'ring ring-primary ring-inset ring-4 !opacity-100' =>
                                 $undangan->ornament_id == $ornament->id,
                         ]) wire:click="updateOrnament({{ $ornament->id }})">
                             <div class="card-body">
