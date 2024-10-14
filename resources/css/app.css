@@ -68,6 +68,24 @@
     @apply opacity-50;
   }
 
+  .background-image-opacity {
+    position: relative;
+  }
+
+  .background-image-opacity::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('http://127.0.0.1:8000/images/landingbg.png') no-repeat
+      center center;
+    background-size: cover;
+    opacity: 0.2; /* Opasitas 50% */
+    z-index: -1;
+  }
+
   .sidebar {
     @apply border-r-2 border-base-300 bg-base-100;
   }
@@ -77,7 +95,7 @@
   }
 
   .landing .content-wrapper {
-    @apply max-w-5xl mx-auto space-y-12;
+    @apply max-w-5xl mx-auto space-y-16;
   }
 
   .publish {

@@ -18,7 +18,7 @@
         @endcan
     </div>
 
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-6">
         @foreach ($datas as $data)
             <div class="card h-fit" wire:key="{{ $data->id }}">
                 <div class="card-body">

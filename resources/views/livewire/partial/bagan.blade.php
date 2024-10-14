@@ -100,7 +100,7 @@
             @endif
             @if (in_array('hadiah dan rekening', $bagans))
                 <li>
-                    <a>
+                    <a href="{{ route('undangan.rekening', $undangan) }}" @class(['active' => Route::is('undangan.rekening')]) wire:navigate>
                         <x-tabler-gift class="size-5" />
                         <span>Hadiah & Rekening</span>
                     </a>

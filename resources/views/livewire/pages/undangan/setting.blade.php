@@ -7,14 +7,14 @@
     <div class="card divide-y-2 divide-base-300">
         <div class="card-body space-y-4">
             <div class="flex justify-between">
-                <h3 class="card-title">Pilih tema undangan</h3>
+                <h3 class="card-title">Tema warna</h3>
                 <h3 class="card-title text-primary bg-transparent text-sm capitalize"
                     data-theme="{{ $undangan->tema->name }}">
                     {{ $undangan->tema->name }}
                 </h3>
             </div>
             <div class="h-full max-h-72 overflow-y-auto scrollbar-hide rounded-box">
-                <div class="grid grid-cols-4 gap-3">
+                <div class="grid md:grid-cols-4 gap-3">
                     @foreach ($temas as $tema)
                         <div @class([
                             'card card-compact bg-base-200 cursor-pointer border-0 text-left',
@@ -39,7 +39,7 @@
         <div class="card-body space-y-4">
             <h3 class="card-title">Pilih ornamen undangan</h3>
             <div class="h-full max-h-80 overflow-y-auto scrollbar-hide rounded-box">
-                <div class="grid grid-cols-4 gap-3">
+                <div class="grid md:grid-cols-4 gap-3">
                     @foreach ($ornaments as $ornament)
                         <div @class([
                             'card card-compact bg-base-200 cursor-pointer border-0 text-left',
@@ -117,7 +117,7 @@
                 <h3 class="card-title">Pilihan ayat</h3>
                 <button wire:click="hapusAyat" class="btn btn-sm">Reset</button>
             </div>
-            <div class="grid grid-cols-3 gap-4 py-4">
+            <div class="grid md:grid-cols-3 gap-4 py-4">
                 @foreach ($ayats as $ayat)
                     <div @class([
                         'card card-compact border-4',

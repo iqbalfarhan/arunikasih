@@ -34,6 +34,7 @@ class DatabaseSeeder extends Seeder
             SosmedSeeder::class,
             StreamingSeeder::class,
             OrnamentSeeder::class,
+            HadiahSeeder::class,
         ]);
     }
 }

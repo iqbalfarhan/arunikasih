@@ -20,7 +20,7 @@
                         <div class="flex justify-center items-center w-8">
                             <div class="avatar justify-center flex-none">
                                 <div class="rounded-full w-8 bg-success">
-                                    <img src="https://robohash.org/{{ fake()->name() }}" alt="">
+                                    <img src="{{ $data->user->image }}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -28,16 +28,9 @@
                             <h3 class="line-clamp-1">{{ $data->user->name }}</h3>
                             <div class="flex gap-1">
                                 <div class="rating rating-sm">
-                                    <input type="radio" name="rate{{ $data->id }}"
-                                        class="mask mask-star bg-warning" disabled @checked($data->rate == 1) />
-                                    <input type="radio" name="rate{{ $data->id }}"
-                                        class="mask mask-star bg-warning" disabled @checked($data->rate == 2) />
-                                    <input type="radio" name="rate{{ $data->id }}"
-                                        class="mask mask-star bg-warning" disabled @checked($data->rate == 3) />
-                                    <input type="radio" name="rate{{ $data->id }}"
-                                        class="mask mask-star bg-warning" disabled @checked($data->rate == 4) />
-                                    <input type="radio" name="rate{{ $data->id }}"
-                                        class="mask mask-star bg-warning" disabled @checked($data->rate == 5) />
+                                    @for ($i = 0; $i < $data->rate; $i++)
+                                        <div class="mask mask-star-2 bg-warning size-4"></div>
+                                    @endfor
                                 </div>
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-<div class="z-0">
+<div class="-z-50">
     <img src="{{ Storage::url($ornament->topleft) }}" alt=""
         class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
     <img src="{{ Storage::url($ornament->topright) }}" alt=""

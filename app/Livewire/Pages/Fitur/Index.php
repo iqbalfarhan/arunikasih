@@ -18,7 +18,7 @@ class Index extends Component
         return view('livewire.pages.fitur.index', [
             'datas' => Fitur::when($this->cari, function($q){
                 return $q->where('kategori_id', $this->cari);
-            })->get(),
+            })->orderBy('kategori_id')->get(),
             'kategoris' => Kategori::pluck('name', 'id')
         ]);
     }

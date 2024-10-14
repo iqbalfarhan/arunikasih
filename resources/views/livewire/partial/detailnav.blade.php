@@ -6,8 +6,7 @@
     </div>
     <div class="navbar-center">
         <a href="{{ route('undangan.show', $undangan) }}" class="btn btn-ghost text-xl" wire:navigate>
-            {{ $undangan->kategori->name }}
-            {{ $undangan->name }}
+            Detail
         </a>
     </div>
     <div class="navbar-end">

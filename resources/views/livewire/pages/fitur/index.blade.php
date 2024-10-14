@@ -21,9 +21,9 @@
         <table class="table">
             <thead>
                 <th>No</th>
+                <th>Kategori</th>
                 <th>name</th>
                 <th>description</th>
-                <th>Kategori</th>
                 @canany(['fitur.edit', 'fitur.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -32,9 +32,9 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
+                        <td>{{ $data->kategori->name ?? '' }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->description }}</td>
-                        <td>{{ $data->kategori->name ?? '' }}</td>
                         @canany(['fitur.edit', 'fitur.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

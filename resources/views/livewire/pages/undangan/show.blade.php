@@ -4,7 +4,7 @@
         'title' => 'Detail undangan',
     ])
 
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">
@@ -41,4 +41,5 @@
             </div>
         </div>
     </div>
+
 </div>
