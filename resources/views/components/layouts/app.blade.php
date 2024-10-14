@@ -26,9 +26,9 @@
         @endauth
 
         @guest
-            <div class="grid md:grid-cols-2 h-screen bg-base-300">
-                <div class="flex-1 overflow-hidden hidden lg:block p-12">
-                    <img src="https://picsum.photos/200" alt="" class="h-full w-full rounded-box opacity-50 shadow">
+            <div class="flex h-screen bg-base-300">
+                <div class="flex-1 overflow-hidden hidden lg:block">
+                    <img src="{{ url('images/desktop/d-green.png') }}" alt="" class="h-full w-full object-cover">
                 </div>
                 <div class="flex-1 flex flex-col justify-center items-center space-y-10 P-6">
                     <a href="{{ route('welcome') }}" wire:navigate>

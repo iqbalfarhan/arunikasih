@@ -16,6 +16,7 @@
         <table class="table">
             <thead>
                 <th>No</th>
+                <th>User</th>
                 <th>Judul undangan</th>
                 <th>Kategori</th>
                 <th>Pembayaran</th>
@@ -28,6 +29,7 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
+                        <td>{{ $data->user->name }}</td>
                         <td>
                             <div class="flex flex-col">
                                 <span>{{ $data->name }}</span>

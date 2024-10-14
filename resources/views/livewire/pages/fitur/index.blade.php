@@ -34,7 +34,7 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->kategori->name ?? '' }}</td>
                         <td>{{ $data->name }}</td>
-                        <td>{{ $data->description }}</td>
+                        <td>{{ Str::limit($data->description, 40) }}</td>
                         @canany(['fitur.edit', 'fitur.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

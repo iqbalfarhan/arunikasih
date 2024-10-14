@@ -33,7 +33,7 @@
                                 </div>
                             </div>
                         </td>
-                        <td class="w-full">{{ $data->name }}</td>
+                        <td>{{ $data->name }}</td>
                         @canany(['bank.edit', 'bank.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

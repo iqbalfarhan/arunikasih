@@ -4,6 +4,7 @@ namespace App\Livewire\Forms;
 
 use App\Models\Undangan;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 
@@ -58,6 +59,8 @@ class UndanganForm extends Form
             'event_date' => '',
         ]);
 
+        $valid['slug'] = Str::slug($this->name);
+
         if ($this->photo) {
             $valid['photo'] = $this->photo;
         }
@@ -82,6 +85,8 @@ class UndanganForm extends Form
             'paid' => 'required',
             'event_date' => '',
         ]);
+
+        $valid['slug'] = Str::slug($this->name);
 
         if ($this->photo) {
             $valid['photo'] = $this->photo;

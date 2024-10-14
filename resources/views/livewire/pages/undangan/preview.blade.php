@@ -1,13 +1,13 @@
 <div class="publish">
     @if ($undangan->ornament_id)
-        @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id])
+        @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id, 'light' => true])
     @endif
 
     <input type="checkbox" id="my_modal_6" class="modal-toggle" @checked($cover) />
     <div class="modal" role="dialog">
         <div class="modal-box space-y-10 text-center flex flex-col items-center justify-center shadow-primary h-full">
             @if ($undangan->ornament_id)
-                @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id])
+                @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id, 'light' => false])
             @endif
             <p>Undangan {{ $undangan->kategori->name }}</p>
             <div class="flex relative justify-center items-center">

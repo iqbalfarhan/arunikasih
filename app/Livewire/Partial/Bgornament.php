@@ -8,6 +8,7 @@ use Livewire\Component;
 class Bgornament extends Component
 {
     public Ornament $ornament;
+    public $light = false;
 
     public function mount($ornament_id)
     {

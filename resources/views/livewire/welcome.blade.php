@@ -7,7 +7,7 @@
                     <span>{{ config('app.name') }}</span>
                 </button>
             </div>
-            <ul class="menu menu-horizontal px-1">
+            <ul class="menu menu-horizontal hidden md:flex px-1">
                 <li>
                     <a href="#undangan">
                         <x-tabler-certificate class="size-5" />
@@ -47,7 +47,7 @@
     </div>
 
     <div class="flex-1 overflow-y-scroll scrollbar-hide">
-        <div class="landing py-28">
+        <div class="landing p-6 py-28">
             <section id="undangan">
                 <div class="content-wrapper text-center">
                     <h1 class="text-6xl mx-27 font-bold text-center">Buat Undangan Online Praktis dengan Arunikasih!
@@ -62,7 +62,7 @@
                         <span>Buat undangan</span>
                     </a>
 
-                    <div class="py-12 flex gap-4 max-w-3xl w-fit mx-auto">
+                    <div class="py-12 flex gap-4 max-w-3xl w-full mx-auto">
                         <div class="mockup-browser border-base-300 border bg-base-300">
                             <div class="mockup-browser-toolbar">
                                 <div class="input border-base-300 border">{{ url('/') }}</div>
@@ -92,7 +92,7 @@
                             Sesuaikan dengan kebutuhan dan nikmati layanan berkualitas.</p>
                     </div>
                     <div class="flex justify-center">
-                        <div role="tablist" class="tabs tabs-boxed p-2 w-fit">
+                        <div role="tablist" class="tabs tabs-boxed p-2 w-fit overflow-x-auto">
                             @foreach ($kategoris as $katid => $katname)
                                 <button wire:click='setKategoriId({{ $katid }})'
                                     @class(['tab capitalize', 'tab-active' => $katid == $kategori_id])>{{ $katname }}</button>
@@ -176,17 +176,17 @@
                 </div>
             </section>
 
-            <footer class="footer p-10">
-                <section class="w-full max-w-5xl mx-auto flex justify-between">
-                    <aside class="flex items-center justify-center gap-4">
+            <section class="footer">
+                <div class="content-wrapper">
+                    <div class="flex items-center justify-center gap-4">
                         @livewire('partial.logo')
                         <div class="flex flex-col">
                             <span class="font-bold">Arunikasih.com</span>
                             <span class="opacity-50">Generator undangan online</span>
                         </div>
-                    </aside>
-                </section>
-            </footer>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>

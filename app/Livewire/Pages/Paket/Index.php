@@ -18,7 +18,7 @@ class Index extends Component
         return view('livewire.pages.paket.index', [
             'datas' => Paket::when($this->cari, function($q){
                 return $q->where('kategori_id', '=', $this->cari);
-            })->orderBy('price')->get(),
+            })->orderBy('kategori_id')->get(),
             'kategoris' => Kategori::pluck('name', 'id')
         ]);
     }

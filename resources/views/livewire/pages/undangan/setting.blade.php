@@ -13,7 +13,7 @@
                     {{ $undangan->tema->name }}
                 </h3>
             </div>
-            <div class="h-full max-h-72 overflow-y-auto scrollbar-hide rounded-box">
+            <div class="h-full rounded-box">
                 <div class="grid md:grid-cols-4 gap-3">
                     @foreach ($temas as $tema)
                         <div @class([

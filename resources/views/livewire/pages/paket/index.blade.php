@@ -18,46 +18,50 @@
         @endcan
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6">
-        @foreach ($datas as $data)
-            <div class="card h-fit" wire:key="{{ $data->id }}">
-                <div class="card-body">
-                    <div class="flex flex-col items-start">
-                        <button class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</button>
-                        <h3 class="card-title flex-1 line-clamp-1">{{ $data->name }}</h3>
-                    </div>
-
-                    <div class="space-y-4 my-4">
-                        <p class="text-sm opacity-50 line-clamp-3">{{ $data->description }}</p>
-                        <ul class="text-sm opacity-50 list list-disc list-inside">
-                            @foreach ($data->fiturs->pluck('name') as $fitur)
-                                <li class="list-item">{{ $fitur }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-                    <div class="card-actions justify-between">
-                        <div class="text-success text-lg">{{ Number::currency($data->price, 'IDR') }}</div>
+    <div class="table-wrapper">
+        <table class="table">
+            <thead>
+                <th>No</th>
+                <th>Kategori</th>
+                <th>Nama paket</th>
+                <th>harga paket</th>
+                <th>Deskripsi</th>
+                <th>Fitur</th>
+                @canany(['paket.edit', 'paket.delete'])
+                    <th class="text-center">Actions</th>
+                @endcanany
+            </thead>
+            <tbody>
+                @foreach ($datas as $data)
+                    <tr wire:key="{{ $data->id }}">
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $data->kategori->name }}</td>
+                        <td>{{ $data->name }}</td>
+                        <td class="text-success">{{ Number::currency($data->price, 'IDR') }}</td>
+                        <td>{{ Str::limit($data->description, 40) }}</td>
+                        <td>{{ $data->fiturs()->count() }}</td>
                         @canany(['paket.edit', 'paket.delete'])
-                            <div class="flex-none">
-                                @can('paket.edit')
-                                    <button class="btn btn-xs btn-square btn-bordered"
-                                        wire:click="$dispatch('editPaket', {paket: {{ $data->id }}})">
-                                        <x-tabler-edit class="size-4" />
-                                    </button>
-                                @endcan
-                                @can('paket.delete')
-                                    <button class="btn btn-xs btn-square btn-bordered"
-                                        wire:click="$dispatch('deletePaket', {paket: {{ $data->id }}})">
-                                        <x-tabler-trash class="size-4" />
-                                    </button>
-                                @endcan
-                            </div>
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('paket.edit')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('editPaket', {paket: {{ $data->id }}})">
+                                            <x-tabler-edit class="size-4" />
+                                        </button>
+                                    @endcan
+                                    @can('paket.delete')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('deletePaket', {paket: {{ $data->id }}})">
+                                            <x-tabler-trash class="size-4" />
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
                         @endcanany
-                    </div>
-                </div>
-            </div>
-        @endforeach
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
     @livewire('pages.paket.actions')
