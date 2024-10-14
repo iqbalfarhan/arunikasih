@@ -104,4 +104,9 @@ class Undangan extends Model
     {
         return $this->hasMany(Streaming::class);
     }
+
+    public function pembayaran()
+    {
+        return $this->hasOne(Pembayaran::class);
+    }
 }

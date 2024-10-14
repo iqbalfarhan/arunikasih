@@ -19,9 +19,9 @@
                         </a>
                     </li>
                 @endcan
-                @can('home')
+                @can('pembayaran.mine')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('pembayaran.mine') }}" @class(['active' => Route::is('pembayaran.mine')]) wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Pembayaran</span>
                         </a>
@@ -64,9 +64,9 @@
                         </a>
                     </li>
                 @endcan
-                @can('home')
+                @can('pembayaran.index')
                     <li>
-                        <a href="{{ route('home') }}" wire:navigate>
+                        <a href="{{ route('pembayaran.index') }}" @class(['active' => Route::is('pembayaran.index')]) wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Pembayaran</span>
                         </a>

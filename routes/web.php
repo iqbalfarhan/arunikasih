@@ -35,6 +35,9 @@ Route::middleware('auth')->group(function(){
     Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
     Route::get('/ornamen', \App\Livewire\Pages\Ornament\Index::class)->name('ornamen.index');
 
+    Route::get('/pembayaran', \App\Livewire\Pages\Pembayaran\Index::class)->name('pembayaran.index');
+    Route::get('/payment', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');
+
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
     Route::get('/undangan/mine', \App\Livewire\Pages\Undangan\Mine::class)->name('undangan.mine');

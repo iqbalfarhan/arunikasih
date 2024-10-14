@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Pembayaran;
 use App\Models\Undangan;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -65,7 +66,11 @@ class UndanganForm extends Form
             $valid['photo'] = $this->photo;
         }
 
-        Undangan::create($valid);
+        $undangan = Undangan::create($valid);
+
+        Pembayaran::factory()->create([
+            'undangan_id' => $undangan->id,
+        ]);
 
         $this->reset();
     }

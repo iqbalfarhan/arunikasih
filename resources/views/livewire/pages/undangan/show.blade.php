@@ -4,6 +4,8 @@
         'title' => 'Detail undangan',
     ])
 
+    <div class="alert alert-error">{{ $undangan->pembayaran }}</div>
+
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
