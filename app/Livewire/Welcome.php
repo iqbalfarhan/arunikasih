@@ -34,9 +34,11 @@ class Welcome extends Component
             'fiturs' => Fitur::where('kategori_id', $this->kategori_id)->get(),
             'pakets' => Paket::where('kategori_id', $this->kategori_id)->orderBy('price')->get(),
             'carousels' => [
-                url('ornament/helloween.png'),
-                url('ornament/floral.png'),
-                url('ornament/winter.png'),
+                url('images/phone/blue.png'),
+                url('images/phone/green.png'),
+                url('images/phone/gold.png'),
+                url('images/phone/pink.png'),
+                url('images/phone/yellow.png'),
             ]
         ]);
     }
