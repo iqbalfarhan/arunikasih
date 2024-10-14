@@ -16,6 +16,8 @@ class Bagan extends Component
 
     public function render()
     {
-        return view('livewire.partial.bagan');
+        return view('livewire.partial.bagan', [
+            'bagans' => $this->undangan->paket->fiturs()->pluck('name')->toArray()
+        ]);
     }
 }

@@ -29,12 +29,14 @@
                     <span>Tema Tampilan</span>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
-                    <x-tabler-users class="size-5" />
-                    <span>Daftar tamu</span>
-                </a>
-            </li>
+            @if (in_array('ucapan dan doa', $bagans))
+                <li>
+                    <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
+                        <x-tabler-users class="size-5" />
+                        <span>Daftar tamu</span>
+                    </a>
+                </li>
+            @endif
             <li>
                 <a href="{{ route('undangan.publish', $undangan) }}" @class(['active' => Route::is('undangan.publish')]) wire:navigate>
                     <x-tabler-send class="size-5" />
@@ -47,48 +49,63 @@
     <li>
         <h2 class="menu-title">Bagan Undangan</h2>
         <ul>
-            <li>
-                <a href="{{ route('undangan.cover', $undangan) }}" @class(['active' => Route::is('undangan.cover')]) wire:navigate>
-                    <x-tabler-notebook class="size-5" />
-                    <span>Sampul Cover</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('undangan.pengantin', $undangan) }}" @class(['active' => Route::is('undangan.pengantin')]) wire:navigate>
-                    <x-tabler-users class="size-5" />
-                    <span>Profile Pengantin</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('undangan.acara', $undangan) }}" @class(['active' => Route::is('undangan.acara')]) wire:navigate>
-                    <x-tabler-clock class="size-5" />
-                    <span>Akad & Resepsi</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('undangan.media', $undangan) }}" @class(['active' => Route::is('undangan.media')]) wire:navigate>
-                    <x-tabler-photo class="size-5" />
-                    <span>Gallery Prewedding</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('undangan.story', $undangan) }}" @class(['active' => Route::is('undangan.story')]) wire:navigate>
-                    <x-tabler-heart class="size-5" />
-                    <span>Kisah Cinta</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ route('undangan.livestreaming', $undangan) }}" @class(['active' => Route::is('undangan.livestreaming')]) wire:navigate>
-                    <x-tabler-video class="size-5" />
-                    <span>Live Streaming</span>
-                </a>
-            </li>
-            <li>
-                <a>
-                    <x-tabler-gift class="size-5" />
-                    <span>Hadiah & Rekening</span>
-                </a>
-            </li>
+            @if (in_array('cover undangan', $bagans))
+                <li>
+                    <a href="{{ route('undangan.cover', $undangan) }}" @class(['active' => Route::is('undangan.cover')]) wire:navigate>
+                        <x-tabler-notebook class="size-5" />
+                        <span>Sampul Cover</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('data pengantin', $bagans))
+                <li>
+                    <a href="{{ route('undangan.pengantin', $undangan) }}" @class(['active' => Route::is('undangan.pengantin')]) wire:navigate>
+                        <x-tabler-users class="size-5" />
+                        <span>Profile Pengantin</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('detail acara', $bagans))
+                <li>
+                    <a href="{{ route('undangan.acara', $undangan) }}" @class(['active' => Route::is('undangan.acara')]) wire:navigate>
+                        <x-tabler-clock class="size-5" />
+                        <span>Akad & Resepsi</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('photo prewedding', $bagans))
+                <li>
+                    <a href="{{ route('undangan.media', $undangan) }}" @class(['active' => Route::is('undangan.media')]) wire:navigate>
+                        <x-tabler-photo class="size-5" />
+                        <span>Gallery Prewedding</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('kisah cinta', $bagans))
+                <li>
+                    <a href="{{ route('undangan.story', $undangan) }}" @class(['active' => Route::is('undangan.story')]) wire:navigate>
+                        <x-tabler-heart class="size-5" />
+                        <span>Kisah Cinta</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('live streaming', $bagans))
+                <li>
+                    <a href="{{ route('undangan.livestreaming', $undangan) }}" @class(['active' => Route::is('undangan.livestreaming')])
+                        wire:navigate>
+                        <x-tabler-video class="size-5" />
+                        <span>Live Streaming</span>
+                    </a>
+                </li>
+            @endif
+            @if (in_array('hadiah dan rekening', $bagans))
+                <li>
+                    <a>
+                        <x-tabler-gift class="size-5" />
+                        <span>Hadiah & Rekening</span>
+                    </a>
+                </li>
+            @endif
         </ul>
     </li>
 </ul>

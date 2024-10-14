@@ -10,6 +10,8 @@ class Cover extends Component
 {
     public Undangan $undangan;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function mount(Undangan $undangan)
     {
         $this->undangan = $undangan;

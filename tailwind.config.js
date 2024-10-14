@@ -19,7 +19,6 @@ export default {
     require('daisyui'),
     require('@tailwindcss/typography'),
     require('tailwind-scrollbar-hide'),
-    require('flowbite/plugin'),
   ],
   daisyui: {
     themes: [

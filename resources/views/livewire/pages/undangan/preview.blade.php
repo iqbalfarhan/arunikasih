@@ -1,36 +1,14 @@
 <div class="publish">
-    {{-- <div>
-        <img src="{{ url('ornament/botanicalpartial/botanicaltopleft.png') }}" alt=""
-            class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-        <img src="{{ url('ornament/botanicalpartial/botanicalbottomleft.png') }}" alt=""
-            class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-        <img src="{{ url('ornament/botanicalpartial/botanicalbottomright.png') }}" alt=""
-            class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
-    </div> --}}
-    <div class="z-0">
-        <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
-            class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-        <img src="{{ Storage::url($undangan->ornament->topright) }}" alt=""
-            class="animate__animated animate__fadeInDown animate__faster fixed top-0 right-0 !opacity-20">
-        <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
-            class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-        <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""
-            class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
-    </div>
+    @if ($undangan->ornament_id)
+        @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id])
+    @endif
 
     <input type="checkbox" id="my_modal_6" class="modal-toggle" @checked($cover) />
     <div class="modal" role="dialog">
         <div class="modal-box space-y-10 text-center flex flex-col items-center justify-center shadow-primary h-full">
-            <div class="z-0">
-                <img src="{{ Storage::url($undangan->ornament->topleft) }}" alt=""
-                    class="animate__animated animate__fadeInDown animate__faster fixed top-0 left-0 !opacity-20">
-                <img src="{{ Storage::url($undangan->ornament->topright) }}" alt=""
-                    class="animate__animated animate__fadeInDown animate__faster fixed top-0 right-0 !opacity-20">
-                <img src="{{ Storage::url($undangan->ornament->bottomleft) }}" alt=""
-                    class="animate__animated animate__fadeInLeft animate__fast fixed bottom-0 left-0 !opacity-20">
-                <img src="{{ Storage::url($undangan->ornament->bottomright) }}" alt=""
-                    class="animate__animated animate__fadeInRight animate__slow fixed bottom-0 right-0 !opacity-20">
-            </div>
+            @if ($undangan->ornament_id)
+                @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id])
+            @endif
             <p>Undangan {{ $undangan->kategori->name }}</p>
             <div class="flex relative justify-center items-center">
                 <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
@@ -51,6 +29,7 @@
             </button>
         </div>
     </div>
+
     {{-- intro --}}
     <section id="cover" class="card min-h-screen">
         <div class="card-body items-center text-center">
@@ -123,16 +102,16 @@
 
             <div class="grid md:grid-cols-2 gap-4">
                 @foreach ($undangan->events as $event)
-                    <div class="card bg-base-200 border-0">
-                        <figure>
-                            <iframe class="w-full aspect-video" frameborder="0"
-                                src="https://maps.google.com/maps?q={{ $event->location_name }}&amp;output=embed"></iframe>
-                        </figure>
+                    <div class="card card-compact border-0 bg-transparent">
                         <div class="card-body">
+                            <figure>
+                                <iframe class="w-full aspect-video rounded-box" frameborder="0"
+                                    src="https://maps.google.com/maps?q={{ $event->location_name }}&amp;output=embed"></iframe>
+                            </figure>
                             <div class="flex flex-col items-center gap-2">
                                 <h5 class="card-title text-center">{{ $event->name }}</h5>
-                                <p>{{ $event->location_name }} tanggal
-                                    {{ $event->datetime->format('d F Y : H:i') }}
+                                <p class="text-base">{{ $event->location_name }} tanggal
+                                    {{ $event->datetime->format('d F Y \j\a\m H:i') }} - selesai
                                 </p>
                             </div>
                         </div>

@@ -17,7 +17,6 @@
     "dependencies": {
         "@tailwindcss/typography": "^0.5.12",
         "animate.css": "^4.1.1",
-        "flowbite": "^2.5.2",
         "tailwind-scrollbar-hide": "^1.1.7"
     }
 }

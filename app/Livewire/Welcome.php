@@ -31,6 +31,11 @@ class Welcome extends Component
             'kategoris' => Kategori::pluck('name', 'id'),
             'fiturs' => Fitur::where('kategori_id', $this->kategori_id)->get(),
             'pakets' => Paket::where('kategori_id', $this->kategori_id)->orderBy('price')->get(),
+            'carousels' => [
+                url('ornament/helloween.png'),
+                url('ornament/floral.png'),
+                url('ornament/winter.png'),
+            ]
         ]);
     }
 }
