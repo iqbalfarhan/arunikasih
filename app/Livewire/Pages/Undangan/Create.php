@@ -25,11 +25,14 @@ class Create extends Component
         $this->form->tema_id = Tema::get()->first()->id;
         $this->form->music_id = Music::get()->first()->id;
         $this->form->ayat_id = Ayat::get()->first()->id;
+        $this->form->event_date = now();
 
         $this->form->store();
 
         $this->alert('success', 'Data undangan berhasil disimpan');
         $this->dispatch('reload');
+
+        $this->redirect(route('undangan.mine'), true);
     }
 
     public function render()

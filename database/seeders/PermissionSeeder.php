@@ -43,6 +43,7 @@ class PermissionSeeder extends Seeder
             'tamu.edit'             => ['user'],
             'tamu.delete'           => ['user'],
             'undangan.index'        => ['user'],
+            'undangan.create'       => ['user'],
             'undangan.edit'         => ['user'],
             'undangan.delete'       => ['user'],
             'undangan.show'         => ['user'],
