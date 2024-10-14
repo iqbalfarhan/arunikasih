@@ -3,16 +3,27 @@
 namespace App\Livewire\Pages\Undangan;
 
 use App\Models\Undangan;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class Show extends Component
 {
+use LivewireAlert;
+    public $partials = [];
     public Undangan $undangan;
 
     public function mount(Undangan $undangan)
     {
         $this->undangan = Undangan::find($undangan->id);
+        $this->partials = $undangan->partials;
+    }
+
+    public function changeBagan()
+    {
+        $this->undangan->partials = $this->partials;
+        $this->undangan->save();
+        $this->alert('success', 'Data bagan undangan diperbarui');
     }
 
     public function render()

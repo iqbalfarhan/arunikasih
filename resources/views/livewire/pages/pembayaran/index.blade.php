@@ -38,10 +38,10 @@
                             <td>
                                 <div class="flex gap-1 justify-center">
                                     @can('pembayaran.show')
-                                        <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('showPembayaran', {pembayaran: {{ $data->id }}})">
+                                        <a href="{{ route('pembayaran.show', $data->id) }}"
+                                            class="btn btn-xs btn-square btn-bordered" wire:navigate>
                                             <x-tabler-eye class="size-4" />
-                                        </button>
+                                        </a>
                                     @endcan
                                     @can('pembayaran.edit')
                                         <button class="btn btn-xs btn-square btn-bordered"

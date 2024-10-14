@@ -17,6 +17,14 @@
                 @livewire('partial.detailnav', [
                     'undangan' => $undangan,
                 ])
+                @if (!$undangan->paid)
+                    <div role="alert" class="alert alert-error rounded-none">
+                        <x-tabler-exclamation-circle />
+                        <p>Hai, anda belum menyelesaikan pembayaran undangan ini.</p>
+                        <a href="{{ route('pembayaran.show', ['pembayaran' => $undangan->pembayaran->id]) }}"
+                            class="btn btn-xs">Klik disini</a>
+                    </div>
+                @endif
                 {{ $slot }}
             </div>
             <div class="drawer-side scrollbar-hide">

@@ -43,7 +43,7 @@
                             </div>
                         </td>
                         <td>
-                            @if ($data->paid)
+                            @if ($data->pembayaran?->confirmed)
                                 <div class="badge badge-sm badge-success">Paid</div>
                             @else
                                 <div class="badge badge-sm badge-error">Unpaid</div>

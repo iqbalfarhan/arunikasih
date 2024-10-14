@@ -21,17 +21,17 @@ class Undangan extends Model
         'music_id',
         'ornament_id',
         'shared',
-        'paid',
         'event_date',
         'photo',
+        'partials'
     ];
 
     protected function casts()
     {
         return [
-            'paid' => 'boolean',
             'shared' => 'boolean',
             'event_date' => 'date',
+            'partials' => 'array',
         ];
     }
 
@@ -108,5 +108,10 @@ class Undangan extends Model
     public function pembayaran()
     {
         return $this->hasOne(Pembayaran::class);
+    }
+
+    public function getPaidAttribute()
+    {
+        return $this->pembayaran->confirmed;
     }
 }

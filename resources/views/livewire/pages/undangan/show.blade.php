@@ -4,8 +4,6 @@
         'title' => 'Detail undangan',
     ])
 
-    <div class="alert alert-error">{{ $undangan->pembayaran }}</div>
-
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
@@ -42,6 +40,35 @@
                 </p>
             </div>
         </div>
-    </div>
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">
+                    <x-tabler-list class="size-5" />
+                    <span>Bagan undangan</span>
+                </h3>
+                <p class="text-sm opacity-50 line-clamp-2">Bagan yang dicheck akan tampil pada undangan anda
+                </p>
+                <ul>
+                    @foreach ($partials as $item => $checked)
+                        <li>
+                            <div class="form-control">
+                                <label class="label cursor-pointer justify-start gap-3">
+                                    <input type="checkbox" wire:model="partials.{{ $item }}"
+                                        class="checkbox checkbox-sm" />
+                                    <span class="label-text">{{ $item }}</span>
+                                </label>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
 
+                <div class="card-actions pt-6">
+                    <button wire:click="changeBagan" class="btn btn-primary">
+                        <x-tabler-check class="size-4" />
+                        <span>Simpan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

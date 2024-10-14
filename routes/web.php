@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/ornamen', \App\Livewire\Pages\Ornament\Index::class)->name('ornamen.index');
 
     Route::get('/pembayaran', \App\Livewire\Pages\Pembayaran\Index::class)->name('pembayaran.index');
+    Route::get('/pembayaran/{pembayaran}', \App\Livewire\Pages\Pembayaran\Show::class)->name('pembayaran.show');
     Route::get('/payment', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');
 
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');

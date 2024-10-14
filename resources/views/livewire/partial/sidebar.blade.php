@@ -13,7 +13,7 @@
                 @endcan
                 @can('undangan.mine')
                     <li>
-                        <a href="{{ route('undangan.mine') }}" wire:navigate>
+                        <a href="{{ route('undangan.mine') }}" @class(['active' => Route::is('undangan.mine')]) wire:navigate>
                             <x-tabler-bookmark class="size-5" />
                             <span>Undangan Saya</span>
                         </a>
@@ -21,7 +21,9 @@
                 @endcan
                 @can('pembayaran.mine')
                     <li>
-                        <a href="{{ route('pembayaran.mine') }}" @class(['active' => Route::is('pembayaran.mine')]) wire:navigate>
+                        <a href="{{ route('pembayaran.mine') }}" @class([
+                            'active' => Route::is(['pembayaran.mine', 'pembayaran.show']),
+                        ]) wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Pembayaran</span>
                         </a>
@@ -66,7 +68,9 @@
                 @endcan
                 @can('pembayaran.index')
                     <li>
-                        <a href="{{ route('pembayaran.index') }}" @class(['active' => Route::is('pembayaran.index')]) wire:navigate>
+                        <a href="{{ route('pembayaran.index') }}" @class([
+                            'active' => Route::is(['pembayaran.index', 'pembayaran.show']),
+                        ]) wire:navigate>
                             <x-tabler-credit-card class="size-5" />
                             <span>Pembayaran</span>
                         </a>

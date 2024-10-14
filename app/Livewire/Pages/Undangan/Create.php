@@ -6,6 +6,7 @@ use App\Livewire\Forms\UndanganForm;
 use App\Models\Ayat;
 use App\Models\Kategori;
 use App\Models\Music;
+use App\Models\Ornament;
 use App\Models\Paket;
 use App\Models\Tema;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,7 @@ class Create extends Component
         $this->form->tema_id = Tema::get()->first()->id;
         $this->form->music_id = Music::get()->first()->id;
         $this->form->ayat_id = Ayat::get()->first()->id;
+        $this->form->ornament_id = Ornament::get()->first()->id;
         $this->form->event_date = now();
 
         $this->form->store();

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Forms;
 
+use App\Models\Paket;
 use App\Models\Pembayaran;
 use App\Models\Undangan;
 use Illuminate\Support\Facades\File;
@@ -23,9 +24,9 @@ class UndanganForm extends Form
     public $music_id;
     public $ornament_id;
     public $shared = false;
-    public $paid = false;
     public $event_date;
     public $photo;
+    public $partials;
 
     public function setUndangan(Undangan $undangan){
         $this->undangan = $undangan;
@@ -40,8 +41,8 @@ class UndanganForm extends Form
         $this->music_id = $undangan->music_id;
         $this->ornament_id = $undangan->ornament_id;
         $this->shared = $undangan->shared;
-        $this->paid = $undangan->paid;
         $this->event_date = $undangan->event_date->format('Y-m-d');
+        $this->partials = $undangan->partials;
     }
 
     public function store(){
@@ -56,11 +57,16 @@ class UndanganForm extends Form
             'music_id' => '',
             'ornament_id' => '',
             'shared' => 'required',
-            'paid' => 'required',
             'event_date' => '',
         ]);
 
         $valid['slug'] = Str::slug($this->name);
+
+        foreach(Paket::find($this->paket_id)->fiturs()->pluck('name') as $fitur){
+            $valid['partials'][$fitur] = true;
+        }
+
+        // dd($valid);
 
         if ($this->photo) {
             $valid['photo'] = $this->photo;
@@ -87,8 +93,8 @@ class UndanganForm extends Form
             'music_id' => '',
             'ornament_id' => '',
             'shared' => 'required',
-            'paid' => 'required',
             'event_date' => '',
+            'partials' => '',
         ]);
 
         $valid['slug'] = Str::slug($this->name);

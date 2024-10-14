@@ -35,7 +35,6 @@ class UndanganFactory extends Factory
             'ayat_id' => fake()->randomElement(Ayat::pluck('id')),
             'ornament_id' => fake()->randomElement(Ornament::pluck('id')),
             'shared' => fake()->boolean(),
-            'paid' => fake()->boolean(),
             'event_date' => fake()->date('Y-m-d', "2024-12-31"),
         ];
     }
