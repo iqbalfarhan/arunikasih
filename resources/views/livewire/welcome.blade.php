@@ -62,15 +62,15 @@
                         <span>Buat undangan</span>
                     </a>
 
-                    <div class="py-12 flex gap-4 max-w-5xl w-fit mx-auto">
+                    <div class="py-12 flex gap-4 max-w-3xl w-fit mx-auto">
                         <div class="mockup-browser border-base-300 border bg-base-300">
                             <div class="mockup-browser-toolbar">
-                                <div class="input border-base-300 border">https://daisyui.com</div>
+                                <div class="input border-base-300 border">{{ url('/') }}</div>
                             </div>
                             <div class="border-base-300 flex justify-center">
-                                <div class="carousel carousel-center rounded-box">
+                                <div class="carousel carousel-center">
                                     @foreach ($carousels as $carid => $carousel)
-                                        <div class="carousel-item h-96">
+                                        <div class="carousel-item w-full">
                                             <img src="{{ $carousel }}" alt="Burger" />
                                         </div>
                                     @endforeach

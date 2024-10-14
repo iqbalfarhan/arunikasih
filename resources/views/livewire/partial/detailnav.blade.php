@@ -5,8 +5,9 @@
         </label>
     </div>
     <div class="navbar-center">
-        <a href="{{ route('undangan.show', $undangan) }}" class="btn btn-ghost text-xl" wire:navigate>
-            Detail
+        <a href="{{ route('undangan.show', $undangan) }}" class="btn btn-ghost text-xl capitalize" wire:navigate>
+            {{ $undangan->kategori->name }}
+            {{ $undangan->name }}
         </a>
     </div>
     <div class="navbar-end">

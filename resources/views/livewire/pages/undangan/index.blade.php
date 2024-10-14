@@ -18,7 +18,8 @@
                 <th>No</th>
                 <th>Judul undangan</th>
                 <th>Kategori</th>
-                <th>Sudah dibayar</th>
+                <th>Pembayaran</th>
+                <th>Published</th>
                 @canany(['tema.edit', 'tema.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -29,17 +30,30 @@
                         <td>{{ $no++ }}</td>
                         <td>
                             <div class="flex flex-col">
-                                <a href="{{ route('undangan.show', $data) }}">{{ $data->name }}</a>
+                                <span>{{ $data->name }}</span>
                                 <span class="opacity-50 text-xs">{{ $data->slug }}</span>
                             </div>
                         </td>
                         <td>
                             <div class="flex flex-col">
-                                <span class="opacity-50 text-xs">{{ $data->kategori->name }}</span>
-                                <span>{{ $data->paket->name }}</span>
+                                <span>{{ $data->kategori->name }}</span>
+                                <span class="opacity-50 text-xs">{{ $data->paket->name }}</span>
                             </div>
                         </td>
-                        <td>{{ $data->paid ? 'Terbayar' : 'Belum' }}</td>
+                        <td>
+                            @if ($data->paid)
+                                <div class="badge badge-sm badge-success">Paid</div>
+                            @else
+                                <div class="badge badge-sm badge-error">Unpaid</div>
+                            @endif
+                        </td>
+                        <td>
+                            @if ($data->published)
+                                <div class="badge badge-sm badge-success">Online</div>
+                            @else
+                                <div class="badge badge-sm badge-error">Offline</div>
+                            @endif
+                        </td>
                         @canany(['undangan.edit', 'undangan.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
