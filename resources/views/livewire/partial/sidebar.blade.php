@@ -195,7 +195,7 @@
                 <li>
                     <a href="{{ route('about') }}" @class(['active' => Route::is('about')]) wire:navigate>
                         <x-tabler-file class="size-5" />
-                        <span>Tentang Aplikasi</span>
+                        <span>Tentang Arunikasih</span>
                     </a>
                 </li>
             @endcan
@@ -207,6 +207,12 @@
                     </a>
                 </li>
             @endcan
+            <li>
+                <button wire:click="$dispatch('logout')">
+                    <x-tabler-bug class="size-5" />
+                    <span>Laporan Error & Bug</span>
+                </button>
+            </li>
             <li>
                 <button wire:click="$dispatch('logout')">
                     <x-tabler-logout class="size-5" />

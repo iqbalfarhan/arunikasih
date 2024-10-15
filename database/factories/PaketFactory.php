@@ -19,6 +19,7 @@ class PaketFactory extends Factory
     {
         return [
             'name' => fake()->words(2, true),
+            'before_discount' => fake()->numberBetween(100000, 200000),
             'price' => fake()->numberBetween(100000, 200000),
             'description' => fake()->sentences(2, true),
             'kategori_id' => fake()->randomElement(Kategori::pluck('id')),

@@ -50,10 +50,11 @@
         <div class="landing p-6 py-28">
             <section id="undangan">
                 <div class="content-wrapper text-center">
-                    <h1 class="text-6xl mx-27 font-bold text-center">Buat Undangan Online Praktis dengan Arunikasih!
+                    <h1 class="text-5xl mx-27 font-bold text-center">Buat Undangan Online mudah dengan Arunikasih!
                     </h1>
 
-                    <p class="text-xl opacity-50">Buat undangan pernikahan, akikah, ulang tahun, dan syukuran dengan
+                    <p class="text-xl opacity-50">Buat undangan
+                        {{ implode(', ', $kategoris->toArray()) }} dengan
                         mudah,
                         praktis dan menarik dengan berbagaicam tema dan fitur yang lengkap dengan Arunikasih.</p>
 
@@ -62,8 +63,8 @@
                         <span>Buat undangan</span>
                     </a>
 
-                    <div class="py-12 flex gap-4 max-w-3xl w-full mx-auto">
-                        <div class="mockup-browser border-base-300 border bg-base-300">
+                    <div class="py-12 flex flex-col gap-4 max-w-3xl w-full mx-auto">
+                        <div class="mockup-browser border-base-300 border bg-base-300 hidden md:block">
                             <div class="mockup-browser-toolbar">
                                 <div class="input border-base-300 border">{{ url('/') }}</div>
                             </div>
@@ -71,6 +72,19 @@
                                 <div class="carousel carousel-center">
                                     @foreach ($carousels as $carid => $carousel)
                                         <div class="carousel-item w-full">
+                                            <img src="{{ $carousel }}" alt="Burger" />
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mockup-phone border-primary md:hidden">
+                            <div class="camera"></div>
+                            <div class="display">
+                                <div class="carousel carousel-center w-80">
+                                    @foreach ($carousel_mobile as $carid => $carousel)
+                                        <div class="carousel-item h-full">
                                             <img src="{{ $carousel }}" alt="Burger" />
                                         </div>
                                     @endforeach
@@ -113,9 +127,13 @@
                                     <p class="text-sm line-clamp-2 opacity-50">{{ $paket->description }}</p>
 
                                 </div>
-                                <div class="text-4xl text-center text-primary font-bold py-4">
-                                    <span class="text-sm">Rp.</span>
-                                    {{ Number::format($paket->price, locale: 'de') }}
+                                <div class="flex flex-col items-center justify-center py-4">
+                                    <span
+                                        class="text-center text-xs opacity-75 line-through">{{ Number::format($paket->before_discount, locale: 'de') }}</span>
+                                    <div class="text-4xl text-center text-primary font-bold">
+                                        <span class="text-sm">Rp.</span>
+                                        {{ Number::format($paket->price, locale: 'de') }}
+                                    </div>
                                 </div>
                                 <div class="card-body space-y-4 h-full">
                                     <div class="space-y-4 flex-1 opacity-75">

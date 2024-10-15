@@ -10,9 +10,9 @@ Route::get('logout',  function(){
 })->name('logout');
 
 Route::middleware('guest')->group(function(){
+    // Route::get('/{katname}/{slug}', \App\Livewire\Pages\Publish::class)->name('publish');
     Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
     Route::get('/register', \App\Livewire\Auth\Register::class)->name('register');
-    // Route::get('/{katname}/{slug}', \App\Livewire\Pages\Publish::class)->name('publish');
 });
 
 Route::middleware('auth')->group(function(){
@@ -30,19 +30,17 @@ Route::middleware('auth')->group(function(){
     Route::get('/paket', \App\Livewire\Pages\Paket\Index::class)->name('paket.index');
     Route::get('/tema', \App\Livewire\Pages\Tema\Index::class)->name('tema.index');
     Route::get('/sosmed', \App\Livewire\Pages\Sosmed\Index::class)->name('sosmed.index');
-
     Route::get('/rating', \App\Livewire\Pages\Rating\Index::class)->name('rating.index');
-    Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
     Route::get('/ornamen', \App\Livewire\Pages\Ornament\Index::class)->name('ornamen.index');
-
     Route::get('/pembayaran', \App\Livewire\Pages\Pembayaran\Index::class)->name('pembayaran.index');
-    Route::get('/pembayaran/{pembayaran}', \App\Livewire\Pages\Pembayaran\Show::class)->name('pembayaran.show');
-    Route::get('/payment', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');
-
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
-    Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
+
+    Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
+    Route::get('/payment', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');
     Route::get('/undangan/mine', \App\Livewire\Pages\Undangan\Mine::class)->name('undangan.mine');
 
+    Route::get('/pembayaran/{pembayaran}', \App\Livewire\Pages\Pembayaran\Show::class)->name('pembayaran.show');
+    Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
     Route::prefix("/undangan/{undangan}")->group(function(){
         Route::get('/', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');
         Route::get('/setting', \App\Livewire\Pages\Undangan\Setting::class)->name('undangan.setting');

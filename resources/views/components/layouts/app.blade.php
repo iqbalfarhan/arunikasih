@@ -26,11 +26,11 @@
         @endauth
 
         @guest
-            <div class="flex h-screen bg-base-300">
-                <div class="flex-1 overflow-hidden hidden lg:block">
+            <div class="grid md:grid-cols-2 h-screen bg-base-300">
+                <div class="hidden lg:block">
                     <img src="{{ url('images/desktop/d-green.png') }}" alt="" class="h-full w-full object-cover">
                 </div>
-                <div class="flex-1 flex flex-col justify-center items-center space-y-10 P-6">
+                <div class="flex flex-col justify-center items-center space-y-10">
                     <a href="{{ route('welcome') }}" wire:navigate>
                         <h1 class="text-3xl font-bold text-center">{{ config('app.name') }}</h1>
                     </a>

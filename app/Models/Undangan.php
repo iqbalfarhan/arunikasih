@@ -112,6 +112,11 @@ class Undangan extends Model
 
     public function getPaidAttribute()
     {
-        return $this->pembayaran->confirmed;
+        return $this->pembayaran?->confirmed;
+    }
+
+    public function can($bagan)
+    {
+        return isset($this->partials[$bagan]) && $this->partials[$bagan] == true;
     }
 }

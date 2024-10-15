@@ -16,6 +16,7 @@ class Pembayaran extends Model
         'confirmed',
         'confirmed_at',
         'evidence',
+        'notes',
     ];
 
     protected function casts()

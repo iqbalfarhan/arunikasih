@@ -19,21 +19,25 @@ class PaketSeeder extends Seeder
                 [
                     "name" => "basic",
                     "harga" => "10000",
+                    "diskon" => "50000",
                 ],
                 [
                     "name" => "standard",
                     "harga" => "20000",
+                    "diskon" => "75000",
                 ],
                 [
                     "name" => "lengkap",
                     "harga" => "30000",
+                    "diskon" => "100000",
                 ]
             ];
             foreach ($pakets as $paket) {
                 Paket::factory()->create([
                     'kategori_id' => $kat,
                     "name" => $paket['name'],
-                    "price" => $paket['harga']
+                    "price" => $paket['harga'],
+                    "before_discount" => $paket['diskon'],
                 ]);
             }
         }

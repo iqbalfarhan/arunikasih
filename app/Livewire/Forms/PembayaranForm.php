@@ -14,9 +14,10 @@ class PembayaranForm extends Form
     public $undangan_id;
     public $via;
     public $amount;
-    public $confirmed;
+    public $confirmed = false;
     public $confirmed_at;
     public $evidence;
+    public $notes;
 
     public function setPembayaran(Pembayaran $pembayaran){
         $this->pembayaran = $pembayaran;
@@ -27,6 +28,7 @@ class PembayaranForm extends Form
         $this->confirmed = $pembayaran->confirmed;
         $this->confirmed_at = $pembayaran->confirmed_at;
         $this->evidence = $pembayaran->evidence;
+        $this->notes = $pembayaran->notes;
     }
 
     public function store(){
@@ -36,6 +38,7 @@ class PembayaranForm extends Form
             'amount' => 'required',
             'confirmed' => 'required',
             'confirmed_at' => 'required',
+            'notes' => '',
         ]);
 
         if ($this->evidence) {
@@ -54,7 +57,12 @@ class PembayaranForm extends Form
             'amount' => 'required',
             'confirmed' => 'required',
             'confirmed_at' => 'required',
+            'notes' => '',
         ]);
+
+        if($this->confirmed == false){
+            $valid['confirmed_at'] = null;
+        }
 
         if ($this->evidence) {
             $valid['evidence'] = $this->evidence;

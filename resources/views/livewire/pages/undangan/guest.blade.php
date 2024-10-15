@@ -5,7 +5,7 @@
     <div class="table-filter-wrapper">
         <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
         @can('tamu.create')
-            <button class="btn btn-primary" wire:click="$dispatch('createTamu')">
+            <button class="btn btn-primary" wire:click="$dispatch('createTamu', {undangan_id: {{ $undangan->id }}})">
                 <x-tabler-plus class="size-5" />
                 <span>Tambah tamu</span>
             </button>
@@ -18,7 +18,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Hadir</th>
-                <th>Pesan</th>
+                <th class="w-full">Pesan</th>
                 @canany(['tamu.edit', 'tamu.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany

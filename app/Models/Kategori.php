@@ -12,4 +12,14 @@ class Kategori extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function pakets()
+    {
+        return $this->hasMany(Paket::class);
+    }
+
+    public function undangans()
+    {
+        return $this->hasMany(Undangan::class);
+    }
 }

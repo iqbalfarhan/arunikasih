@@ -16,4 +16,9 @@ class Tamu extends Model
         "message",
         "reply",
     ];
+
+    public function undangan()
+    {
+        return $this->belongsTo(Undangan::class);
+    }
 }

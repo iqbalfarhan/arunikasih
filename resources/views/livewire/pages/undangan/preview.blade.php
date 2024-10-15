@@ -58,197 +58,213 @@
         </div>
     </section>
     {{-- pengantin --}}
-    <section id="pengantin" class="card">
-        <div class="card-body items-center text-center">
-            <div class="space-y-10">
-                <h2>Kami yang berbahagia</h2>
-                <p>Kami adalah dua jiwa yang dipersatukan oleh cinta. Di sini, kami ingin memperkenalkan diri kepada
-                    Anda, serta orangtua yang telah membimbing dan mencintai kami dalam setiap langkah kehidupan.
-                </p>
-                <div class="grid md:grid-cols-2">
-                    @foreach ($undangan->pengantins as $pengantin)
-                        <div class="card border-0 bg-transparent" wire:transition>
-                            <div class="card-body text-center items-center space-y-2">
-                                <div class="flex relative justify-center items-center">
-                                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt=""
-                                        class="w-48 z-10">
-                                    <div class="avatar absolute">
-                                        <div class="w-40 rounded-full">
-                                            <img src="{{ $pengantin->image }}" alt="">
+    @if ($undangan->can('data pengantin'))
+        <section id="pengantin" class="card">
+            <div class="card-body items-center text-center">
+                <div class="space-y-10">
+                    <h2>Kami yang berbahagia</h2>
+                    <p>Kami adalah dua jiwa yang dipersatukan oleh cinta. Di sini, kami ingin memperkenalkan diri kepada
+                        Anda, serta orangtua yang telah membimbing dan mencintai kami dalam setiap langkah kehidupan.
+                    </p>
+                    <div class="grid md:grid-cols-2">
+                        @foreach ($undangan->pengantins as $pengantin)
+                            <div class="card border-0 bg-transparent" wire:transition>
+                                <div class="card-body text-center items-center space-y-2">
+                                    <div class="flex relative justify-center items-center">
+                                        <img src="{{ Storage::url($undangan->ornament->ring) }}" alt=""
+                                            class="w-48 z-10">
+                                        <div class="avatar absolute">
+                                            <div class="w-40 rounded-full">
+                                                <img src="{{ $pengantin->image }}" alt="">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- <div class="avatar">
+                                    {{-- <div class="avatar">
                                         <div class="w-32 bg-neutral rounded-full">
                                             <img src="{{ $pengantin->image }}" alt="">
                                         </div>
                                     </div> --}}
-                                <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
-                                <p>{{ $pengantin->text }}</p>
+                                    <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
+                                    <p>{{ $pengantin->text }}</p>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- event --}}
+    @if ($undangan->can('detail acara'))
+        <section id="event" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Tanggal Acara</h2>
+                <p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
+
+                @livewire('partial.countdown')
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    @foreach ($undangan->events as $event)
+                        <div class="card card-compact border-0 bg-transparent">
+                            <div class="card-body">
+                                <figure>
+                                    <iframe class="w-full aspect-video rounded-box" frameborder="0"
+                                        src="https://maps.google.com/maps?q={{ $event->location_name }}&amp;output=embed"></iframe>
+                                </figure>
+                                <div class="flex flex-col items-center gap-2">
+                                    <h5 class="card-title text-center">{{ $event->name }}</h5>
+                                    <p class="text-base">{{ $event->location_name }} tanggal
+                                        {{ $event->datetime->format('d F Y \j\a\m H:i') }} - selesai
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     @endforeach
                 </div>
             </div>
-        </div>
-    </section>
-    {{-- event --}}
-    <section id="event" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Tanggal Acara</h2>
-            <p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
-
-            @livewire('partial.countdown')
-
-            <div class="grid md:grid-cols-2 gap-4">
-                @foreach ($undangan->events as $event)
-                    <div class="card card-compact border-0 bg-transparent">
-                        <div class="card-body">
-                            <figure>
-                                <iframe class="w-full aspect-video rounded-box" frameborder="0"
-                                    src="https://maps.google.com/maps?q={{ $event->location_name }}&amp;output=embed"></iframe>
-                            </figure>
-                            <div class="flex flex-col items-center gap-2">
-                                <h5 class="card-title text-center">{{ $event->name }}</h5>
-                                <p class="text-base">{{ $event->location_name }} tanggal
-                                    {{ $event->datetime->format('d F Y \j\a\m H:i') }} - selesai
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
     {{-- moment kami --}}
-    <section id="moment" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Moment Kami</h2>
+    @if ($undangan->can('photo prewedding'))
+        <section id="moment" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Moment Kami</h2>
 
-            <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
+                <p>Setiap momen adalah kisah abadi, inilah potongan perjalanan cinta kami sebelum hari bahagia tiba.</p>
 
-            <div class="columns-2 md:columns-2 lg:columns-3 space-y-4">
-                @foreach ($undangan->galleries->pluck('filename') as $image)
-                    <div class="break-inside-avoid">
-                        <img src="{{ Storage::url($image) }}" alt="" class="w-full rounded-box">
-                    </div>
-                @endforeach
+                <div class="columns-2 md:columns-2 lg:columns-3 space-y-4">
+                    @foreach ($undangan->galleries->pluck('filename') as $image)
+                        <div class="break-inside-avoid">
+                            <img src="{{ Storage::url($image) }}" alt="" class="w-full rounded-box">
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     {{-- kisah --}}
-    <section id="kisah" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Perjalanan kisah cinta</h2>
-            <p>Setiap langkah dalam perjalanan cinta kami menyimpan cerita berharga. Di sini, kami berbagi momen
-                istimewa dari awal pertemuan hingga hari bahagia.</p>
+    @if ($undangan->can('kisah cinta'))
+        <section id="kisah" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Perjalanan kisah cinta</h2>
+                <p>Setiap langkah dalam perjalanan cinta kami menyimpan cerita berharga. Di sini, kami berbagi momen
+                    istimewa dari awal pertemuan hingga hari bahagia.</p>
 
 
-            <ol class="text-left space-y-6">
-                @foreach ($undangan->kisahs as $kisah)
-                    <li class="space-y-2">
-                        <h5 class="font-semibold">{{ $kisah->title }}</h5>
-                        <p>{{ $kisah->content }}</p>
-                    </li>
-                @endforeach
-            </ol>
-        </div>
-    </section>
+                <ol class="text-left space-y-6">
+                    @foreach ($undangan->kisahs as $kisah)
+                        <li class="space-y-2">
+                            <h5 class="font-semibold">{{ $kisah->title }}</h5>
+                            <p>{{ $kisah->content }}</p>
+                        </li>
+                    @endforeach
+                </ol>
+            </div>
+        </section>
+    @endif
     {{-- ucapan --}}
-    <section id="ucapan" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Ucapan Syukur</h2>
+    @if ($undangan->can('rsvp dan ucapan'))
+        <section id="ucapan" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Ucapan Syukur</h2>
 
-            <p>Kami bersyukur atas kehadiran serta ucapan selamat dari tamu yang membuat hari istimewa kami semakin
-                berarti.</p>
+                <p>Kami bersyukur atas kehadiran serta ucapan selamat dari tamu yang membuat hari istimewa kami semakin
+                    berarti.</p>
 
-            <div class="flex flex-col text-left text-base w-full">
-                @foreach ($undangan->tamus->take(4) as $tamu)
-                    <div class="chat chat-end">
-                        <div class="chat-bubble chat-bubble-accent">
-                            <div class="chat-header">
-                                <span class="font-bold">{{ $tamu->name }}</span>
-                            </div>
-                            {{ $tamu->message }}
-                        </div>
-                    </div>
-                    @if ($tamu->reply)
-                        <div class="chat chat-start">
-                            <div class="chat-bubble chat-bubble-secondary">
+                <div class="flex flex-col text-left text-base w-full">
+                    @foreach ($undangan->tamus->take(4) as $tamu)
+                        <div class="chat chat-end">
+                            <div class="chat-bubble chat-bubble-accent">
                                 <div class="chat-header">
-                                    <span class="font-bold">{{ $undangan->name }}</span>
+                                    <span class="font-bold">{{ $tamu->name }}</span>
                                 </div>
-                                {{ $tamu->reply }}
+                                {{ $tamu->message }}
                             </div>
                         </div>
-                    @endif
-                @endforeach
-            </div>
+                        @if ($tamu->reply)
+                            <div class="chat chat-start">
+                                <div class="chat-bubble chat-bubble-secondary">
+                                    <div class="chat-header">
+                                        <span class="font-bold">{{ $undangan->name }}</span>
+                                    </div>
+                                    {{ $tamu->reply }}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
 
-            <button class="btn btn-primary btn-circle">
-                <x-tabler-edit />
-            </button>
-        </div>
-    </section>
+                <button class="btn btn-primary btn-circle">
+                    <x-tabler-edit />
+                </button>
+            </div>
+        </section>
+    @endif
     {{-- live streaming --}}
-    <section id="streaming" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Saksikan Momen Berharga Kami</h2>
-            <p>Nikmati momen bahagia kami secara langsung! Temukan tautan di bawah ini untuk menyaksikan prosesi
-                akad
-                dan resepsi, sehingga Anda bisa ikut merayakan cinta kami meski dari jauh.</p>
-
-            <div class="grid grid-cols-3 gap-6">
-                @foreach ($undangan->streamings as $stream)
-                    <div class="card bg-transparent border-0">
-                        <div class="card-body">
-                            <div class="avatar">
-                                <div class="w-16">
-                                    <img src="{{ $stream->sosmed->image }}" alt="" class="w-full">
-                                </div>
-                            </div>
-                            <a href="{{ $stream->url }}">
-                                {{ $stream->sosmed->name }}
-                            </a>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-    {{-- hadiah --}}
-    <section id="hadiah" class="card">
-        <div class="card-body items-center text-center">
-            <h2>Hadiah kasih</h2>
-            <p>Jika Anda ingin memberikan hadiah, kami menyediakan alamat pengiriman dan nomor rekening untuk ucapan
-                selamat. Kehadiran Anda adalah anugerah terindah bagi kami.</p>
-        </div>
-    </section>
-    {{-- protokol --}}
-    <section id="protokol" class="card">
-        <div class="card-body items-center text-center">
-            <div class="space-y-10">
-                <h2>Protokol kesehatan</h2>
-                <p>Dalam upaya mengurangi penyebaran Covid 19 pada masa pandemi, kami harapkan kedatangan para tamu
-                    undangan agar menjalankan protokol yang berlaku.</p>
+    @if ($undangan->can('live streaming'))
+        <section id="streaming" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Saksikan Momen Berharga Kami</h2>
+                <p>Nikmati momen bahagia kami secara langsung! Temukan tautan di bawah ini untuk menyaksikan prosesi
+                    akad
+                    dan resepsi, sehingga Anda bisa ikut merayakan cinta kami meski dari jauh.</p>
 
                 <div class="grid grid-cols-3 gap-6">
-                    <div class="flex flex-col justify-center items-center gap-4">
-                        <img src="{{ url('prokes/washhand.png') }}" alt="" class="w-24">
-                        <p>Mencuci tangan</p>
-                    </div>
-                    <div class="flex flex-col justify-center items-center gap-4">
-                        <img src="{{ url('prokes/distancing.png') }}" alt="" class="w-24">
-                        <p>Menjaga jarak</p>
-                    </div>
-                    <div class="flex flex-col justify-center items-center gap-4">
-                        <img src="{{ url('prokes/wearmask.png') }}" alt="" class="w-24">
-                        <p>Mengenakan masker</p>
+                    @foreach ($undangan->streamings as $stream)
+                        <div class="card bg-transparent border-0">
+                            <div class="card-body">
+                                <div class="avatar">
+                                    <div class="w-16">
+                                        <img src="{{ $stream->sosmed->image }}" alt="" class="w-full">
+                                    </div>
+                                </div>
+                                <a href="{{ $stream->url }}">
+                                    {{ $stream->sosmed->name }}
+                                </a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+    {{-- hadiah --}}
+    @if ($undangan->can('hadiah dan rekening'))
+        <section id="hadiah" class="card">
+            <div class="card-body items-center text-center">
+                <h2>Hadiah kasih</h2>
+                <p>Jika Anda ingin memberikan hadiah, kami menyediakan alamat pengiriman dan nomor rekening untuk ucapan
+                    selamat. Kehadiran Anda adalah anugerah terindah bagi kami.</p>
+            </div>
+        </section>
+    @endif
+    {{-- protokol --}}
+    @if ($undangan->can('protokol kesehatan'))
+        <section id="protokol" class="card">
+            <div class="card-body items-center text-center">
+                <div class="space-y-10">
+                    <h2>Protokol kesehatan</h2>
+                    <p>Dalam upaya mengurangi penyebaran Covid 19 pada masa pandemi, kami harapkan kedatangan para tamu
+                        undangan agar menjalankan protokol yang berlaku.</p>
+
+                    <div class="grid grid-cols-3 gap-6">
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <img src="{{ url('prokes/washhand.png') }}" alt="" class="w-24">
+                            <p>Mencuci tangan</p>
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <img src="{{ url('prokes/distancing.png') }}" alt="" class="w-24">
+                            <p>Menjaga jarak</p>
+                        </div>
+                        <div class="flex flex-col justify-center items-center gap-4">
+                            <img src="{{ url('prokes/wearmask.png') }}" alt="" class="w-24">
+                            <p>Mengenakan masker</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
     {{-- terimakasih --}}
     <section id="terimakasih" class="card min-h-screen">
         <div class="card-body">

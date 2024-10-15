@@ -1,6 +1,6 @@
 <div class="card max-w-sm border-0">
     <form class="card-body" wire:submit="login">
-        <div class="card-title">Login</div>
+        <div class="card-title">Masuk ke arunikasih</div>
         <div class="py-4 space-y-1">
             <label @class([
                 'input input-bordered flex items-center gap-2',
@@ -26,7 +26,7 @@
         </div>
         <div class="divider my-6 text-xs opacity-50">Login dengan cara lain</div>
         <div class="card-actions">
-            <button type="button" class="btn btn-block">
+            <button class="btn btn-block">
                 <img src="{{ url('images/g-logo.png') }}" alt="" class="size-5">
                 <span>Login dengan google</span>
             </button>

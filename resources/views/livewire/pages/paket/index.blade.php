@@ -37,7 +37,13 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->kategori->name }}</td>
                         <td>{{ $data->name }}</td>
-                        <td class="text-success">{{ Number::currency($data->price, 'IDR') }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span
+                                    class="text-xs opacity-50 line-through">{{ Number::format($data->before_discount ?? 0, locale: 'de') }}</span>
+                                <span class="text-success">{{ Number::format($data->price, locale: 'de') }}</span>
+                            </div>
+                        </td>
                         <td>{{ Str::limit($data->description, 40) }}</td>
                         <td>{{ $data->fiturs()->count() }}</td>
                         @canany(['paket.edit', 'paket.delete'])

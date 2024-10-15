@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('pakets', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('before_discount');
             $table->integer('price');
             $table->string('description');
             $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();

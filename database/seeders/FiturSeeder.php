@@ -21,6 +21,11 @@ class FiturSeeder extends Seeder
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
             ],
             [
+                'name' => 'intro undangan',
+                'description' => 'Ucapan salam dari pemilik undangan kepada tamu',
+                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+            ],
+            [
                 'name' => 'data pengantin',
                 'description' => 'data pengantin pria dan pengantin wanita',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
@@ -41,7 +46,7 @@ class FiturSeeder extends Seeder
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
             ],
             [
-                'name' => 'ucapan dan doa',
+                'name' => 'rsvp dan ucapan',
                 'description' => 'ucapan selamat atau doa dan kehadiran dari tamu yang menerima undangan',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
             ],
@@ -53,6 +58,11 @@ class FiturSeeder extends Seeder
             [
                 'name' => 'hadiah dan rekening',
                 'description' => 'alamat pengiriman hadiah dan nomor rekening',
+                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+            ],
+            [
+                'name' => 'protokol kesehatan',
+                'description' => 'Protokol kesehatan Covid 19',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
             ]
         ];

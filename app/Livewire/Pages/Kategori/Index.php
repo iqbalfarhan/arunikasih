@@ -15,7 +15,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.kategori.index', [
-            'datas' => Kategori::get()
+            'datas' => Kategori::withCount('pakets', 'undangans')->get()
         ]);
     }
 }

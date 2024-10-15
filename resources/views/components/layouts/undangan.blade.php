@@ -17,8 +17,9 @@
                 @livewire('partial.detailnav', [
                     'undangan' => $undangan,
                 ])
-                @if (!$undangan->paid)
-                    <div role="alert" class="alert alert-error rounded-none">
+                @if ($undangan->paid == false)
+                    <div role="alert"
+                        class="alert bg-gradient-to-r text-error-content from-error to-warning rounded-none">
                         <x-tabler-exclamation-circle />
                         <p>Hai, anda belum menyelesaikan pembayaran undangan ini.</p>
                         <a href="{{ route('pembayaran.show', ['pembayaran' => $undangan->pembayaran->id]) }}"

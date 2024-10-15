@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Pembayaran;
+use App\Models\Undangan;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +14,11 @@ class PembayaranSeeder extends Seeder
      */
     public function run(): void
     {
-        Pembayaran::factory(10)->create();
+        $undangans = Undangan::pluck('id');
+        foreach ($undangans as $undangan_id) {
+            Pembayaran::factory()->create([
+                'undangan_id' => $undangan_id
+            ]);
+        }
     }
 }

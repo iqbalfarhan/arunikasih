@@ -17,6 +17,8 @@
             <thead>
                 <th>No</th>
                 <th>Name</th>
+                <th>Paket</th>
+                <th>Undangan</th>
                 @canany(['kategori.edit', 'kategori.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -26,6 +28,8 @@
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->name }}</td>
+                        <td>{{ $data->pakets_count }}</td>
+                        <td>{{ $data->undangans_count }}</td>
                         @canany(['kategori.edit', 'kategori.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">

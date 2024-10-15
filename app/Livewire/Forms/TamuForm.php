@@ -13,9 +13,9 @@ class TamuForm extends Form
 
     public $name;
     public $undangan_id;
-    public $present;
-    public $message;
-    public $reply;
+    public $present = false;
+    public $message = "";
+    public $reply = "";
 
     public function setTamu(Tamu $tamu){
         $this->tamu = $tamu;
@@ -31,8 +31,8 @@ class TamuForm extends Form
         $valid = $this->validate([
             'name' => 'required',
             'undangan_id' => 'required',
-            'present' => 'required',
-            'message' => 'required',
+            'present' => '',
+            'message' => '',
             'reply' => '',
         ]);
 

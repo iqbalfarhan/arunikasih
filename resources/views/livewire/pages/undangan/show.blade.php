@@ -4,6 +4,12 @@
         'title' => 'Detail undangan',
     ])
 
+    @livewire('pages.undangan.card', ['undangan' => $undangan])
+
+    @livewire('partial.header', [
+        'title' => 'Detail undangan',
+    ])
+
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
@@ -49,17 +55,19 @@
                 <p class="text-sm opacity-50 line-clamp-2">Bagan yang dicheck akan tampil pada undangan anda
                 </p>
                 <ul>
-                    @foreach ($partials as $item => $checked)
-                        <li>
-                            <div class="form-control">
-                                <label class="label cursor-pointer justify-start gap-3">
-                                    <input type="checkbox" wire:model="partials.{{ $item }}"
-                                        class="checkbox checkbox-sm" />
-                                    <span class="label-text">{{ $item }}</span>
-                                </label>
-                            </div>
-                        </li>
-                    @endforeach
+                    @if ($partials)
+                        @foreach ($partials as $item => $checked)
+                            <li>
+                                <div class="form-control">
+                                    <label class="label cursor-pointer justify-start gap-3">
+                                        <input type="checkbox" wire:model="partials.{{ $item }}"
+                                            class="checkbox checkbox-sm" />
+                                        <span class="label-text">{{ $item }}</span>
+                                    </label>
+                                </div>
+                            </li>
+                        @endforeach
+                    @endif
                 </ul>
 
                 <div class="card-actions pt-6">

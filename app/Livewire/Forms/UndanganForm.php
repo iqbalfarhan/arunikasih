@@ -76,6 +76,7 @@ class UndanganForm extends Form
 
         Pembayaran::factory()->create([
             'undangan_id' => $undangan->id,
+            'confirmed' => false
         ]);
 
         $this->reset();

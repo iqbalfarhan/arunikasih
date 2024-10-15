@@ -14,21 +14,32 @@
                     ]) wire:model.live="form.name"
                         placeholder="Nama lengkap tamu" />
                 </label>
-                <label class="form-control">
-                    <div class="label">
-                        <span class="label-text">Ucapan dari tamu</span>
-                    </div>
-                    <p class="text-sm p-4 rounded-box bg-base-300">{{ $form->message }}</p>
-                </label>
-                <label class="form-control">
-                    <div class="label">
-                        <span class="label-text">Reply ucapan</span>
-                    </div>
-                    <textarea type="text" @class([
-                        'textarea textarea-bordered',
-                        'textarea-error' => $errors->first('form.reply'),
-                    ]) wire:model.live="form.reply" rows="5" placeholder="Balasan"></textarea>
-                </label>
+
+                @if ($undangan)
+                    <p class="text-sm">
+                        {{ $undangan->link }}?{{ http_build_query(['yth' => $form->name]) }}
+                    </p>
+                @endif
+
+                @if ($form->message)
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Ucapan dari tamu</span>
+                        </div>
+                        <div class="chat chat-end">
+                            <div class="chat-bubble">{{ $form->message }}</div>
+                        </div>
+                    </label>
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Reply ucapan</span>
+                        </div>
+                        <textarea type="text" @class([
+                            'textarea textarea-bordered',
+                            'textarea-error' => $errors->first('form.reply'),
+                        ]) wire:model.live="form.reply" rows="5" placeholder="Balasan"></textarea>
+                    </label>
+                @endif
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

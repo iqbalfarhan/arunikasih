@@ -31,6 +31,16 @@
                     </label>
                     <label class="form-control">
                         <div class="label">
+                            <span class="label-text">harga sebelum diskon</span>
+                        </div>
+                        <input type="text" @class([
+                            'input input-bordered',
+                            'input-error' => $errors->first('form.before_discount'),
+                        ]) wire:model="form.before_discount"
+                            placeholder="Nama lengkap paket" />
+                    </label>
+                    <label class="form-control">
+                        <div class="label">
                             <span class="label-text">harga paket</span>
                         </div>
                         <input type="text" @class([

@@ -8,12 +8,15 @@
                     <div class="label">
                         <span class="label-text">Nama pembayaran</span>
                     </div>
-                    <input type="text" @class([
-                        'input input-bordered',
-                        'input-error' => $errors->first('form.name'),
-                    ]) wire:model="form.name"
-                        placeholder="Nama lengkap pembayaran" />
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.confirmed'),
+                    ]) wire:model="form.confirmed">
+                        <option value="0">Belum dikonfirmasi</option>
+                        <option value="1">Dikonfirmasi</option>
+                    </select>
                 </label>
+
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

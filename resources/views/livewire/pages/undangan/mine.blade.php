@@ -15,29 +15,35 @@
     <div class="grid md:grid-cols-4 gap-6">
         @foreach ($datas as $data)
             <a href="{{ route('undangan.show', $data) }}"
-                class="card bg-gradient-to-br from-base-100 to-base-300 hover:opacity-75"
+                class="card card-compact bg-base-200 hover:opacity-75 border-0"
                 data-theme="{{ $data->tema->name ?? '' }}">
-                <div class="card-body space-y-20">
-                    <div class="flex justify-between">
-                        <div class="avatar">
-                            <div
-                                class="ring-primary ring-offset-base-200 w-16 bg-neutral rounded-full ring ring-offset-2">
-                                <img src="https://robohash.org/{{ $data->name }}" alt="">
-                            </div>
+                <div class="card-body space-y-12">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</span>
+                            <h3 class="font-bold">{{ $data->name }}</h3>
                         </div>
-
                         <div @class([
                             'badge badge-sm badge-error',
                             '!badge-success' => $data->paid,
                         ])>{{ $data->paid ? 'paid' : 'unpaid' }}</div>
                     </div>
-                    <div class="space-y-4">
-                        <div>
-                            <span class="text-xs opacity-50">{{ $data->kategori->name ?? '' }}</span>
-                            <h3 class="font-bold">{{ $data->name }}</h3>
+                    <div class="flex flex-col justify-between items-center">
+                        <div class="flex relative justify-center items-center">
+                            <img src="{{ Storage::url($data->ornament->ring) }}" alt="" class="w-32 z-10">
+                            <div class="avatar absolute">
+                                <div class="w-24 rounded-full">
+                                    <img src="{{ $data->image }}" alt="">
+                                </div>
+                            </div>
                         </div>
-                        <p class="text-xs opacity-50 line-clamp-3">
-                            {{ implode('. ', $data->paket->fiturs()->pluck('name')->toArray()) }}</p>
+                    </div>
+                    <div class="space-y-4">
+                        @if ($data->partials)
+                            <p class="text-xs opacity-50 line-clamp-3">
+                                {{ implode(', ', array_keys($data->partials)) }}
+                            </p>
+                        @endif
 
                         <div class="text-xs">{{ $data->created_at->diffForHumans() }}</div>
                     </div>

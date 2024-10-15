@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('confirmed')->default(false);
             $table->timestamp('confirmed_at')->nullable();
             $table->string('evidence')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
