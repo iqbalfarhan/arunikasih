@@ -49,7 +49,8 @@ class Actions extends Component
         $this->redirect(route('login'), navigate:true);
     }
 
-    public function simpan(){
+    public function simpan()
+    {
         if ($this->filename) {
             $this->form->filename = $this->filename->store($this->form->undangan_id);
         }

@@ -25,8 +25,10 @@ class UndanganFactory extends Factory
     {
         $title = implode(" ", [fake()->firstNameMale(), '&', fake()->firstNameFemale()]);
         $kat_id = fake()->randomElement(Kategori::pluck('id'));
+
+        $name = $kat_id == 1 ? $title :fake()->name();
         return [
-            'name' => $title,
+            'name' => $name,
             'slug' => Str::slug($title),
             'user_id' => fake()->randomElement(User::pluck('id')),
             'tema_id' => fake()->randomElement(Tema::pluck('id')),

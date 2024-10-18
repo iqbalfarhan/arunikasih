@@ -105,6 +105,11 @@ class Undangan extends Model
         return $this->hasMany(Streaming::class);
     }
 
+    public function hadiahs()
+    {
+        return $this->hasMany(Hadiah::class);
+    }
+
     public function pembayaran()
     {
         return $this->hasOne(Pembayaran::class);

@@ -25,7 +25,7 @@ class PembayaranForm extends Form
         $this->undangan_id = $pembayaran->undangan_id;
         $this->via = $pembayaran->via;
         $this->amount = $pembayaran->amount;
-        $this->confirmed = $pembayaran->confirmed;
+        $this->confirmed = $pembayaran->confirmed ? "1" : "0";
         $this->confirmed_at = $pembayaran->confirmed_at;
         $this->evidence = $pembayaran->evidence;
         $this->notes = $pembayaran->notes;
@@ -53,16 +53,14 @@ class PembayaranForm extends Form
     public function update(){
         $valid = $this->validate([
             'undangan_id' => 'required',
-            'via' => 'required',
-            'amount' => 'required',
+            'via' => '',
+            'amount' => '',
             'confirmed' => 'required',
-            'confirmed_at' => 'required',
+            'confirmed_at' => '',
             'notes' => '',
         ]);
 
-        if($this->confirmed == false){
-            $valid['confirmed_at'] = null;
-        }
+        $valid['confirmed_at'] = $this->confirmed ? now() : null;
 
         if ($this->evidence) {
             $valid['evidence'] = $this->evidence;

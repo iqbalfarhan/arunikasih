@@ -27,6 +27,7 @@ class Actions extends Component
     #[On("editPaket")]
     public function editPaket(Paket $paket)
     {
+        $this->features = $paket->fiturs()->pluck('id')->toArray();
         $this->show = true;
         $this->form->setPaket($paket);
     }
@@ -60,6 +61,8 @@ class Actions extends Component
         else{
             $this->form->store();
         }
+
+        $this->features = [];
 
         $this->resetForm();
         $this->alert('success', 'Data paket berhasil disimpan');

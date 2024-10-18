@@ -22,11 +22,10 @@
             </div>
         </div>
         <div class="space-y-4">
-            @if ($undangan->partials)
-                <p class="text-xs opacity-50 line-clamp-3">
-                    {{ implode(', ', array_keys($undangan->partials)) }}
-                </p>
-            @endif
+            <p class="text-xs opacity-50 line-clamp-3">
+                paket {{ $undangan->paket->name ?? 'tidak ada paket' }}
+                {{ implode(', ', array_keys($undangan->partials ?? [])) }}
+            </p>
 
             <div class="text-xs">{{ $undangan->created_at->diffForHumans() }}</div>
         </div>

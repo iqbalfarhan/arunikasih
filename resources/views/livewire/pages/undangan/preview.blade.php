@@ -11,7 +11,7 @@
             @endif
             <p>Undangan {{ $undangan->kategori->name }}</p>
             <div class="flex relative justify-center items-center">
-                <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
+                <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
                 <div class="avatar absolute">
                     <div class="w-40 rounded-full">
                         <img src="{{ $undangan->image }}" alt="">
@@ -36,7 +36,7 @@
             <div class="space-y-6">
                 <p>Undangan {{ $undangan->kategori->name }}</p>
                 <div class="flex relative justify-center items-center">
-                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
+                    <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
                     <div class="avatar absolute">
                         <div class="w-40 rounded-full">
                             <img src="{{ $undangan->image }}" alt="">
@@ -71,8 +71,8 @@
                             <div class="card border-0 bg-transparent" wire:transition>
                                 <div class="card-body text-center items-center space-y-2">
                                     <div class="flex relative justify-center items-center">
-                                        <img src="{{ Storage::url($undangan->ornament->ring) }}" alt=""
-                                            class="w-48 z-10">
+                                        <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt=""
+                                            class="w-48 h-48 z-10">
                                         <div class="avatar absolute">
                                             <div class="w-40 rounded-full">
                                                 <img src="{{ $pengantin->image }}" alt="">
@@ -235,6 +235,37 @@
                 <h2>Hadiah kasih</h2>
                 <p>Jika Anda ingin memberikan hadiah, kami menyediakan alamat pengiriman dan nomor rekening untuk ucapan
                     selamat. Kehadiran Anda adalah anugerah terindah bagi kami.</p>
+
+                <div class="flex flex-col gap-3">
+                    @foreach ($undangan->hadiahs as $hadiah)
+                        <div class="card card-compact border-0 bg-base-200 max-w-lg">
+                            <div class="card-body">
+                                <div class="flex justify-start w-full gap-3">
+                                    @if ($hadiah->type == 'rekening')
+                                        <div class="avatar">
+                                            <div class="size-12 rounded-box">
+                                                <img src="{{ $hadiah->bank?->image }}" alt=""
+                                                    class="w-full">
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="avatar placeholder">
+                                            <div class="size-12 rounded-box bg-primary">
+                                                <x-tabler-home class="size-6 text-primary-content" />
+                                            </div>
+                                        </div>
+                                    @endif
+                                    <div class="text-left">
+                                        <h4 class="card-title">
+                                            {{ $hadiah->type == 'rekening' ? $hadiah->bank->name : 'Alamat rumah' }}
+                                        </h4>
+                                        <p>{{ $hadiah->value }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </section>
     @endif
@@ -272,7 +303,7 @@
                 <h2>Terimakasih</h2>
 
                 <div class="flex relative justify-center items-center">
-                    <img src="{{ Storage::url($undangan->ornament->ring) }}" alt="" class="w-48 z-10">
+                    <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
                     <div class="avatar absolute">
                         <div class="w-40 rounded-full">
                             <img src="{{ $undangan->image }}" alt="">

@@ -28,10 +28,15 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->undangan->user->name ?? '' }}</td>
-                        <td>{{ $data->undangan->name ?? '' }}</td>
-                        <td>Rp. {{ Number::format($data->amount, locale: 'de') }}</td>
+                        <td>{{ Str::limit($data->undangan->user->name ?? '', '20') }}</td>
                         <td>
+                            <a href="{{ route('undangan.show', $data->undangan) }}" class="flex flex-col" wire:navigate>
+                                <span class="text-xs opacity-75">{{ $data->undangan->kategori->name ?? '' }}</span>
+                                <span>{{ $data->undangan->name ?? '' }}</span>
+                            </a>
+                        </td>
+                        <td>Rp. {{ Number::format($data->amount, locale: 'de') }}</td>
+                        <td @class(['text-success' => $data->confirmed])>
                             {{ $data->confirmed ? $data->confirmed_at->format('d F Y H:i:s') : '' }}
                         </td>
                         @canany(['pembayaran.edit', 'pembayaran.delete'])

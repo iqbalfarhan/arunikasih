@@ -4,12 +4,6 @@
         'title' => 'Detail undangan',
     ])
 
-    @livewire('pages.undangan.card', ['undangan' => $undangan])
-
-    @livewire('partial.header', [
-        'title' => 'Detail undangan',
-    ])
-
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
@@ -22,15 +16,23 @@
                 </p>
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-theme="{{ $undangan->tema->name }}">
             <div class="card-body">
-                <h3 class="card-title">
-                    <x-tabler-users class="size-5" />
-                    <span>Tamu undangan</span>
-                </h3>
-                <p class="text-sm opacity-50 line-clamp-2">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                    Illum, quos?
-                </p>
+                <div class="flex justify-between w-full items-center">
+                    <a href="{{ route('undangan.setting', $undangan->id) }}">
+                        <h4 class="text-primary card-title capitalize flex items-center gap-2">
+                            <x-tabler-palette class="size-5" />
+                            <span>Tema {{ $undangan->tema->name }}</span>
+                        </h4>
+                    </a>
+                    <div class="flex gap-1 bg-base-200 p-1 rounded-box">
+                        @foreach (['bg-primary', 'bg-secondary', 'bg-accent', 'bg-info'] as $color)
+                            <span class="size-3 rounded-box {{ $color }}"></span>
+                        @endforeach
+                    </div>
+                </div>
+                <p class="text-sm opacity-50 line-clamp-2">Menggunakan tema {{ $undangan->tema->name }} dan ornament
+                    {{ $undangan->ornament->name }}</p>
             </div>
         </div>
         <div class="card">
@@ -70,8 +72,12 @@
                     @endif
                 </ul>
 
-                <div class="card-actions pt-6">
-                    <button wire:click="changeBagan" class="btn btn-primary">
+                <div class="card-actions pt-6 justify-between">
+                    <button wire:click="resetBagan" class="btn btn-primary btn-sm">
+                        <x-tabler-refresh class="size-4" />
+                        <span>Reset</span>
+                    </button>
+                    <button wire:click="changeBagan" class="btn btn-primary btn-sm">
                         <x-tabler-check class="size-4" />
                         <span>Simpan</span>
                     </button>

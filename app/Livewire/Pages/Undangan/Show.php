@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Undangan;
 
+use App\Models\Paket;
 use App\Models\Undangan;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\Layout;
@@ -22,6 +23,18 @@ use LivewireAlert;
     public function changeBagan()
     {
         $this->undangan->partials = $this->partials;
+        $this->undangan->save();
+        $this->alert('success', 'Data bagan undangan diperbarui');
+    }
+
+    public function resetBagan()
+    {
+        $newBagan = [];
+        foreach(Paket::find($this->undangan->paket_id)->fiturs()->pluck('name') as $fitur){
+            $newBagan[$fitur] = true;
+        }
+        $this->undangan->partials = $newBagan;
+
         $this->undangan->save();
         $this->alert('success', 'Data bagan undangan diperbarui');
     }

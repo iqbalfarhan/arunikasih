@@ -7,7 +7,7 @@
     <div class="card divide-y-2 divide-base-300">
         <div class="card-body space-y-4">
             <div class="flex justify-between">
-                <h3 class="card-title">Tema warna</h3>
+                <h3 class="card-title">Tema warna undangan</h3>
                 <h3 class="card-title text-primary bg-transparent text-sm capitalize"
                     data-theme="{{ $undangan->tema->name }}">
                     {{ $undangan->tema->name }}

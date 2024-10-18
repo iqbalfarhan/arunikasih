@@ -29,7 +29,7 @@
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->type }}</td>
-                        <td>{{ $data->bank->name }}</td>
+                        <td>{{ $data->bank?->name }}</td>
                         <td>{{ $data->pic }}</td>
                         <td>{{ $data->value }}</td>
                         @canany(['hadiah.edit', 'hadiah.delete'])
