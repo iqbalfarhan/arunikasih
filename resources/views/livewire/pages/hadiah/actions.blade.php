@@ -6,12 +6,50 @@
             <div class="py-4 space-y-2">
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Nama hadiah</span>
+                        <span class="label-text">Tipe hadiah</span>
+                    </div>
+                    <select type="text" @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.type'),
+                    ]) wire:model.live="form.type">
+                        <option value="alamat">Alamat</option>
+                        <option value="rekening">Rekening</option>
+                    </select>
+                </label>
+                @if ($form->type == 'rekening')
+                    <label class="form-control">
+                        <div class="label">
+                            <span class="label-text">Nama bank</span>
+                        </div>
+                        <select type="text" @class([
+                            'select select-bordered',
+                            'select-error' => $errors->first('form.bank_id'),
+                        ]) wire:model="form.bank_id">
+                            <option value="">Pilih bank</option>
+                            @foreach ($banks as $bankid => $bankname)
+                                <option value="{{ $bankid }}">{{ $bankname }}</option>
+                            @endforeach
+                        </select>
+                    </label>
+                @endif
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Pemilik alamat atau rekening</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',
-                        'input-error' => $errors->first('form.name'),
-                    ]) wire:model="form.name"
+                        'input-error' => $errors->first('form.pic'),
+                    ]) wire:model="form.pic"
+                        placeholder="Nama pemilik" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Alamat atau nomor rekening</span>
+                    </div>
+                    <input type="text" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.value'),
+                    ]) wire:model="form.value"
                         placeholder="Nama lengkap hadiah" />
                 </label>
             </div>

@@ -298,8 +298,8 @@
     @endif
     {{-- terimakasih --}}
     <section id="terimakasih" class="card min-h-screen">
-        <div class="card-body">
-            <div class="space-y-10">
+        <div class="card-body items-center text-center">
+            <div class="space-y-6">
                 <h2>Terimakasih</h2>
 
                 <div class="flex relative justify-center items-center">

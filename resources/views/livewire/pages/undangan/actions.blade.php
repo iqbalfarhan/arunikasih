@@ -30,7 +30,7 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Tanggal acara</span>
+                        <span class="label-text">Tanggal countdown</span>
                     </div>
                     <input type="date" @class([
                         'input input-bordered',

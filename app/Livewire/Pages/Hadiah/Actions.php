@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Hadiah;
 
 use App\Livewire\Forms\HadiahForm;
+use App\Models\Bank;
 use App\Models\Hadiah;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
@@ -69,6 +70,8 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.hadiah.actions');
+        return view('livewire.pages.hadiah.actions', [
+            'banks' => Bank::pluck('name', 'id')
+        ]);
     }
 }

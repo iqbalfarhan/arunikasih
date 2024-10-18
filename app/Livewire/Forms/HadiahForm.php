@@ -12,7 +12,7 @@ class HadiahForm extends Form
     public ?Hadiah $hadiah;
 
     public $undangan_id;
-    public $type;
+    public $type = "rekening";
     public $bank_id;
     public $pic;
     public $value;
