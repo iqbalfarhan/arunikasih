@@ -29,7 +29,7 @@
                     <span>Tema Tampilan</span>
                 </a>
             </li>
-            @if (in_array('ucapan dan doa', $bagans))
+            @if (in_array('rsvp dan ucapan', $bagans))
                 <li>
                     <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
                         <x-tabler-users class="size-5" />

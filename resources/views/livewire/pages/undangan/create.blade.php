@@ -3,8 +3,15 @@
         'title' => 'Buat undangan baru',
     ])
 
+
     <div class="card h-fit">
         <div class="card-body">
+            <ul class="steps">
+                <li class="step step-primary">Register</li>
+                <li class="step step-primary">Choose plan</li>
+                <li class="step">Purchase</li>
+                <li class="step">Receive Product</li>
+            </ul>
             <h3 class="card-title">Kategori undangan</h3>
             <div class="grid grid-cols-3 gap-6 py-4">
                 <label class="form-control">

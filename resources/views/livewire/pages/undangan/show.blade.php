@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <p class="text-sm opacity-50 line-clamp-2">Menggunakan tema {{ $undangan->tema->name }} dan ornament
-                    {{ $undangan->ornament->name }}</p>
+                    {{ $undangan->ornament->name ?? '' }}</p>
             </div>
         </div>
         <div class="card">
@@ -48,7 +48,7 @@
                 </p>
             </div>
         </div>
-        <div class="card">
+        <div class="card h-fit">
             <div class="card-body">
                 <h3 class="card-title">
                     <x-tabler-list class="size-5" />
@@ -63,7 +63,7 @@
                                 <div class="form-control">
                                     <label class="label cursor-pointer justify-start gap-3">
                                         <input type="checkbox" wire:model="partials.{{ $item }}"
-                                            class="checkbox checkbox-sm" />
+                                            class="checkbox checkbox-xs" />
                                         <span class="label-text">{{ $item }}</span>
                                     </label>
                                 </div>
@@ -84,5 +84,49 @@
                 </div>
             </div>
         </div>
+
+        @if ($undangan->can('rsvp dan ucapan'))
+            <div class="col-span-2">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ route('undangan.guest', $undangan) }}">
+                            <h3 class="card-title">
+                                <x-tabler-users class="size-5" />
+                                <span>Status RSVP tamu</span>
+                            </h3>
+                        </a>
+                        <p class="text-sm opacity-50 line-clamp-2">Tamu yang berencana hadir 10 dari 100 undangan yang
+                            dikirim.</p>
+                    </div>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <thead>
+                                <th>No</th>
+                                <th class="w-full">Nama</th>
+                                <th>Kehadiran</th>
+                            </thead>
+                            <tbody>
+                                @foreach ($undangan->tamus as $tamu)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="flex flex-col">
+                                                <span>{{ $tamu->name }}</span>
+                                                <span class="text-xs opacity-50">{{ $tamu->message }}</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            @if ($tamu->present)
+                                                <span class="text-success">hadir</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
 </div>
