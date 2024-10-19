@@ -19,6 +19,16 @@ class Create extends Component
     use LivewireAlert;
     public UndanganForm $form;
 
+    public $steps = [
+        'kategori' => "Pilih kategori",
+        'paket' => "Pilih paket",
+        'name' => "Nama undangan",
+        'payment' => "Pembayaran",
+        'done' => "Edit undangan"
+    ];
+
+    public $step = 'kategori';
+
     public function simpan()
     {
         $this->form->slug = Str::slug($this->form->name);
@@ -41,9 +51,9 @@ class Create extends Component
     {
         return view('livewire.pages.undangan.create', [
             'kategoris' => Kategori::pluck('name', 'id'),
-            'pakets' => Paket::when($this->form->kategori_id, function($q){
+            'pakets' => $this->form->kategori_id ? Paket::when($this->form->kategori_id, function($q){
                 $q->where('kategori_id', $this->form->kategori_id);
-            })->pluck('name', 'id')
+            })->get() : []
         ]);
     }
 }
