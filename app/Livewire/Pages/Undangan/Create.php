@@ -29,6 +29,26 @@ class Create extends Component
 
     public $step = 'kategori';
 
+    public function nextStep()
+    {
+        $keys = array_keys($this->steps);
+        $currentIndex = array_search($this->step, $keys);
+
+        if ($currentIndex < count($keys) - 1) {
+            $this->step = $keys[$currentIndex + 1];
+        }
+    }
+
+    public function previousStep()
+    {
+        $keys = array_keys($this->steps);
+        $currentIndex = array_search($this->step, $keys);
+
+        if ($currentIndex > 0) {
+            $this->step = $keys[$currentIndex - 1];
+        }
+    }
+
     public function simpan()
     {
         $this->form->slug = Str::slug($this->form->name);

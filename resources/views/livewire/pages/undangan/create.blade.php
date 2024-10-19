@@ -10,7 +10,7 @@
         <div class="card-body">
             <ul class="steps steps-vertical md:steps-horizontal">
                 @foreach ($steps as $stepkey => $stepname)
-                    <li @class(['step', 'step-primary' => $stepkey == $step]) wire:click="set('step', '{{ $stepkey }}')">{{ $stepname }}
+                    <li @class(['step', 'step-primary' => $stepkey == $step])>{{ $stepname }}
                     </li>
                 @endforeach
             </ul>
@@ -37,7 +37,13 @@
         @endif
         @if ($step == 'paket')
             <div class="card-body space-y-4">
-                <h3 class="card-title">Paket undangan</h3>
+                <div class="flex flex-col gap-2">
+                    <h3 class="card-title">Paket undangan</h3>
+                    <p class="text-sm opacity-50">Silakan klik pada list kategori undangan berikut untuk undangan yang
+                        akan
+                        anda buat, kemudian klik selanjutnya.
+                    </p>
+                </div>
                 <div class="flex gap-4 flex-wrap justify-center">
                     <div class="grid md:grid-cols-3 gap-6">
                         @foreach ($pakets as $paket)
@@ -50,7 +56,6 @@
                                         <h3 class="card-title">{{ $paket->name }}</h3>
                                     </div>
                                     <p class="text-sm line-clamp-2 opacity-50">{{ $paket->description }}</p>
-
                                 </div>
                                 <div class="flex flex-col items-center justify-center py-4">
                                     <span
@@ -71,6 +76,16 @@
                                             @endforeach
                                         </ul>
                                     </div>
+                                </div>
+                                <div class="card-body">
+                                    <button @class([
+                                        'btn btn-block',
+                                        'btn-primary' => $form->paket_id == $paket->id,
+                                    ])
+                                        wire:click="set('form.paket_id', {{ $paket->id }})">
+                                        <x-tabler-click class="size-5" />
+                                        <span>Pilih paket ini</span>
+                                    </button>
                                 </div>
                             </div>
                         @endforeach
@@ -117,11 +132,11 @@
                     <span>Reset</span>
                 </button>
                 <div class="flex flex-col md:flex-row gap-3">
-                    <button class="btn" wire:click="set('step', 'kategori')">
+                    <button class="btn" wire:click="previousStep">
                         <x-tabler-arrow-left class="size-5" />
                         <span>Sebelumnya</span>
                     </button>
-                    <button class="btn btn-primary" wire:click="set('step', 'paket')">
+                    <button class="btn btn-primary" wire:click="nextStep">
                         <x-tabler-arrow-right class="size-5" />
                         <span>Selanjutnya</span>
                     </button>
