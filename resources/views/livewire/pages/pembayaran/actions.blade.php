@@ -5,16 +5,20 @@
             <div class="card-title">Form pembayaran</div>
             <div class="py-4 space-y-2">
                 <label class="form-control">
-                    <div class="label">
-                        <span class="label-text">Nama pembayaran</span>
+                    <div class="form-control">
+                        <label class="label cursor-pointer justify-start gap-2">
+                            <input type="radio" wire:model="form.confirmed" value="0"
+                                class="radio radio-error" />
+                            <span class="label-text">Unpaid belum dikonfirmasi</span>
+                        </label>
                     </div>
-                    <select @class([
-                        'select select-bordered',
-                        'select-error' => $errors->first('form.confirmed'),
-                    ]) wire:model="form.confirmed">
-                        <option value="0">Belum dikonfirmasi</option>
-                        <option value="1">Dikonfirmasi</option>
-                    </select>
+                    <div class="form-control">
+                        <label class="label cursor-pointer justify-start gap-2">
+                            <input type="radio" wire:model="form.confirmed" value="1"
+                                class="radio radio-success" />
+                            <span class="label-text">Paid sudah dikonfirmasi</span>
+                        </label>
+                    </div>
                 </label>
             </div>
             <div class="modal-action justify-between">

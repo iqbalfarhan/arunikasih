@@ -41,7 +41,7 @@ class UndanganForm extends Form
         $this->music_id = $undangan->music_id;
         $this->ornament_id = $undangan->ornament_id;
         $this->shared = $undangan->shared;
-        $this->event_date = $undangan->event_date->format('Y-m-d H:i:s');
+        $this->event_date = $undangan->event_date->format('Y-m-d H:i');
         $this->partials = $undangan->partials;
     }
 

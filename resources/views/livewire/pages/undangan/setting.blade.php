@@ -6,12 +6,12 @@
 
     <div class="card divide-y-2 divide-base-300">
         <div class="card-body space-y-4">
-            <div class="flex justify-between">
+            <div class="flex items-center gap-4">
                 <h3 class="card-title">Tema warna undangan</h3>
-                <h3 class="card-title text-primary bg-transparent text-sm capitalize"
-                    data-theme="{{ $undangan->tema->name }}">
-                    {{ $undangan->tema->name }}
-                </h3>
+                <button class="btn btn-xs btn-primary capitalize" data-theme="{{ $undangan->tema->name }}">
+                    <x-tabler-click class="size-4" />
+                    <span>{{ $undangan->tema->name }}</span>
+                </button>
             </div>
             <div class="h-full rounded-box">
                 <div class="grid md:grid-cols-4 gap-3">
@@ -38,7 +38,7 @@
         </div>
         <div class="card-body space-y-4">
             <h3 class="card-title">Pilih ornamen undangan</h3>
-            <div class="h-full max-h-80 overflow-y-auto scrollbar-hide rounded-box">
+            <div class="rounded-box">
                 <div class="grid md:grid-cols-4 gap-3">
                     @foreach ($ornaments as $ornament)
                         <div @class([

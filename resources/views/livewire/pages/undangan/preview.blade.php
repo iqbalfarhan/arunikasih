@@ -3,61 +3,67 @@
         @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id, 'light' => true])
     @endif
 
-    <input type="checkbox" id="my_modal_6" class="modal-toggle" @checked($cover) />
-    <div class="modal" role="dialog">
-        <div class="modal-box space-y-10 text-center flex flex-col items-center justify-center shadow-primary h-full">
-            @if ($undangan->ornament_id)
-                @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id, 'light' => false])
-            @endif
-            <p>Undangan {{ $undangan->kategori->name }}</p>
-            <div class="flex relative justify-center items-center">
-                <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
-                <div class="avatar absolute">
-                    <div class="w-40 rounded-full">
-                        <img src="{{ $undangan->image }}" alt="">
+    @if ($undangan->can('cover undangan'))
+        <input type="checkbox" id="my_modal_6" class="modal-toggle" @checked($cover) />
+        <div class="modal" role="dialog">
+            <div
+                class="modal-box space-y-10 text-center flex flex-col items-center justify-center shadow-primary h-full">
+                @if ($undangan->ornament_id)
+                    @livewire('partial.bgornament', ['ornament_id' => $undangan->ornament_id, 'light' => false])
+                @endif
+                <p>Undangan {{ $undangan->kategori->name }}</p>
+                <div class="flex relative justify-center items-center">
+                    <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
+                    <div class="avatar absolute">
+                        <div class="w-40 rounded-full">
+                            <img src="{{ $undangan->image }}" alt="">
+                        </div>
                     </div>
                 </div>
+                <h2>{{ $undangan->name }}</h2>
+                <div class="">
+                    @livewire('partial.countdown', ['tanggal' => $undangan->event_date])
+                    <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
+                </div>
+                <button wire:click="toggleCover" class="btn btn-primary z-10">
+                    <x-tabler-mail class="size-5" />
+                    <span>Buka undangan</span>
+                </button>
             </div>
-            <h2>{{ $undangan->name }}</h2>
-            <div class="">
-                @livewire('partial.countdown', ['tanggal' => $undangan->event_date])
-                <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
-            </div>
-            <button wire:click="toggleCover" class="btn btn-primary z-10">
-                <x-tabler-mail class="size-5" />
-                <span>Buka undangan</span>
-            </button>
         </div>
-    </div>
+    @endif
 
 
     @if ($undangan->kategori->name == 'pernikahan')
         {{-- intro --}}
-        <section id="cover" class="card min-h-screen">
-            <div class="card-body items-center text-center">
-                <div class="space-y-6">
-                    <p>Undangan {{ $undangan->kategori->name }}</p>
-                    <div class="flex relative justify-center items-center">
-                        <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt="" class="w-48 h-48 z-10">
-                        <div class="avatar absolute">
-                            <div class="w-40 rounded-full">
-                                <img src="{{ $undangan->image }}" alt="">
+        @if ($undangan->can('intro undangan'))
+            <section id="cover" class="card min-h-screen">
+                <div class="card-body items-center text-center">
+                    <div class="space-y-6">
+                        <p>Undangan {{ $undangan->kategori->name }}</p>
+                        <div class="flex relative justify-center items-center">
+                            <img src="{{ $undangan->ornament->default_ring ?? '' }}" alt=""
+                                class="w-48 h-48 z-10">
+                            <div class="avatar absolute">
+                                <div class="w-40 rounded-full">
+                                    <img src="{{ $undangan->image }}" alt="">
+                                </div>
                             </div>
                         </div>
+                        <h1>{{ $undangan->name }}</h1>
+                        <p>Assalamualaikum warohmatullohi wabarokatuh.</p>
+                        @if ($undangan->ayat)
+                            <div class="italic space-y-2">
+                                <p>“{{ $undangan->ayat->content }}”.</p>
+                                <p>(~ {{ $undangan->ayat->surah }} ~)</p>
+                            </div>
+                        @endif
+                        <p>Melalui undangan ini kami, mengundang bapak, ibu dan rekan sekalian untuk menghadiri acara
+                            pernikahan kami :</p>
                     </div>
-                    <h1>{{ $undangan->name }}</h1>
-                    <p>Assalamualaikum warohmatullohi wabarokatuh.</p>
-                    @if ($undangan->ayat)
-                        <div class="italic space-y-2">
-                            <p>“{{ $undangan->ayat->content }}”.</p>
-                            <p>(~ {{ $undangan->ayat->surah }} ~)</p>
-                        </div>
-                    @endif
-                    <p>Melalui undangan ini kami, mengundang bapak, ibu dan rekan sekalian untuk menghadiri acara
-                        pernikahan kami :</p>
                 </div>
-            </div>
-        </section>
+            </section>
+        @endif
 
         {{-- pengantin --}}
         @if ($undangan->can('data pengantin'))

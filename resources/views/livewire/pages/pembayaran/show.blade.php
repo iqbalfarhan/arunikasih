@@ -86,7 +86,7 @@
                                 <div class="flex-1 divide-y-2 divide-base-100 space-y-3">
                                     <div>
                                         <h3 class="font-bold">Iqbal farhan syuhada</h3>
-                                        <p>08999779527</p>
+                                        <p>0899 9779 527</p>
                                     </div>
                                 </div>
                             </div>
@@ -103,9 +103,9 @@
             <div class="card h-fit">
                 <form class="card-body space-y-4" wire:submit="simpan">
                     <h3 class="card-title">Konfirmasi pembayaran</h3>
-                    <p class="opacity-75 text-sm">isi form berikut ini untuk konfirmasi pembayaran apabila status
+                    <p class="opacity-75 text-sm">Isi form berikut ini untuk konfirmasi pembayaran. Apabila status
                         pembayaran
-                        undangan tidak berubah dalam waktu 10 menit.</p>
+                        undangan tidak berubah dalam waktu 10 menit, silakan hubungi admin arunikasih</p>
                     <div class="space-y-2">
                         <label class="form-control">
                             <div class="label">
@@ -144,7 +144,7 @@
                             <textarea @class([
                                 'textarea textarea-bordered',
                                 'textarea-error' => $errors->first('form.notes'),
-                            ]) wire:model="form.notes" placeholder="Tambahkan catatan transfer" rows="5"></textarea>
+                            ]) wire:model="form.notes" placeholder="Tambahkan catatan transfer" rows="3"></textarea>
                         </label>
                     </div>
                     <div class="card-actions">

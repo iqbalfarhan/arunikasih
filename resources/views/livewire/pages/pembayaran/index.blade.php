@@ -30,10 +30,13 @@
                         <td>{{ $no++ }}</td>
                         <td>{{ Str::limit($data->undangan->user->name ?? '', '20') }}</td>
                         <td>
-                            <a href="{{ route('undangan.show', $data->undangan) }}" class="flex flex-col" wire:navigate>
-                                <span class="text-xs opacity-75">{{ $data->undangan->kategori->name ?? '' }}</span>
-                                <span>{{ $data->undangan->name ?? '' }}</span>
-                            </a>
+                            @if ($data->undangan)
+                                <a href="{{ route('undangan.show', $data->undangan) }}" class="flex flex-col"
+                                    wire:navigate>
+                                    <span class="text-xs opacity-75">{{ $data->undangan->kategori->name ?? '' }}</span>
+                                    <span>{{ $data->undangan->name ?? '' }}</span>
+                                </a>
+                            @endif
                         </td>
                         <td>Rp. {{ Number::format($data->amount, locale: 'de') }}</td>
                         <td>
