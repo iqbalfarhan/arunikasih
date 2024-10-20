@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('description');
             $table->foreignId('kategori_id')->nullable()->constrained()->nullOnDelete();
+            $table->string('example')->nullable();
             $table->timestamps();
         });
     }

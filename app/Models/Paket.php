@@ -15,6 +15,7 @@ class Paket extends Model
         'before_discount',
         'description',
         'kategori_id',
+        'example',
     ];
 
     public function Kategori()

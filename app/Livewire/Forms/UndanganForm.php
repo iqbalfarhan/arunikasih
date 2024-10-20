@@ -66,8 +66,6 @@ class UndanganForm extends Form
             $valid['partials'][$fitur] = true;
         }
 
-        // dd($valid);
-
         if ($this->photo) {
             $valid['photo'] = $this->photo;
         }
@@ -90,12 +88,11 @@ class UndanganForm extends Form
             'tema_id' => 'required',
             'kategori_id' => 'required',
             'paket_id' => 'required',
-            'ayat_id' => 'required',
+            'ayat_id' => '',
             'music_id' => '',
             'ornament_id' => '',
             'shared' => 'required',
             'event_date' => '',
-            'partials' => '',
         ]);
 
         $valid['slug'] = Str::slug($this->name);

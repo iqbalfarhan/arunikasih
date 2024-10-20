@@ -16,6 +16,7 @@ class PaketForm extends Form
     public $price;
     public $description;
     public $kategori_id;
+    public $example;
 
     public function setPaket(Paket $paket){
         $this->paket = $paket;
@@ -25,6 +26,7 @@ class PaketForm extends Form
         $this->price = $paket->price;
         $this->description = $paket->description;
         $this->kategori_id = $paket->kategori_id;
+        $this->example = $paket->example;
     }
 
     public function store(){
@@ -34,6 +36,7 @@ class PaketForm extends Form
             'price' => 'required',
             'description' => 'required',
             'kategori_id' => 'required',
+            'example' => '',
         ]);
 
         Paket::create($valid);
@@ -48,6 +51,7 @@ class PaketForm extends Form
             'price' => 'required',
             'description' => 'required',
             'kategori_id' => 'required',
+            'example' => '',
         ]);
 
         $this->paket->update($valid);
