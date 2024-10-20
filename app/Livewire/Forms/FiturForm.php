@@ -21,7 +21,6 @@ class FiturForm extends Form
         $this->name = $fitur->name;
         $this->description = $fitur->description;
         $this->kategori_id = $fitur->kategori_id;
-        $this->default_value = json_encode($fitur->default_value);
     }
 
     public function store(){
@@ -29,7 +28,6 @@ class FiturForm extends Form
             'name' => 'required',
             'description' => 'required',
             'kategori_id' => 'required',
-            'default_value' => 'required',
         ]);
 
         Fitur::create($valid);
@@ -42,7 +40,6 @@ class FiturForm extends Form
             'name' => 'required',
             'description' => 'required',
             'kategori_id' => 'required',
-            'default_value' => 'required',
         ]);
 
         $this->fitur->update($valid);

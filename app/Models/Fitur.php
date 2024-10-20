@@ -13,15 +13,7 @@ class Fitur extends Model
         'name',
         'description',
         'kategori_id',
-        'default_value',
     ];
-
-    public function casts()
-    {
-        return [
-            'default_value' => 'array',
-        ];
-    }
 
     public function kategori()
     {

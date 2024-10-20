@@ -53,7 +53,7 @@ class UndanganForm extends Form
             'tema_id' => 'required',
             'kategori_id' => 'required',
             'paket_id' => 'required',
-            'ayat_id' => 'required',
+            'ayat_id' => '',
             'music_id' => '',
             'ornament_id' => '',
             'shared' => 'required',

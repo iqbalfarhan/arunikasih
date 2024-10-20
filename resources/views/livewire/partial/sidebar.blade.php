@@ -90,6 +90,30 @@
         <li>
             <h2 class="menu-title">Data master</h2>
             <ul>
+                @can('kategori.index')
+                    <li>
+                        <a href="{{ route('kategori.index') }}" @class(['active' => Route::is('kategori.index')]) wire:navigate>
+                            <x-tabler-tags class="size-5" />
+                            <span>Kategori Undangan</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('fitur.index')
+                    <li>
+                        <a href="{{ route('fitur.index') }}" @class(['active' => Route::is('fitur.index')]) wire:navigate>
+                            <x-tabler-list class="size-5" />
+                            <span>Daftar Fitur</span>
+                        </a>
+                    </li>
+                @endcan
+                @can('paket.index')
+                    <li>
+                        <a href="{{ route('paket.index') }}" @class(['active' => Route::is('paket.index')]) wire:navigate>
+                            <x-tabler-credit-card class="size-5" />
+                            <span>Paket & Harga</span>
+                        </a>
+                    </li>
+                @endcan
                 @can('music.index')
                     <li>
                         <a href="{{ route('music.index') }}" @class(['active' => Route::is('music.index')]) wire:navigate>
@@ -119,30 +143,6 @@
                         <a href="{{ route('sosmed.index') }}" @class(['active' => Route::is('sosmed.index')]) wire:navigate>
                             <x-tabler-message class="size-5" />
                             <span>Social Media</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('fitur.index')
-                    <li>
-                        <a href="{{ route('fitur.index') }}" @class(['active' => Route::is('fitur.index')]) wire:navigate>
-                            <x-tabler-list class="size-5" />
-                            <span>Daftar Fitur</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('paket.index')
-                    <li>
-                        <a href="{{ route('paket.index') }}" @class(['active' => Route::is('paket.index')]) wire:navigate>
-                            <x-tabler-credit-card class="size-5" />
-                            <span>Paket & Harga</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('kategori.index')
-                    <li>
-                        <a href="{{ route('kategori.index') }}" @class(['active' => Route::is('kategori.index')]) wire:navigate>
-                            <x-tabler-tags class="size-5" />
-                            <span>Kategori Undangan</span>
                         </a>
                     </li>
                 @endcan

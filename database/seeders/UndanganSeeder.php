@@ -13,6 +13,6 @@ class UndanganSeeder extends Seeder
      */
     public function run(): void
     {
-        Undangan::factory(10)->create();
+        Undangan::factory(1)->create();
     }
 }

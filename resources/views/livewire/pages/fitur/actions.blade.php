@@ -38,15 +38,6 @@
                         @endforeach
                     </select>
                 </label>
-                <label class="form-control">
-                    <div class="label">
-                        <span class="label-text">Default value</span>
-                    </div>
-                    <textarea type="text" @class([
-                        'textarea textarea-bordered',
-                        'textarea-error' => $errors->first('form.default_value'),
-                    ]) wire:model="form.default_value" placeholder="Default value"></textarea>
-                </label>
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

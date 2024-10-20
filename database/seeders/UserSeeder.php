@@ -25,9 +25,5 @@ class UserSeeder extends Seeder
             "password" => "user",
         ]);
         $user->assignRole("user");
-
-        User::factory(10)
-            ->create()
-            ->each(fn($user) => $user->assignRole("user"));
     }
 }

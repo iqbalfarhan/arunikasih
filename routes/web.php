@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
     Route::get('/payment', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');
     Route::get('/undangan/mine', \App\Livewire\Pages\Undangan\Mine::class)->name('undangan.mine');
+    Route::get('/undangan/table', \App\Livewire\Pages\Undangan\Table::class)->name('undangan.table');
 
     Route::get('/pembayaran/{pembayaran}', \App\Livewire\Pages\Pembayaran\Show::class)->name('pembayaran.show');
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
@@ -55,5 +56,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/publish', \App\Livewire\Pages\Undangan\Publish::class)->name('undangan.publish');
         Route::get('/livestreaming', \App\Livewire\Pages\Undangan\Livestreaming::class)->name('undangan.livestreaming');
         Route::get('/rekening', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.rekening');
+
+        Route::get('/anak', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.anak');
     });
 });

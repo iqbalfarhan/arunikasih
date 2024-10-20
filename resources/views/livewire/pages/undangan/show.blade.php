@@ -7,6 +7,17 @@
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card">
             <div class="card-body">
+                <h3 class="card-title">
+                    <x-tabler-bookmark class="size-5" />
+                    <span>Undangan {{ $undangan->kategori->name }}</span>
+                </h3>
+                <p class="text-sm opacity-50 line-clamp-2">Status pembayaran
+                    Undangan {{ $undangan->kategori->name }} dengan paket {{ $undangan->paket->name }}
+                </p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
                 <h3 @class(['card-title', 'text-error' => $undangan->paid == false])>
                     <x-tabler-credit-card class="size-5" />
                     <span>Pembayaran {{ $undangan->paid ? 'selesai' : 'tertunda' }}</span>
@@ -26,7 +37,7 @@
             <div class="card-body">
                 <h3 class="card-title">
                     <x-tabler-send class="size-5" />
-                    <span>Status publish</span>
+                    <span>{{ $undangan->publish ? 'Sudah' : 'Belum' }} publish</span>
                 </h3>
                 <p class="text-sm opacity-50 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     Nihil, molestias?

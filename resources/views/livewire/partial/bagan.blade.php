@@ -120,6 +120,22 @@
                         </a>
                     </li>
                 @endif
+                @if (in_array('data anak', $bagans))
+                    <li>
+                        <a href="{{ route('undangan.anak', $undangan) }}" @class(['active' => Route::is('undangan.anak')]) wire:navigate>
+                            <x-tabler-user class="size-5" />
+                            <span>Data anak</span>
+                        </a>
+                    </li>
+                @endif
+                @if (in_array('detail acara', $bagans))
+                    <li>
+                        <a href="{{ route('undangan.acara', $undangan) }}" @class(['active' => Route::is('undangan.acara')]) wire:navigate>
+                            <x-tabler-clock class="size-5" />
+                            <span>Waktu & tempat</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         @endif
     </li>

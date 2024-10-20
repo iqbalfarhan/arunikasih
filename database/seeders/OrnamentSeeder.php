@@ -18,6 +18,7 @@ class OrnamentSeeder extends Seeder
             'ice',
             'light',
             'luxury',
+            'pink',
         ];
 
         foreach ($datas as $data) {

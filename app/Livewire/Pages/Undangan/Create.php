@@ -59,10 +59,10 @@ class Create extends Component
     {
         $this->form->slug = Str::slug($this->form->name);
         $this->form->user_id = Auth::id();
-        $this->form->tema_id = Tema::get()->first()->id;
-        $this->form->music_id = Music::get()->first()->id;
-        $this->form->ayat_id = Ayat::get()->first()->id;
-        $this->form->ornament_id = Ornament::get()->first()->id;
+        $this->form->tema_id = Tema::get()->first()->id ?? null;
+        $this->form->music_id = Music::get()->first()->id ?? null;
+        $this->form->ayat_id = Ayat::get()->first()->id ?? null;
+        $this->form->ornament_id = Ornament::get()->first()->id ?? null;
         $this->form->event_date = now();
 
         $this->form->store();

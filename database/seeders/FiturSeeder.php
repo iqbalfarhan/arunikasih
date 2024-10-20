@@ -100,7 +100,7 @@ class FiturSeeder extends Seeder
             [
                 'name' => 'rsvp dan ucapan',
                 'description' => 'ucapan selamat atau doa dan kehadiran dari tamu yang menerima undangan',
-                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
             ],
             [
                 'name' => 'protokol kesehatan',
@@ -110,7 +110,7 @@ class FiturSeeder extends Seeder
         ];
 
         foreach ($datas as $data) {
-            Fitur::updateOrCreate(["name" => $data['name']],$data);
+            Fitur::create($data);
         }
 
         Fitur::factory(30)->create();
