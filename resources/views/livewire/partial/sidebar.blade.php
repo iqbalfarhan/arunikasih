@@ -13,7 +13,7 @@
                 @endcan
                 @can('undangan.mine')
                     <li>
-                        <a href="{{ route('undangan.mine') }}" @class(['active' => Route::is('undangan.mine')]) wire:navigate>
+                        <a href="{{ route('undangan.mine') }}" @class(['active' => Route::is(['undangan.mine', 'undangan.create'])]) wire:navigate>
                             <x-tabler-bookmark class="size-5" />
                             <span>Undangan Saya</span>
                         </a>
@@ -59,6 +59,7 @@
                                 'undangan.index',
                                 'undangan.create',
                                 'undangan.show',
+                                'undangan.raw',
                             ]),
                         ]) wire:navigate>
                             <x-tabler-bookmarks class="size-5" />

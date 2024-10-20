@@ -15,9 +15,15 @@ class FiturSeeder extends Seeder
     public function run(): void
     {
         $datas = [
+            // fitur undangan pernikahan
             [
                 'name' => 'cover undangan',
                 'description' => 'Halaman awal undangan, disini terdapat label nama tamu yang diundang',
+                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+            ],
+            [
+                'name' => 'musik latar',
+                'description' => 'Musik latar belakang undangan, terdapat kontrol untuk play dan pause',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
             ],
             [
@@ -64,7 +70,43 @@ class FiturSeeder extends Seeder
                 'name' => 'protokol kesehatan',
                 'description' => 'Protokol kesehatan Covid 19',
                 'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
-            ]
+            ],
+            // fitur undangan aqiqah
+            [
+                'name' => 'cover undangan',
+                'description' => 'Halaman awal undangan, disini terdapat label nama tamu yang diundang',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
+            [
+                'name' => 'musik latar',
+                'description' => 'Musik latar belakang undangan, terdapat kontrol untuk play dan pause',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
+            [
+                'name' => 'intro undangan',
+                'description' => 'Ucapan salam dari pemilik undangan kepada tamu',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
+            [
+                'name' => 'data anak',
+                'description' => 'data anak yang akan diakikah',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
+            [
+                'name' => 'detail acara',
+                'description' => 'detail tanggal, waktu dan lokasi acara syukuran aqiqah',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
+            [
+                'name' => 'rsvp dan ucapan',
+                'description' => 'ucapan selamat atau doa dan kehadiran dari tamu yang menerima undangan',
+                'kategori_id' => Kategori::where('name', 'pernikahan')->first()->id,
+            ],
+            [
+                'name' => 'protokol kesehatan',
+                'description' => 'Protokol kesehatan Covid 19',
+                'kategori_id' => Kategori::where('name', 'aqiqah')->first()->id,
+            ],
         ];
 
         foreach ($datas as $data) {

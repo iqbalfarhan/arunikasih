@@ -20,7 +20,7 @@ class FiturFactory extends Factory
         return [
             'name' => fake()->words(2, true),
             'description' => fake()->sentence(),
-            'kategori_id' => fake()->randomElement(Kategori::whereNot('id', 1)->pluck('id')),
+            'kategori_id' => fake()->randomElement(Kategori::whereNotIn('id', [1, 5])->pluck('id')),
         ];
     }
 }

@@ -26,7 +26,7 @@
             </thead>
             <tbody>
                 @foreach ($datas as $data)
-                    <tr wire:key="{{ $data->id }}">
+                    <tr wire:key="{{ $data->id }}" @class(['text-success' => $data->confirmed])>
                         <td>{{ $no++ }}</td>
                         <td>{{ Str::limit($data->undangan->user->name ?? '', '20') }}</td>
                         <td>
@@ -36,8 +36,8 @@
                             </a>
                         </td>
                         <td>Rp. {{ Number::format($data->amount, locale: 'de') }}</td>
-                        <td @class(['text-success' => $data->confirmed])>
-                            {{ $data->confirmed ? $data->confirmed_at->format('d F Y H:i:s') : '' }}
+                        <td>
+                            {{ $data->confirmed ? $data->confirmed_at?->format('d F Y H:i:s') : '' }}
                         </td>
                         @canany(['pembayaran.edit', 'pembayaran.delete'])
                             <td>

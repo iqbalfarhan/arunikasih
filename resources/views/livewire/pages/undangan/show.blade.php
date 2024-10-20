@@ -1,10 +1,27 @@
 <div class="page-wrapper">
 
     @livewire('partial.header', [
-        'title' => 'Detail undangan',
+        'title' => 'Status undangan',
     ])
 
     <div class="grid md:grid-cols-3 gap-4">
+        <div class="card">
+            <div class="card-body">
+                <h3 @class(['card-title', 'text-error' => $undangan->paid == false])>
+                    <x-tabler-credit-card class="size-5" />
+                    <span>Pembayaran {{ $undangan->paid ? 'selesai' : 'tertunda' }}</span>
+                </h3>
+                <p class="text-sm opacity-50 line-clamp-2">Status pembayaran
+                    {{ $undangan->paid ? 'telah di konfirmasi' : 'belum dikonfimasi' }}
+                    @if ($undangan->paid)
+                        pada tanggal
+                        {{ $undangan->pembayaran->confirmed_at?->format('d F Y H:i') }}
+                    @else
+                        silakan lakukan pembayaran.
+                    @endif
+                </p>
+            </div>
+        </div>
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">
@@ -48,6 +65,13 @@
                 </p>
             </div>
         </div>
+    </div>
+
+    @livewire('partial.header', [
+        'title' => 'Detail undangan',
+    ])
+
+    <div class="grid md:grid-cols-3 gap-4">
         <div class="card h-fit">
             <div class="card-body">
                 <h3 class="card-title">
@@ -61,9 +85,9 @@
                         @foreach ($partials as $item => $checked)
                             <li>
                                 <div class="form-control">
-                                    <label class="label cursor-pointer justify-start gap-3">
+                                    <label class="label cursor-pointer justify-start gap-2">
                                         <input type="checkbox" wire:model="partials.{{ $item }}"
-                                            class="checkbox checkbox-xs" />
+                                            wire:change="changeBagan" class="checkbox checkbox-primary checkbox-xs" />
                                         <span class="label-text">{{ $item }}</span>
                                     </label>
                                 </div>
@@ -71,17 +95,6 @@
                         @endforeach
                     @endif
                 </ul>
-
-                <div class="card-actions pt-6 justify-between">
-                    <button wire:click="resetBagan" class="btn btn-primary btn-sm">
-                        <x-tabler-refresh class="size-4" />
-                        <span>Reset</span>
-                    </button>
-                    <button wire:click="changeBagan" class="btn btn-primary btn-sm">
-                        <x-tabler-check class="size-4" />
-                        <span>Simpan</span>
-                    </button>
-                </div>
             </div>
         </div>
 

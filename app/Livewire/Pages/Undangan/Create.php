@@ -23,11 +23,17 @@ class Create extends Component
         'kategori' => "Pilih kategori",
         'paket' => "Pilih paket",
         'name' => "Nama undangan",
-        'payment' => "Pembayaran",
-        'done' => "Edit undangan"
+        'done' => "Selanjutnya"
     ];
 
     public $step = 'kategori';
+
+    public function resetForm()
+    {
+        $this->form->reset();
+        $this->reset('step');
+        $this->dispatch('reload');
+    }
 
     public function nextStep()
     {

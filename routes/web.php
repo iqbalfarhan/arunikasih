@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function(){
     Route::get('/undangan/create', \App\Livewire\Pages\Undangan\Create::class)->name('undangan.create');
     Route::prefix("/undangan/{undangan}")->group(function(){
         Route::get('/', \App\Livewire\Pages\Undangan\Show::class)->name('undangan.show');
+        Route::get('/raw', \App\Livewire\Pages\Undangan\Raw::class)->name('undangan.raw');
         Route::get('/setting', \App\Livewire\Pages\Undangan\Setting::class)->name('undangan.setting');
         Route::get('/cover', \App\Livewire\Pages\Undangan\Cover::class)->name('undangan.cover');
         Route::get('/pengantin', \App\Livewire\Pages\Undangan\Pengantin::class)->name('undangan.pengantin');

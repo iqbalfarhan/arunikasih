@@ -13,6 +13,18 @@ class OrnamentSeeder extends Seeder
      */
     public function run(): void
     {
-        Ornament::factory(3)->create();
+        $datas = [
+            'leaf',
+            'ice',
+            'light',
+            'luxury',
+        ];
+
+        foreach ($datas as $data) {
+            Ornament::updateOrCreate([
+                'name' => $data,
+            ]);
+        }
+        // Ornament::factory(3)->create();
     }
 }

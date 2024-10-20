@@ -10,13 +10,12 @@
         <div class="card-body">
             <ul class="steps steps-vertical md:steps-horizontal">
                 @foreach ($steps as $stepkey => $stepname)
-                    <li @class(['step', 'step-primary' => $stepkey == $step])>{{ $stepname }}
-                    </li>
+                    <li @class(['step', 'step-primary' => $stepkey == $step])>{{ $stepname }}</li>
                 @endforeach
             </ul>
         </div>
         @if ($step == 'kategori')
-            <div class="card-body space-y-4">
+            <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Kategori undangan</h3>
                     <p class="text-sm opacity-50">Silakan klik pada list kategori undangan berikut untuk undangan yang
@@ -26,17 +25,18 @@
                 </div>
                 <div class="flex gap-4 flex-wrap">
                     @foreach ($kategoris as $katid => $katname)
-                        <button wire:click="set('form.kategori_id', {{ $katid }})"
-                            @class([
-                                'btn capitalize border-2',
-                                'btn-outline btn-primary' => $form->kategori_id == $katid,
-                            ])>{{ $katname }}</button>
+                        <button wire:click="set('form.kategori_id', {{ $katid }})" @class([
+                            'btn flex-1 capitalize border-2',
+                            'btn-outline btn-primary' => $form->kategori_id == $katid,
+                        ])>
+                            <x-tabler-click class="size-5" />
+                            <span>{{ $katname }}</span>
+                        </button>
                     @endforeach
                 </div>
             </div>
-        @endif
-        @if ($step == 'paket')
-            <div class="card-body space-y-4">
+        @elseif ($step == 'paket')
+            <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Paket undangan</h3>
                     <p class="text-sm opacity-50">Silakan klik pada list kategori undangan berikut untuk undangan yang
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="card-body">
                                     <button @class([
-                                        'btn btn-block',
+                                        'btn btn-block btn-active',
                                         'btn-primary' => $form->paket_id == $paket->id,
                                     ])
                                         wire:click="set('form.paket_id', {{ $paket->id }})">
@@ -92,54 +92,58 @@
                     </div>
                 </div>
             </div>
-        @endif
-        @if ($step == 'name')
-            <div class="card-body">
-                <h3 class="card-title">Nama undangan</h3>
-                <div class="flex gap-4 flex-wrap justify-center">
-                    <label class="form-control">
-                        <div class="label">
-                            <span class="label-text">Paket undangan</span>
-                        </div>
-                        <input type="text" @class([
-                            'input input-bordered',
-                            'input-error' => $errors->first('form.name'),
-                        ]) wire:model="form.name" />
-                    </label>
+        @elseif ($step == 'name')
+            <div class="card-body space-y-6">
+                <div class="flex flex-col gap-2">
+                    <h3 class="card-title">Nama undangan</h3>
+                    <p class="text-sm opacity-50">Tuliskan nama undangan misalkan undangan pernikahan galih dan ratna
+                        maka silakan tuliskan nama undangan "Galih & Ratna", tapi tenang anda tetap dapat mengubah nama
+                        undangan nanti
+                    </p>
+                </div>
+                <label class="form-control">
+                    <input type="text" @class([
+                        'input input-bordered input-lg',
+                        'input-error' => $errors->first('form.name'),
+                    ]) wire:model="form.name"
+                        placeholder="Contoh : Galih & Ratna" />
+                </label>
+            </div>
+        @elseif ($step == 'done')
+            <div class="card-body space-y-6">
+                <div class="flex flex-col gap-2">
+                    <h3 class="card-title">Undangan sudah siap dibuat</h3>
+                    <p class="text-sm opacity-50">Anda akan membuat sebuah undangan pernikahan dengan paket gratis
+                        dengan harga Rp.
+                        {{ Number::format(10000000, locale: 'de') }}. Anda bisa melakukan pembayaran setelah anda klik
+                        selesai. setelah ini anda bisa langsung mengedit
+                        undangan anda pada halaman detail undangan</p>
                 </div>
             </div>
         @endif
-        @if ($step == 'payment')
-            <div class="card-body">
-                <h3 class="card-title">Nama undangan</h3>
-                <div class="flex gap-4 flex-wrap justify-center">
-                    <label class="form-control">
-                        <div class="label">
-                            <span class="label-text">Paket undangan</span>
-                        </div>
-                        <input type="text" @class([
-                            'input input-bordered',
-                            'input-error' => $errors->first('form.name'),
-                        ]) wire:model="form.name" />
-                    </label>
-                </div>
-            </div>
-        @endif
-        <div class="card-body">
+        <div class="card-body space-y-6">
             <div class="card-actions justify-between">
-                <button class="btn btn-ghost">
-                    <x-tabler-x class="size-5" />
-                    <span>Reset</span>
-                </button>
-                <div class="flex flex-col md:flex-row gap-3">
+                @if ($step != 'kategori')
                     <button class="btn" wire:click="previousStep">
                         <x-tabler-arrow-left class="size-5" />
                         <span>Sebelumnya</span>
                     </button>
-                    <button class="btn btn-primary" wire:click="nextStep">
-                        <x-tabler-arrow-right class="size-5" />
-                        <span>Selanjutnya</span>
-                    </button>
+                @else
+                    <div></div>
+                @endif
+                <div class="flex flex-col md:flex-row gap-3">
+
+                    @if ($step == 'done')
+                        <button class="btn btn-primary" wire:click="simpan">
+                            <x-tabler-check class="size-5" />
+                            <span>Selesai</span>
+                        </button>
+                    @else
+                        <button class="btn btn-primary" wire:click="nextStep">
+                            <x-tabler-arrow-right class="size-5" />
+                            <span>Selanjutnya</span>
+                        </button>
+                    @endif
                 </div>
             </div>
         </div>

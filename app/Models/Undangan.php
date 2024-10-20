@@ -65,6 +65,11 @@ class Undangan extends Model
         return $this->belongsTo(Ornament::class);
     }
 
+    public function music()
+    {
+        return $this->belongsTo(Music::class);
+    }
+
     public function getLinkAttribute()
     {
         return url($this->kategori->name, $this->slug);

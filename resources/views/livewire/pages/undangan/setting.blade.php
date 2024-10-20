@@ -63,49 +63,51 @@
         </div>
     </div>
 
-    @livewire('partial.header', [
-        'title' => 'Audio undangan',
-    ])
+    @if ($undangan->can('musik latar'))
+        @livewire('partial.header', [
+            'title' => 'Audio undangan',
+        ])
 
-    <div class="table-wrapper">
-        <table class="table">
-            <thead>
-                <th>No</th>
-                <th>Artist</th>
-                <th>Song title</th>
-                <th class="text-center">Actions</th>
-            </thead>
-            <tbody>
-                @foreach ($musics as $audio)
-                    <tr>
-                        <td>{{ $audio->id }}</td>
-                        <td>{{ $audio->artist }}</td>
-                        <td>{{ $audio->title }}</td>
-                        <td>
-                            <div class="flex gap-1 justify-center">
-                                @can('pengantin.edit')
-                                    <button class="btn btn-xs btn-bordered"
-                                        wire:click="$dispatch('editPengantin', {pengantin: {{ $audio->id }}})">
-                                        <x-tabler-player-play class="size-4" />
-                                        <span>play</span>
-                                    </button>
-                                @endcan
-                                @can('pengantin.delete')
-                                    <button @class([
-                                        'btn btn-xs btn-bordered',
-                                        'btn-primary' => $audio->id == $undangan->music_id,
-                                    ]) wire:click="updateMusic({{ $audio->id }})">
-                                        <x-tabler-check class="size-4" />
-                                        <span>pilih</span>
-                                    </button>
-                                @endcan
-                            </div>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <th>No</th>
+                    <th>Artist</th>
+                    <th>Song title</th>
+                    <th class="text-center">Actions</th>
+                </thead>
+                <tbody>
+                    @foreach ($musics as $audio)
+                        <tr>
+                            <td>{{ $audio->id }}</td>
+                            <td>{{ $audio->artist }}</td>
+                            <td>{{ $audio->title }}</td>
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('pengantin.edit')
+                                        <button class="btn btn-xs btn-bordered"
+                                            wire:click="$dispatch('editPengantin', {pengantin: {{ $audio->id }}})">
+                                            <x-tabler-player-play class="size-4" />
+                                            <span>play</span>
+                                        </button>
+                                    @endcan
+                                    @can('pengantin.delete')
+                                        <button @class([
+                                            'btn btn-xs btn-bordered',
+                                            'btn-primary' => $audio->id == $undangan->music_id,
+                                        ]) wire:click="updateMusic({{ $audio->id }})">
+                                            <x-tabler-check class="size-4" />
+                                            <span>pilih</span>
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
 
     @livewire('partial.header', [
         'title' => 'Pilihan ayat',
@@ -120,7 +122,7 @@
             <div class="grid md:grid-cols-3 gap-4 py-4">
                 @foreach ($ayats as $ayat)
                     <div @class([
-                        'card card-compact border-4',
+                        'card card-compact border-2',
                         'border-primary text-primary' => $ayat->id == $undangan->ayat_id,
                     ]) wire:click="updateAyat({{ $ayat->id }})">
                         <div class="card-body">
