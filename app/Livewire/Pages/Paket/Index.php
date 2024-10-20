@@ -13,6 +13,11 @@ class Index extends Component
 
     protected $listeners = ['reload' => '$refresh'];
 
+    public function mount()
+    {
+        $this->cari = Kategori::first()->id;
+    }
+
     public function render()
     {
         return view('livewire.pages.paket.index', [

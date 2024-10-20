@@ -11,8 +11,9 @@
                     <x-tabler-bookmark class="size-5" />
                     <span>Undangan {{ $undangan->kategori->name }}</span>
                 </h3>
-                <p class="text-sm opacity-50 line-clamp-2">Status pembayaran
-                    Undangan {{ $undangan->kategori->name }} dengan paket {{ $undangan->paket->name }}
+                <p class="text-sm opacity-50 line-clamp-2">
+                    Undangan {{ $undangan->kategori->name }} {{ $undangan->name }} paket
+                    {{ $undangan->paket->name }}
                 </p>
             </div>
         </div>
@@ -39,23 +40,24 @@
                     <x-tabler-send class="size-5" />
                     <span>{{ $undangan->publish ? 'Sudah' : 'Belum' }} publish</span>
                 </h3>
-                <p class="text-sm opacity-50 line-clamp-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Nihil, molestias?
+                <p class="text-sm opacity-50 line-clamp-2">Undangan anda saat ini
+                    {{ $undangan->publish ? 'sudah' : 'belum' }} publish, masuk ke menu publish
+                    undangan untuk mengubah status
                 </p>
             </div>
         </div>
-        <div class="card" data-theme="{{ $undangan->tema->name }}">
+        <div class="card bg-base-100">
             <div class="card-body">
                 <div class="flex justify-between w-full items-center">
                     <a href="{{ route('undangan.setting', $undangan->id) }}">
-                        <h4 class="text-primary card-title capitalize flex items-center gap-2">
+                        <h4 class="card-title capitalize flex items-center gap-2">
                             <x-tabler-palette class="size-5" />
                             <span>Tema {{ $undangan->tema->name }}</span>
                         </h4>
                     </a>
-                    <div class="flex gap-1 bg-base-200 p-1 rounded-box">
+                    <div class="flex gap-1 bg-base-300 p-1 rounded-box" data-theme="{{ $undangan->tema->name }}">
                         @foreach (['bg-primary', 'bg-secondary', 'bg-accent', 'bg-info'] as $color)
-                            <span class="size-3 rounded-box {{ $color }}"></span>
+                            <span class="size-2 rounded-box {{ $color }}"></span>
                         @endforeach
                     </div>
                 </div>
@@ -67,7 +69,7 @@
             <div class="card-body">
                 <a href="{{ route('undangan.preview', $undangan) }}" target="_blank">
                     <h3 class="card-title">
-                        <x-tabler-device-mobile class="size-5" />
+                        <x-tabler-zoom-in-area class="size-5" />
                         <span>Preview undangan</span>
                     </h3>
                 </a>
@@ -85,10 +87,15 @@
     <div class="grid md:grid-cols-3 gap-4">
         <div class="card h-fit">
             <div class="card-body">
-                <h3 class="card-title">
-                    <x-tabler-list class="size-5" />
-                    <span>Bagan undangan</span>
-                </h3>
+                <div class="flex justify-between items-center">
+                    <h3 class="card-title">
+                        <x-tabler-list class="size-5" />
+                        <span>Bagan undangan</span>
+                    </h3>
+                    <button class="btn btn-xs btn-square" wire:click="resetBagan">
+                        <x-tabler-refresh class="size-4" />
+                    </button>
+                </div>
                 <p class="text-sm opacity-50 line-clamp-2">Bagan yang dicheck akan tampil pada undangan anda
                 </p>
                 <ul>
@@ -113,14 +120,21 @@
             <div class="col-span-2">
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('undangan.guest', $undangan) }}">
-                            <h3 class="card-title">
-                                <x-tabler-users class="size-5" />
-                                <span>Status RSVP tamu</span>
-                            </h3>
-                        </a>
-                        <p class="text-sm opacity-50 line-clamp-2">Tamu yang berencana hadir 10 dari 100 undangan yang
-                            dikirim.</p>
+                        <div class="flex justify-between">
+                            <div>
+                                <a href="{{ route('undangan.guest', $undangan) }}">
+                                    <h3 class="card-title">
+                                        <x-tabler-users class="size-5" />
+                                        <span>Status RSVP tamu</span>
+                                    </h3>
+                                </a>
+                                <p class="text-sm opacity-50 line-clamp-2">List kehariran tamu undangan</p>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <h3 class="card-title">2/13</h3>
+                                <p class="text-sm opacity-50 line-clamp-2">hadir</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="table-wrapper">
                         <table class="table">

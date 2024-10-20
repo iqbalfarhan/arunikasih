@@ -55,7 +55,7 @@ class PembayaranForm extends Form
             'undangan_id' => 'required',
             'via' => '',
             'amount' => '',
-            'confirmed' => 'required',
+            'confirmed' => '',
             'confirmed_at' => '',
             'notes' => '',
         ]);
@@ -68,7 +68,7 @@ class PembayaranForm extends Form
 
         $this->pembayaran->update($valid);
 
-        $this->reset();
+        // $this->reset();
     }
 
 }

@@ -79,6 +79,13 @@ class Actions extends Component
         }
 
         $this->resetForm();
+        $this->reset([
+            'ringfile',
+            'topleftfile',
+            'toprightfile',
+            'bottomleftfile',
+            'bottomrightfile',
+        ]);
         $this->alert('success', 'Data ornament berhasil disimpan');
         $this->dispatch('reload');
     }

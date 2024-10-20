@@ -36,6 +36,7 @@ use LivewireAlert;
         $this->undangan->partials = $newBagan;
 
         $this->undangan->save();
+        $this->dispatch('reload');
         $this->alert('success', 'Data bagan undangan diperbarui');
     }
 

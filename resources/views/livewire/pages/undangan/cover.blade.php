@@ -8,14 +8,13 @@
         <div class="card-body text-center items-center space-y-10">
             <p>undangan {{ $undangan->kategori->name }}</p>
             <div class="avatar">
-                <div class="w-32 rounded-full shadow-lg">
-                    <img src="{{ $undangan->image }}" />
+                <div class="w-32 rounded-full">
+                    <img src="{{ $undangan->image }}" alt="">
                 </div>
             </div>
-            <div class="flex flex-col justify-center items-center">
-                <h3 class="font-bold text-3xl">{{ $undangan->name }}</h3>
-                <p>{{ $undangan->event_date->format('d F Y') }}</p>
-            </div>
+            <h3 class="font-bold text-3xl">{{ $undangan->name }}</h3>
+            @livewire('partial.countdown', ['tanggal' => $undangan->event_date])
+            <p>{{ $undangan->event_date->format('d F Y H:i:s') }}</p>
 
             <div class="card-actions">
                 <button class="btn" wire:click="dispatch('editUndangan', {undangan: {{ $undangan->id }}})">

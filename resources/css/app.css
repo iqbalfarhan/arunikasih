@@ -24,7 +24,7 @@
   }
 
   .table-wrapper {
-    @apply border-2 border-base-300 rounded-xl bg-base-100 overflow-x-auto whitespace-nowrap;
+    @apply border-2 border-base-300 rounded-box bg-base-100 overflow-x-auto whitespace-nowrap;
   }
 
   .input-bordered,

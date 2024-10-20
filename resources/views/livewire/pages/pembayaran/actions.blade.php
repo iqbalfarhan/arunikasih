@@ -16,7 +16,6 @@
                         <option value="1">Dikonfirmasi</option>
                     </select>
                 </label>
-
             </div>
             <div class="modal-action justify-between">
                 <button type="button" wire:click="resetForm" class="btn btn-ghost">Close</button>

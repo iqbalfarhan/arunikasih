@@ -41,7 +41,7 @@ class UndanganForm extends Form
         $this->music_id = $undangan->music_id;
         $this->ornament_id = $undangan->ornament_id;
         $this->shared = $undangan->shared;
-        $this->event_date = $undangan->event_date->format('Y-m-d');
+        $this->event_date = $undangan->event_date->format('Y-m-d H:i:s');
         $this->partials = $undangan->partials;
     }
 
@@ -75,6 +75,7 @@ class UndanganForm extends Form
         Pembayaran::factory()->create([
             'undangan_id' => $undangan->id,
             'confirmed' => $undangan->paket->price == 0 ? true : false,
+            'confirmed_at' => $undangan->paket->price == 0 ? now() : null,
         ]);
 
         $this->reset();

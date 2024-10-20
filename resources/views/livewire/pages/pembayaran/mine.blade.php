@@ -21,7 +21,7 @@
                 <th>Amount</th>
                 <th>Status</th>
                 <th>Confirmed at</th>
-                @canany(['pembayaran.edit', 'pembayaran.delete'])
+                @canany(['pembayaran.show', 'pembayaran.edit', 'pembayaran.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
             </thead>
@@ -42,9 +42,15 @@
                         <td>
                             {{ $data->confirmed ? $data->confirmed_at->format('d F Y H:i:s') : '' }}
                         </td>
-                        @canany(['pembayaran.edit', 'pembayaran.delete'])
+                        @canany(['pembayaran.show', 'pembayaran.edit', 'pembayaran.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
+                                    @can('pembayaran.show')
+                                        <a href="{{ route('pembayaran.show', $data) }}"
+                                            class="btn btn-xs btn-square btn-bordered">
+                                            <x-tabler-eye class="size-4" />
+                                        </a>
+                                    @endcan
                                     @can('pembayaran.edit')
                                         <button class="btn btn-xs btn-square btn-bordered"
                                             wire:click="$dispatch('editPembayaran', {pembayaran: {{ $data->id }}})">

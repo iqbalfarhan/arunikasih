@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Pembayaran extends Model
 {
@@ -29,5 +30,10 @@ class Pembayaran extends Model
 
     public function undangan(){
         return $this->belongsTo(Undangan::class);
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->evidence ? Storage::url($this->evidence) : url('nocover.jpg');
     }
 }

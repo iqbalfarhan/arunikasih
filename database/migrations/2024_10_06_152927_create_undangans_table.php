@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('music_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('ornament_id')->nullable()->constrained()->nullOnDelete();
             $table->boolean('shared')->default(false);
-            $table->date('event_date');
+            $table->datetime('event_date');
             $table->json('partials')->nullable();
             $table->string('photo')->nullable();
             $table->timestamps();

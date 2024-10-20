@@ -20,7 +20,7 @@
             </div>
             <h2>{{ $undangan->name }}</h2>
             <div class="">
-                @livewire('partial.countdown')
+                @livewire('partial.countdown', ['tanggal' => $undangan->event_date])
                 <p class="py-4">{{ $undangan->event_date->format('d F Y') }}</p>
             </div>
             <button wire:click="toggleCover" class="btn btn-primary z-10">
@@ -105,7 +105,7 @@
                     <h2>Tanggal Acara</h2>
                     <p>Dengan penuh kebahagiaan, kami mengundang Anda untuk menjadi bagian dari hari istimewa kami.</p>
 
-                    @livewire('partial.countdown')
+                    @livewire('partial.countdown', ['tanggal' => $undangan->event_date])
 
                     <div class="grid md:grid-cols-2 gap-4">
                         @foreach ($undangan->events as $event)

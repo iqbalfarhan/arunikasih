@@ -30,7 +30,7 @@ class Undangan extends Model
     {
         return [
             'shared' => 'boolean',
-            'event_date' => 'date',
+            'event_date' => 'datetime',
             'partials' => 'array',
         ];
     }

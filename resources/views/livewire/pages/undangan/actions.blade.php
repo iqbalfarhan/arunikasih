@@ -18,7 +18,7 @@
                     <div class="label">
                         <span class="label-text">Tanggal countdown</span>
                     </div>
-                    <input type="date" @class([
+                    <input type="datetime-local" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.event_date'),
                     ]) wire:model="form.event_date"

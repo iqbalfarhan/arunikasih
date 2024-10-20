@@ -14,6 +14,7 @@ class Cover extends Component
 
     public function mount(Undangan $undangan)
     {
+        // abort(404);
         $this->undangan = $undangan;
     }
 

@@ -34,35 +34,45 @@
                         <td>
                             <div class="avatar">
                                 <div class="w-10">
-                                    <img src="{{ Storage::url($data->ring ?? '') }}" alt="" />
+                                    @if ($data->ring)
+                                        <img src="{{ Storage::url($data->ring ?? '') }}" alt="" />
+                                    @endif
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="avatar">
                                 <div class="w-10">
-                                    <img src="{{ Storage::url($data->topleft ?? '') }}" alt="" />
+                                    @if ($data->topleft)
+                                        <img src="{{ Storage::url($data->topleft ?? '') }}" alt="" />
+                                    @endif
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="avatar">
                                 <div class="w-10">
-                                    <img src="{{ Storage::url($data->topright ?? '') }}" alt="" />
+                                    @if ($data->topright)
+                                        <img src="{{ Storage::url($data->topright ?? '') }}" alt="" />
+                                    @endif
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="avatar">
                                 <div class="w-10">
-                                    <img src="{{ Storage::url($data->bottomleft ?? '') }}" alt="" />
+                                    @if ($data->bottomleft)
+                                        <img src="{{ Storage::url($data->bottomleft ?? '') }}" alt="" />
+                                    @endif
                                 </div>
                             </div>
                         </td>
                         <td>
                             <div class="avatar">
                                 <div class="w-10">
-                                    <img src="{{ Storage::url($data->bottomright ?? '') }}" alt="" />
+                                    @if ($data->bottomright)
+                                        <img src="{{ Storage::url($data->bottomright ?? '') }}" alt="" />
+                                    @endif
                                 </div>
                             </div>
                         </td>
