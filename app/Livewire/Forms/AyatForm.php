@@ -26,6 +26,7 @@ class AyatForm extends Form
         $valid = $this->validate([
             'surah' => 'required',
             'content' => 'required',
+            'kategori_id' => 'required',
         ]);
 
         Ayat::create($valid);
@@ -37,6 +38,7 @@ class AyatForm extends Form
         $valid = $this->validate([
             'surah' => 'required',
             'content' => 'required',
+            'kategori_id' => 'required',
         ]);
 
         $this->ayat->update($valid);

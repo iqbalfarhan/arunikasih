@@ -21,4 +21,14 @@ class Tamu extends Model
     {
         return $this->belongsTo(Undangan::class);
     }
+
+    public function getLinkAttribute()
+    {
+        return implode('?',[
+            $this->undangan->link,
+            http_build_query([
+                'yth' => $this->name
+            ])
+        ]);
+    }
 }

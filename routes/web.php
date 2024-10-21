@@ -56,7 +56,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/publish', \App\Livewire\Pages\Undangan\Publish::class)->name('undangan.publish');
         Route::get('/livestreaming', \App\Livewire\Pages\Undangan\Livestreaming::class)->name('undangan.livestreaming');
         Route::get('/rekening', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.rekening');
-
         Route::get('/anak', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.anak');
     });
 });

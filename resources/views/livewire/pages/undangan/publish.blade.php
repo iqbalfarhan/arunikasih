@@ -4,15 +4,61 @@
         'title' => 'Detail undangan',
     ])
 
-    <div class="card">
-        <div class="card-body">
-            <h3 class="card-title">Publish undangan ditunda</h3>
-            <div class="py-4">
-                <p>Mohon maaf arunkasih belum bisa mempublish undangan anda sampai pembayaran diselesaikan</p>
-            </div>
-            <div class="card-actions">
-                <button class="btn">Selesaikan pembayaran</button>
+    @if ($undangan->paid)
+        <div class="table-filter-wrapper">
+            <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
+        </div>
+
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <th>No</th>
+                    <th>Nama tamu</th>
+                    <th>Share link</th>
+                    <th class="text-center">Actions</th>
+                </thead>
+                <tbody>
+                    @foreach ($tamus as $tamu)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $tamu->name }}</td>
+                            <td class="text-xs opacity-75">{{ $tamu->link }}</td>
+                            @canany(['undangan.edit', 'undangan.delete'])
+                                <td>
+                                    <div class="flex gap-1 justify-center">
+                                        @can('undangan.show')
+                                            <button class="btn btn-xs btn-bordered"
+                                                wire:click="dispatch('shareTamu', {tamu: {{ $tamu->id }}})">
+                                                <x-tabler-share class="size-4" />
+                                                <span>Share</span>
+                                            </button>
+                                        @endcan
+                                    </div>
+                                </td>
+                            @endcanany
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @else
+        <div class="card max-w-lg mx-auto">
+            <div class="card-body">
+                <h3 class="card-title">Publish undangan ditunda</h3>
+                <div class="py-4">
+                    <p class="text-sm opacity-75">Mohon maaf arunkasih belum bisa mempublish undangan anda sampai
+                        pembayaran
+                        diselesaikan.</p>
+                </div>
+                <div class="card-actions">
+                    <a href="{{ route('pembayaran.show', $undangan->pembayaran) }}" class="btn btn-warning">
+                        <x-tabler-credit-card class="size-5" />
+                        <span>Selesaikan pembayaran</span>
+                    </a>
+                </div>
             </div>
         </div>
-    </div>
+    @endif
+
+    @livewire('pages.tamu.share')
 </div>

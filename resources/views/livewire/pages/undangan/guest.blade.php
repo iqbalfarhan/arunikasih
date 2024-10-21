@@ -18,7 +18,7 @@
                 <th>No</th>
                 <th>Name</th>
                 <th>Hadir</th>
-                <th class="w-full">Pesan</th>
+                <th>Pesan</th>
                 @canany(['tamu.edit', 'tamu.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany

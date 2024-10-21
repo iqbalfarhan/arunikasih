@@ -8,6 +8,20 @@
                     <div class="label">
                         <span class="label-text">Nama ayat</span>
                     </div>
+                    <select type="text" @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.kategori_id'),
+                    ]) wire:model="form.kategori_id">
+                        <option value="">Pilih kategori</option>
+                        @foreach ($kategoris as $katid => $katname)
+                            <option value="{{ $katid }}">{{ $katname }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nama ayat</span>
+                    </div>
                     <input type="text" @class([
                         'input input-bordered',
                         'input-error' => $errors->first('form.surah'),

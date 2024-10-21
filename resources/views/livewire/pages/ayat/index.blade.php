@@ -27,7 +27,7 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
-                        <td>{{ $data->kategori->name }}</td>
+                        <td>{{ $data->kategori?->name }}</td>
                         <td>{{ $data->surah }}</td>
                         <td>{{ Str::limit($data->content, 50) }}</td>
                         @canany(['ayat.edit', 'ayat.delete'])

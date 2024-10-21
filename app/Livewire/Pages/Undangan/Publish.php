@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages\Undangan;
 
+use App\Models\Tamu;
 use App\Models\Undangan;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -17,7 +18,9 @@ class Publish extends Component
 
     public function render()
     {
-        return view('livewire.pages.undangan.publish')->layout('components.layouts.undangan', [
+        return view('livewire.pages.undangan.publish', [
+            'tamus' => Tamu::get()
+        ])->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);
     }

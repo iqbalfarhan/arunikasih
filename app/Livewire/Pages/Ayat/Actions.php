@@ -4,6 +4,7 @@ namespace App\Livewire\Pages\Ayat;
 
 use App\Livewire\Forms\AyatForm;
 use App\Models\Ayat;
+use App\Models\Kategori;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -68,6 +69,8 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.ayat.actions');
+        return view('livewire.pages.ayat.actions', [
+            'kategoris' => Kategori::pluck('name', 'id')
+        ]);
     }
 }

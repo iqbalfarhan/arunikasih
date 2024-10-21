@@ -122,12 +122,12 @@
             <div class="grid md:grid-cols-3 gap-4 py-4">
                 @foreach ($ayats as $ayat)
                     <div @class([
-                        'card card-compact border-2',
-                        'border-primary text-primary' => $ayat->id == $undangan->ayat_id,
+                        'card ring-0 bg-base-200 h-fit',
+                        'ring-primary text-primary !ring-4' => $ayat->id == $undangan->ayat_id,
                     ]) wire:click="updateAyat({{ $ayat->id }})">
-                        <div class="card-body">
-                            <h3 class="card-title">{{ $ayat->surah }}</h3>
-                            <p class="opacity-50 line-clamp-3 text-sm">{{ $ayat->content }}</p>
+                        <div class="card-body text-center space-y-2">
+                            <q class="opacity-75 italic text-sm">{{ $ayat->content }}</q>
+                            <span class="italic">~ {{ $ayat->surah }} ~</span>
                         </div>
                     </div>
                 @endforeach
