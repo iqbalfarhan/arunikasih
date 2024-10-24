@@ -15,10 +15,8 @@ class Mine extends Component
 
     public function render()
     {
-        return view('livewire.pages.pembayaran.mine', [
-            'datas' => Pembayaran::whereHas('undangan', function($und){
-                $und->where('user_id',Auth::id());
-            })->get()
+        return view('livewire.pages.pembayaran.index', [
+            'datas' => Pembayaran::where('user_id',Auth::id())->get()
         ]);
     }
 }

@@ -4,4 +4,7 @@
         @livewire('widget.userinfo')
         @livewire('widget.tanggal')
     </div>
+    @livewire('partial.header', [
+        'title' => 'Promotion',
+    ])
 </div>

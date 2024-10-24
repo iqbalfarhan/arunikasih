@@ -13,6 +13,11 @@ class PengantinSeeder extends Seeder
      */
     public function run(): void
     {
-        Pengantin::factory(10)->create();
+        Pengantin::factory()->create([
+            "gender" => "pria"
+        ]);
+        Pengantin::factory()->create([
+            "gender" => "wanita"
+        ]);
     }
 }

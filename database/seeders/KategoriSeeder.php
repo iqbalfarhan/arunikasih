@@ -15,9 +15,6 @@ class KategoriSeeder extends Seeder
     {
         $datas = [
             "pernikahan",
-            "syukuran",
-            "khitanan",
-            "ulang tahun",
             "aqiqah",
         ];
 

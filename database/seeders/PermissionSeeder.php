@@ -53,6 +53,7 @@ class PermissionSeeder extends Seeder
             'pembayaran.delete'     => [],
             'pembayaran.show'       => ['user'],
             'pembayaran.mine'       => ['user'],
+            'pembayaran.confirm'    => ['user'],
         ];
 
         foreach ($datas as $data => $roles) {

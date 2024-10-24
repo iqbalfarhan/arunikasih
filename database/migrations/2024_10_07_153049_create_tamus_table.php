@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('undangan_id')->constrained()->cascadeOnDelete();
+            $table->boolean('shared')->default(false);
+            $table->boolean('read')->default(false);
             $table->boolean('present')->default(false);
             $table->text('message')->nullable();
             $table->text('reply')->nullable();

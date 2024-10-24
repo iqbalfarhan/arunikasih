@@ -19,7 +19,7 @@ class PaketSeeder extends Seeder
                 [
                     "name" => "basic",
                     "harga" => "10000",
-                    "diskon" => "50000",
+                    "diskon" => "0",
                 ],
                 [
                     "name" => "standard",

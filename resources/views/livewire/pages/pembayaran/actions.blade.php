@@ -5,20 +5,51 @@
             <div class="card-title">Form pembayaran</div>
             <div class="py-4 space-y-2">
                 <label class="form-control">
-                    <div class="form-control">
-                        <label class="label cursor-pointer justify-start gap-2">
-                            <input type="radio" wire:model="form.confirmed" value="0"
-                                class="radio radio-error" />
-                            <span class="label-text">Unpaid belum dikonfirmasi</span>
-                        </label>
+                    <div class="label">
+                        <span class="label-text">Nama user</span>
                     </div>
-                    <div class="form-control">
-                        <label class="label cursor-pointer justify-start gap-2">
-                            <input type="radio" wire:model="form.confirmed" value="1"
-                                class="radio radio-success" />
-                            <span class="label-text">Paid sudah dikonfirmasi</span>
-                        </label>
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.user_id'),
+                    ]) wire:model="form.user_id">
+                        <option value="">Pilih user</option>
+                        @foreach ($users as $userid => $username)
+                            <option value="{{ $userid }}">{{ $username }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Nama Undangan</span>
                     </div>
+                    <select @class([
+                        'select select-bordered',
+                        'select-error' => $errors->first('form.undangan_id'),
+                    ]) wire:model="form.undangan_id">
+                        <option value="">Nama undangan</option>
+                        @foreach ($undangans as $undanganid => $undanganname)
+                            <option value="{{ $undanganid }}">{{ $undanganname }}</option>
+                        @endforeach
+                    </select>
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Amount</span>
+                    </div>
+                    <input type="number" inputmode="numeric" @class([
+                        'input input-bordered',
+                        'input-error' => $errors->first('form.amount'),
+                    ]) wire:model="form.amount"
+                        placeholder="Nominal invoice" />
+                </label>
+                <label class="form-control">
+                    <div class="label">
+                        <span class="label-text">Catatan</span>
+                    </div>
+                    <textarea @class([
+                        'textarea textarea-bordered',
+                        'textarea-error' => $errors->first('form.notes'),
+                    ]) wire:model="form.notes" placeholder="catatan invoice"></textarea>
                 </label>
             </div>
             <div class="modal-action justify-between">

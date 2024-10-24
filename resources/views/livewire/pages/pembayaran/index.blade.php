@@ -20,7 +20,10 @@
                 <th>Undangan</th>
                 <th>Amount</th>
                 <th>Confirmed at</th>
-                @canany(['pembayaran.edit', 'pembayaran.delete'])
+                @can('pembayaran.confirm')
+                    <th class="text-center">Approve</th>
+                @endcan
+                @canany(['pembayaran.show', 'pembayaran.edit', 'pembayaran.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
             </thead>
@@ -28,7 +31,12 @@
                 @foreach ($datas as $data)
                     <tr wire:key="{{ $data->id }}" @class(['text-success' => $data->confirmed])>
                         <td>{{ $no++ }}</td>
-                        <td>{{ Str::limit($data->undangan->user->name ?? '', '20') }}</td>
+                        <td>
+                            <div class="flex flex-col">
+                                <span class="text-xs opacity-75">#{{ $data->invoice_number ?? '' }}</span>
+                                <span>{{ Str::limit($data->user->name ?? '', '20') }}</span>
+                            </div>
+                        </td>
                         <td>
                             @if ($data->undangan)
                                 <a href="{{ route('undangan.show', $data->undangan) }}" class="flex flex-col"
@@ -42,7 +50,15 @@
                         <td>
                             {{ $data->confirmed ? $data->confirmed_at?->format('d F Y H:i:s') : '' }}
                         </td>
-                        @canany(['pembayaran.edit', 'pembayaran.delete'])
+                        @can('pembayaran.confirm')
+                            <td>
+                                <div class="flex justify-center">
+                                    <input type="checkbox" @class(['toggle toggle-sm toggle-success']) @checked($data->confirmed)
+                                        wire:change="$dispatch('toggleConfirm', {pembayaran: {{ $data->id }}})" />
+                                </div>
+                            </td>
+                        @endcan
+                        @canany(['pembayaran.show', 'pembayaran.edit', 'pembayaran.delete'])
                             <td>
                                 <div class="flex gap-1 justify-center">
                                     @can('pembayaran.show')

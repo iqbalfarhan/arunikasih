@@ -12,6 +12,7 @@ class PembayaranForm extends Form
     public ?Pembayaran $pembayaran;
 
     public $undangan_id;
+    public $user_id;
     public $via;
     public $amount;
     public $confirmed = false;
@@ -22,6 +23,7 @@ class PembayaranForm extends Form
     public function setPembayaran(Pembayaran $pembayaran){
         $this->pembayaran = $pembayaran;
 
+        $this->user_id = $pembayaran->user_id;
         $this->undangan_id = $pembayaran->undangan_id;
         $this->via = $pembayaran->via;
         $this->amount = $pembayaran->amount;
@@ -33,11 +35,12 @@ class PembayaranForm extends Form
 
     public function store(){
         $valid = $this->validate([
+            'user_id' => 'required',
             'undangan_id' => 'required',
-            'via' => 'required',
+            'via' => '',
             'amount' => 'required',
-            'confirmed' => 'required',
-            'confirmed_at' => 'required',
+            'confirmed' => '',
+            'confirmed_at' => '',
             'notes' => '',
         ]);
 
@@ -52,6 +55,7 @@ class PembayaranForm extends Form
 
     public function update(){
         $valid = $this->validate([
+            'user_id' => 'required',
             'undangan_id' => 'required',
             'via' => '',
             'amount' => '',

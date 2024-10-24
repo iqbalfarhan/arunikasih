@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('pembayarans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->nullable()->constrained()->nullOnDelete();
             $table->foreignId('undangan_id')->nullable()->constrained()->nullOnDelete();
             $table->string('via')->nullable();
             $table->integer('amount')->default(0);

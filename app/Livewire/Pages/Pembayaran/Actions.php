@@ -3,7 +3,10 @@
 namespace App\Livewire\Pages\Pembayaran;
 
 use App\Livewire\Forms\PembayaranForm;
+use App\Models\Bank;
 use App\Models\Pembayaran;
+use App\Models\Undangan;
+use App\Models\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -34,6 +37,24 @@ class Actions extends Component
         $pembayaran->delete();
         $this->dispatch('reload');
         $this->alert('success', 'Data pembayaran berhasil dihapus');
+    }
+
+    #[On("toggleConfirm")]
+    public function toggleConfirm(Pembayaran $pembayaran)
+    {
+        if ($pembayaran->confirmed) {
+            $pembayaran->confirmed = false;
+            $pembayaran->confirmed_at = null;
+        }
+        else{
+            $pembayaran->confirmed = true;
+            $pembayaran->confirmed_at = now();
+        }
+
+        $pembayaran->save();
+
+        $this->dispatch('reload');
+        $this->alert('success', 'Data pembayaran berhasil diupdate');
     }
 
     #[On("deleteAccount")]
@@ -68,6 +89,12 @@ class Actions extends Component
 
     public function render()
     {
-        return view('livewire.pages.pembayaran.actions');
+        return view('livewire.pages.pembayaran.actions', [
+            'users' => User::pluck('name', 'id'),
+            'banks' => Bank::pluck('name'),
+            'undangans' => Undangan::when($this->form->user_id, function($q){
+                $q->where('user_id', $this->form->user_id);
+            })->pluck('name', 'id'),
+        ]);
     }
 }

@@ -24,6 +24,7 @@ class PembayaranFactory extends Factory
         $confirmed = fake()->boolean();
 
         return [
+            'user_id' => $undangan->user_id,
             'undangan_id' => $id,
             'via' => $confirmed ? fake()->randomElement(Bank::pluck('name')) : null,
             'amount' => $undangan->paket->price,

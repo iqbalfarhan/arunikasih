@@ -8,7 +8,7 @@
             <div class="card-body space-y-6">
                 <div class="flex justify-between items-center">
                     <div>
-                        <h3 class="card-title">Invoice #{{ str_pad($pembayaran->id, 8, 0, STR_PAD_LEFT) }}</h3>
+                        <h3 class="card-title">Invoice #{{ $pembayaran->invoice_number }}</h3>
                         <p class="opacity-50 text-sm">{{ $pembayaran->confirmed_at->format('d F Y H:i:s') }}</p>
                     </div>
                     <button class="btn btn-sm btn-primary">Paid</button>

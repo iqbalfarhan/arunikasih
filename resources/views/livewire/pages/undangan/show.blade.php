@@ -38,10 +38,10 @@
             <div class="card-body">
                 <h3 class="card-title">
                     <x-tabler-send class="size-5" />
-                    <span>{{ $undangan->publish ? 'Sudah' : 'Belum' }} publish</span>
+                    <span>{{ $undangan->shared ? 'Sudah' : 'Belum' }} publish</span>
                 </h3>
                 <p class="text-sm opacity-50 line-clamp-2">Undangan anda saat ini
-                    {{ $undangan->publish ? 'sudah' : 'belum' }} publish, masuk ke menu publish
+                    {{ $undangan->shared ? 'sudah' : 'belum' }} publish, masuk ke menu publish
                     undangan untuk mengubah status
                 </p>
             </div>

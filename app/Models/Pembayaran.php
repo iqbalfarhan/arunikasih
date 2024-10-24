@@ -11,6 +11,7 @@ class Pembayaran extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'undangan_id',
         'via',
         'amount',
@@ -32,8 +33,22 @@ class Pembayaran extends Model
         return $this->belongsTo(Undangan::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function getImageAttribute()
     {
         return $this->evidence ? Storage::url($this->evidence) : url('nocover.jpg');
+    }
+
+    public function getInvoiceNumberAttribute()
+    {
+        return str_pad($this->id, 8, 0, STR_PAD_LEFT);
+    }
+
+    public function getWaitingAttribute()
+    {
+        return !is_null($this->evidence) && !$this->confirmed;
     }
 }

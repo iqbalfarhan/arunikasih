@@ -1,4 +1,10 @@
 <ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6">
+    <li>
+        <a href="" class="btn btn-ghost text-lg" wire:navigate>
+            @livewire('partial.logo')
+            <span>{{ config('app.name') }}</span>
+        </a>
+    </li>
     @role('user')
         <li>
             <h2 class="menu-title">Dashboard</h2>

@@ -1,4 +1,4 @@
-<div class="card card-compact bg-base-200 border-0 w-full md:max-w-64" data-theme="{{ $undangan->tema->name ?? '' }}">
+<div class="card card-compact bg-base-100 border-0 w-full md:max-w-64" data-theme="{{ $undangan->tema->name ?? '' }}">
     <div class="card-body space-y-12">
         <div class="flex justify-between items-center">
             <div>

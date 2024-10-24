@@ -38,9 +38,9 @@
                 </li>
             @endif
             <li>
-                <a href="{{ route('undangan.publish', $undangan) }}" @class(['active' => Route::is('undangan.publish')]) wire:navigate>
-                    <x-tabler-send class="size-5" />
-                    <span>Publish Undangan</span>
+                <a href="{{ route('undangan.share', $undangan) }}" @class(['active' => Route::is('undangan.share')]) wire:navigate>
+                    <x-tabler-share class="size-5" />
+                    <span>Share Undangan</span>
                 </a>
             </li>
         </ul>
