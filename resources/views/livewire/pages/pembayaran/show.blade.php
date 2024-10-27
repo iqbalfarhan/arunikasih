@@ -22,7 +22,7 @@
                 <div class="grid md:grid-cols-2">
                     <div class="text-left">
                         <span class="opacity-50 text-sm">Dari</span>
-                        <h3 class="font-bold text-lg">{{ $pembayaran->undangan->user->name }}</h3>
+                        <h3 class="font-bold text-lg">{{ $pembayaran->user->name }}</h3>
                         <p class="opacity-50 text-sm">{{ $pembayaran->via }}</p>
                     </div>
                     <div class="text-right">
@@ -43,8 +43,8 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Undangan {{ $pembayaran->undangan->kategori->name }}
-                                    {{ $pembayaran->undangan->paket->name }} [#{{ $pembayaran->undangan_id }}]</td>
+                                <td>Undangan {{ $pembayaran->undangan?->kategori->name }}
+                                    {{ $pembayaran->undangan?->paket->name }} [#{{ $pembayaran->undangan_id }}]</td>
                                 <td>Rp {{ Number::format($pembayaran->amount, locale: 'de') }}</td>
                                 <td>1</td>
                                 <td>Rp {{ Number::format($pembayaran->amount, locale: 'de') }}</td>

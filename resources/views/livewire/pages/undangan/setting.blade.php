@@ -48,9 +48,13 @@
                         ]) wire:click="updateOrnament({{ $ornament->id }})">
                             <div class="card-body">
                                 <div class="flex gap-4 w-full items-center">
-                                    <div class="avatar">
-                                        <div class="w-10">
-                                            <img src="{{ Storage::url($ornament->ring) }}" alt="">
+                                    <div class="avatar placeholder">
+                                        <div class="w-10 bg-base-100">
+                                            @if ($ornament->ring)
+                                                <img src="{{ Storage::url($ornament->ring) }}" alt="">
+                                            @else
+                                                <x-tabler-photo></x-tabler-photo>
+                                            @endif
                                         </div>
                                     </div>
                                     <h4 class="text-base capitalize">{{ $ornament->name }}</h4>

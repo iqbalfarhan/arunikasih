@@ -2,7 +2,7 @@
     <li>
         <ul>
             <li>
-                <a href="{{ route('undangan.mine') }}">
+                <a href="{{ route('home') }}">
                     <x-tabler-arrow-left class="size-5" />
                     <span>Kembali</span>
                 </a>

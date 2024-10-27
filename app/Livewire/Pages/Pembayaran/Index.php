@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages\Pembayaran;
 
 use App\Models\Pembayaran;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
@@ -15,7 +16,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.pages.pembayaran.index', [
-            'datas' => Pembayaran::get()
+            'datas' => Auth::user()->hasRole('user') ? Pembayaran::where('user_id', Auth::id())->get() : Pembayaran::get()
         ]);
     }
 }

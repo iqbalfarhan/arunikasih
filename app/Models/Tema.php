@@ -15,4 +15,9 @@ class Tema extends Model
         'thumbnail',
         'css',
     ];
+
+    public function kategori()
+    {
+        return $this->belongsTo(Kategori::class);
+    }
 }

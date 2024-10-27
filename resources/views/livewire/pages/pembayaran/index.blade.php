@@ -1,4 +1,5 @@
 <div class="page-wrapper">
+    {{-- @livewire('pages.pembayaran.mine') --}}
     @livewire('partial.header', [
         'title' => 'Pembayaran management',
     ])
@@ -55,7 +56,7 @@
                             <div @class([
                                 'badge badge-sm',
                                 'badge-primary' => $data->confirmed,
-                                'badge-warning' => !$data->confirmed,
+                                'badge-error' => !$data->confirmed,
                             ])>
                                 {{ $data->confirmed ? 'Paid' : 'Unpaid' }}
                             </div>

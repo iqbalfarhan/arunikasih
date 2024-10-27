@@ -12,7 +12,7 @@ Route::get('logout',  function(){
 Route::middleware('guest')->group(function(){
     // Route::get('/{katname}/{slug}', \App\Livewire\Pages\Publish::class)->name('publish');
     Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
-    Route::get('/register', \App\Livewire\Auth\Register::class)->name('register');
+    // Route::get('/register', \App\Livewire\Auth\Register::class)->name('register');
 });
 
 Route::middleware('auth')->group(function(){

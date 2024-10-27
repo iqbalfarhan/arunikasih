@@ -4,12 +4,12 @@
     ])
 
     <div class="table-filter-wrapper">
-        <select wire:model.live="cari" class="select select-bordered" placeholder="Pencarian">
-            <option value="">Kategori paket</option>
+        <div role="tablist" class="tabs tabs-boxed bg-base-300">
             @foreach ($kategoris as $katid => $katname)
-                <option value="{{ $katid }}">{{ $katname }}</option>
+                <button wire:click="$set('cari', {{ $katid }})" role="tab"
+                    @class(['tab', 'tab-active' => $katid == $cari])>{{ $katname }}</button>
             @endforeach
-        </select>
+        </div>
         @can('paket.create')
             <button class="btn btn-primary" wire:click="$dispatch('createPaket')">
                 <x-tabler-plus class="size-5" />

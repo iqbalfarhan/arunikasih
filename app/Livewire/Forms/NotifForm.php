@@ -27,7 +27,6 @@ class NotifForm extends Form
         $valid = $this->validate([
             'user_id' => 'required',
             'message' => 'required',
-            'read' => 'required',
         ]);
 
         Notif::create($valid);
@@ -39,7 +38,6 @@ class NotifForm extends Form
         $valid = $this->validate([
             'user_id' => 'required',
             'message' => 'required',
-            'read' => 'required',
         ]);
 
         $this->notif->update($valid);
