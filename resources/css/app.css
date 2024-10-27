@@ -7,8 +7,8 @@
 
 @layer base {
   html {
-    font-family: 'Montserrat Alternates', sans-serif;
-    @apply font-semibold scrollbar-hide;
+    /* font-family: 'Montserrat Alternates', sans-serif; */
+    @apply font-montserrat font-medium scrollbar-hide;
   }
   thead {
     @apply border-b-4 border-base-300 bg-base-200/50;

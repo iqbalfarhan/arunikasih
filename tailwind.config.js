@@ -10,6 +10,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
+        montserrat: ['Montserrat Alternates'],
         handlee: ['Handlee'],
         sanchez: ['Sanchez'],
       },

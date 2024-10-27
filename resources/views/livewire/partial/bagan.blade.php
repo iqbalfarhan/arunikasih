@@ -1,19 +1,14 @@
 <ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6">
-    @role('user')
-        <li>
-            <a href="{{ route('undangan.mine') }}">
-                <x-tabler-arrow-left class="size-5" />
-                <span>Undangan saya</span>
-            </a>
-        </li>
-    @else
-        <li>
-            <a href="{{ route('undangan.index') }}">
-                <x-tabler-arrow-left class="size-5" />
-                <span>Kembali</span>
-            </a>
-        </li>
-    @endrole
+    <li>
+        <ul>
+            <li>
+                <a href="{{ route('undangan.mine') }}">
+                    <x-tabler-arrow-left class="size-5" />
+                    <span>Kembali</span>
+                </a>
+            </li>
+        </ul>
+    </li>
     <li>
         <h2 class="menu-title">Dashboard</h2>
         <ul>

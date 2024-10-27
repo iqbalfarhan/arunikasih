@@ -1,5 +1,5 @@
 <div class="flex items-center whitespace-nowrap">
-    <h3 class="font-bold text-lg">{{ $title }}</h3>
+    <h3 class="font-semibold text-lg">{{ $title }}</h3>
     <div class="divider divider-horizontal hidden md:flex"></div>
     <div class="text-xs breadcrumbs capitalize hidden md:flex">
         <ul>

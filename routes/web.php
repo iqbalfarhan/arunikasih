@@ -33,8 +33,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/rating', \App\Livewire\Pages\Rating\Index::class)->name('rating.index');
     Route::get('/ornamen', \App\Livewire\Pages\Ornament\Index::class)->name('ornamen.index');
     Route::get('/pembayaran', \App\Livewire\Pages\Pembayaran\Index::class)->name('pembayaran.index');
+    Route::get('/notif', \App\Livewire\Pages\Notif\Index::class)->name('notif.index');
     Route::get('/undangan', \App\Livewire\Pages\Undangan\Index::class)->name('undangan.index');
     Route::get('/undangan/table', \App\Livewire\Pages\Undangan\Table::class)->name('undangan.table');
+
+    Route::get('/masters', \App\Livewire\Pages\Masters\Index::class)->name('masters.index');
 
     Route::get('/penilaian', \App\Livewire\Pages\Rating\Mine::class)->name('rating.mine');
     Route::get('/pembayaran/mine', \App\Livewire\Pages\Pembayaran\Mine::class)->name('pembayaran.mine');

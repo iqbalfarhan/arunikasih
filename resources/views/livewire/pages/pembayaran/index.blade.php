@@ -20,6 +20,7 @@
                 <th>Undangan</th>
                 <th>Amount</th>
                 <th>Confirmed at</th>
+                <th>Paid</th>
                 @can('pembayaran.confirm')
                     <th class="text-center">Approve</th>
                 @endcan
@@ -29,7 +30,7 @@
             </thead>
             <tbody>
                 @foreach ($datas as $data)
-                    <tr wire:key="{{ $data->id }}" @class(['text-success' => $data->confirmed])>
+                    <tr wire:key="{{ $data->id }}">
                         <td>{{ $no++ }}</td>
                         <td>
                             <div class="flex flex-col">
@@ -42,18 +43,27 @@
                                 <a href="{{ route('undangan.show', $data->undangan) }}" class="flex flex-col"
                                     wire:navigate>
                                     <span class="text-xs opacity-75">{{ $data->undangan->kategori->name ?? '' }}</span>
-                                    <span>{{ $data->undangan->name ?? '' }}</span>
+                                    <span>{{ Str::limit($data->undangan->name ?? '', 15) }}</span>
                                 </a>
                             @endif
                         </td>
-                        <td>Rp. {{ Number::format($data->amount, locale: 'de') }}</td>
+                        <td>{{ Number::format($data->amount, locale: 'de') }}</td>
                         <td>
-                            {{ $data->confirmed ? $data->confirmed_at?->format('d F Y H:i:s') : '' }}
+                            {{ $data->confirmed ? $data->confirmed_at?->format('d/m/y H:i') : '' }}
+                        </td>
+                        <td>
+                            <div @class([
+                                'badge badge-sm',
+                                'badge-primary' => $data->confirmed,
+                                'badge-warning' => !$data->confirmed,
+                            ])>
+                                {{ $data->confirmed ? 'Paid' : 'Unpaid' }}
+                            </div>
                         </td>
                         @can('pembayaran.confirm')
                             <td>
                                 <div class="flex justify-center">
-                                    <input type="checkbox" @class(['toggle toggle-sm toggle-success']) @checked($data->confirmed)
+                                    <input type="checkbox" @class(['toggle toggle-sm toggle-primary']) @checked($data->confirmed)
                                         wire:change="$dispatch('toggleConfirm', {pembayaran: {{ $data->id }}})" />
                                 </div>
                             </td>

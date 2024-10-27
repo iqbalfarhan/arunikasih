@@ -1,98 +1,81 @@
 <ul class="sidebar menu p-4 w-80 min-h-full text-base-content space-y-6">
     <li>
-        <a href="" class="btn btn-ghost text-lg" wire:navigate>
-            @livewire('partial.logo')
-            <span>{{ config('app.name') }}</span>
-        </a>
+        <h2 class="menu-title">Dashboard</h2>
+        <ul>
+            @can('home')
+                <li>
+                    <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
+                        <x-tabler-home class="size-5" />
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+            @endcan
+            @can('undangan.mine')
+                <li>
+                    <a href="{{ route('undangan.mine') }}" @class([
+                        'active' => Route::is([
+                            'undangan.index',
+                            'undangan.create',
+                            'undangan.show',
+                            'undangan.raw',
+                            'undangan.mine',
+                        ]),
+                    ]) wire:navigate>
+                        <x-tabler-bookmark class="size-5" />
+                        <span>Undangan Saya</span>
+                    </a>
+                </li>
+            @endcan
+            @can('pembayaran.mine')
+                <li>
+                    <a href="{{ route('pembayaran.mine') }}" @class([
+                        'active' => Route::is(['pembayaran.mine', 'pembayaran.show']),
+                    ]) wire:navigate>
+                        <x-tabler-credit-card class="size-5" />
+                        <span>Pembayaran</span>
+                    </a>
+                </li>
+            @endcan
+            @can('notif.index')
+                <li>
+                    <a href="{{ route('notif.index') }}" @class([
+                        'active' => Route::is('notif.index'),
+                    ]) wire:navigate>
+                        <x-tabler-bell class="size-5" />
+                        <span>Notifikasi</span>
+                        @livewire('partial.notif-badge')
+                    </a>
+                </li>
+            @endcan
+            @can('rating.mine')
+                <li>
+                    <a href="{{ route('rating.mine') }}" @class(['active' => Route::is('rating.mine')]) wire:navigate>
+                        <x-tabler-message class="size-5" />
+                        <span>Penilaian & Saran</span>
+                    </a>
+                </li>
+            @endcan
+            @can('pembayaran.index')
+                <li>
+                    <a href="{{ route('pembayaran.index') }}" @class([
+                        'active' => Route::is(['pembayaran.index', 'pembayaran.show']),
+                    ]) wire:navigate>
+                        <x-tabler-credit-card class="size-5" />
+                        <span>Pembayaran</span>
+                    </a>
+                </li>
+            @endcan
+            @can('rating.index')
+                <li>
+                    <a href="{{ route('rating.index') }}" @class(['active' => Route::is('rating.index')]) wire:navigate>
+                        <x-tabler-message class="size-5" />
+                        <span>Testimoni Client</span>
+                    </a>
+                </li>
+            @endcan
+        </ul>
     </li>
-    @role('user')
-        <li>
-            <h2 class="menu-title">Dashboard</h2>
-            <ul>
-                @can('home')
-                    <li>
-                        <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
-                            <x-tabler-home class="size-5" />
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('undangan.mine')
-                    <li>
-                        <a href="{{ route('undangan.mine') }}" @class(['active' => Route::is(['undangan.mine', 'undangan.create'])]) wire:navigate>
-                            <x-tabler-bookmark class="size-5" />
-                            <span>Undangan Saya</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('pembayaran.mine')
-                    <li>
-                        <a href="{{ route('pembayaran.mine') }}" @class([
-                            'active' => Route::is(['pembayaran.mine', 'pembayaran.show']),
-                        ]) wire:navigate>
-                            <x-tabler-credit-card class="size-5" />
-                            <span>Pembayaran</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('rating.mine')
-                    <li>
-                        <a href="{{ route('rating.mine') }}" @class(['active' => Route::is('rating.mine')]) wire:navigate>
-                            <x-tabler-message class="size-5" />
-                            <span>Penilaian & Saran</span>
-                        </a>
-                    </li>
-                @endcan
-            </ul>
-        </li>
-    @endrole
-    @role('superadmin')
-        <li>
-            <h2 class="menu-title">Administrator</h2>
-            <ul>
-                @can('home')
-                    <li>
-                        <a href="{{ route('home') }}" @class(['active' => Route::is('home')]) wire:navigate>
-                            <x-tabler-home class="size-5" />
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('undangan.index')
-                    <li>
-                        <a href="{{ route('undangan.index') }}" @class([
-                            'active' => Route::is([
-                                'undangan.index',
-                                'undangan.create',
-                                'undangan.show',
-                                'undangan.raw',
-                            ]),
-                        ]) wire:navigate>
-                            <x-tabler-bookmarks class="size-5" />
-                            <span>Undangan</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('pembayaran.index')
-                    <li>
-                        <a href="{{ route('pembayaran.index') }}" @class([
-                            'active' => Route::is(['pembayaran.index', 'pembayaran.show']),
-                        ]) wire:navigate>
-                            <x-tabler-credit-card class="size-5" />
-                            <span>Pembayaran</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('rating.index')
-                    <li>
-                        <a href="{{ route('rating.index') }}" @class(['active' => Route::is('rating.index')]) wire:navigate>
-                            <x-tabler-message class="size-5" />
-                            <span>Testimoni Client</span>
-                        </a>
-                    </li>
-                @endcan
-            </ul>
-        </li>
+    @can('datamaster')
         <li>
             <h2 class="menu-title">Data master</h2>
             <ul>
@@ -120,38 +103,14 @@
                         </a>
                     </li>
                 @endcan
-                @can('music.index')
+                @canany(['music.index', 'ayat.index', 'bank.index', 'sosmed.index'])
                     <li>
-                        <a href="{{ route('music.index') }}" @class(['active' => Route::is('music.index')]) wire:navigate>
-                            <x-tabler-music class="size-5" />
-                            <span>Library Music</span>
+                        <a href="{{ route('masters.index') }}" @class(['active' => Route::is('masters.index')]) wire:navigate>
+                            <x-tabler-settings class="size-5" />
+                            <span>List Data Master</span>
                         </a>
                     </li>
-                @endcan
-                @can('ayat.index')
-                    <li>
-                        <a href="{{ route('ayat.index') }}" @class(['active' => Route::is('ayat.index')]) wire:navigate>
-                            <x-tabler-book class="size-5" />
-                            <span>Ayat & Hadist</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('bank.index')
-                    <li>
-                        <a href="{{ route('bank.index') }}" @class(['active' => Route::is('bank.index')]) wire:navigate>
-                            <x-tabler-building class="size-5" />
-                            <span>Daftar Bank</span>
-                        </a>
-                    </li>
-                @endcan
-                @can('sosmed.index')
-                    <li>
-                        <a href="{{ route('sosmed.index') }}" @class(['active' => Route::is('sosmed.index')]) wire:navigate>
-                            <x-tabler-message class="size-5" />
-                            <span>Social Media</span>
-                        </a>
-                    </li>
-                @endcan
+                @endcanany
                 @can('tema.index')
                     <li>
                         <a href="{{ route('tema.index') }}" @class(['active' => Route::is('tema.index')]) wire:navigate>
@@ -214,12 +173,6 @@
                     </a>
                 </li>
             @endcan
-            <li>
-                <button wire:click="$dispatch('logout')">
-                    <x-tabler-bug class="size-5" />
-                    <span>Laporan Error & Bug</span>
-                </button>
-            </li>
             <li>
                 <button wire:click="$dispatch('logout')">
                     <x-tabler-logout class="size-5" />

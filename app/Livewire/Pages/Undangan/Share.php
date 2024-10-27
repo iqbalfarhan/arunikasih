@@ -28,7 +28,7 @@ class Share extends Component
     public function render()
     {
         return view('livewire.pages.undangan.share', [
-            'tamus' => Tamu::get()
+            'tamus' => Tamu::where('undangan_id', $this->undangan->id)->get()
         ])->layout('components.layouts.undangan', [
             'undangan' => $this->undangan,
         ]);

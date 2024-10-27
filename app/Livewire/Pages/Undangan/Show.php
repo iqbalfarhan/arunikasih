@@ -38,6 +38,7 @@ use LivewireAlert;
         $this->undangan->save();
         $this->dispatch('reload');
         $this->alert('success', 'Data bagan undangan diperbarui');
+        $this->redirect(route('undangan.show', $this->undangan->id), true);
     }
 
     public function render()

@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Rating;
-use App\Models\User;
+use App\Models\Notif;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class RatingSeeder extends Seeder
+class NotifSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Rating::factory(User::count())->create();
+        Notif::factory(100)->create();
     }
 }

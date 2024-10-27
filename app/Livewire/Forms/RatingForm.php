@@ -13,7 +13,7 @@ class RatingForm extends Form
 
     public $user_id;
     public $insight;
-    public $rate = 1;
+    public $rate = 5;
 
     public function setRating(Rating $rating){
         $this->rating = $rating;

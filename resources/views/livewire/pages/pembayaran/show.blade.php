@@ -11,7 +11,11 @@
                         <h3 class="card-title">Invoice #{{ $pembayaran->invoice_number }}</h3>
                         <p class="opacity-50 text-sm">{{ $pembayaran->confirmed_at->format('d F Y H:i:s') }}</p>
                     </div>
-                    <button class="btn btn-sm btn-primary">Paid</button>
+                    <button @class([
+                        'btn btn-sm',
+                        'btn-primary' => $pembayaran->confirmed,
+                        'btn-warning' => $pembayaran->waiting,
+                    ])>{{ $pembayaran->confirmed ? 'Paid' : 'Unpaid' }}</button>
                 </div>
             </div>
             <div class="card-body space-y-6">

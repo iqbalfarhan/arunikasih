@@ -18,8 +18,8 @@ class PaketSeeder extends Seeder
             $pakets = [
                 [
                     "name" => "basic",
-                    "harga" => "10000",
-                    "diskon" => "0",
+                    "harga" => "0",
+                    "diskon" => "50000",
                 ],
                 [
                     "name" => "standard",
