@@ -12,14 +12,8 @@
                         'input input-bordered',
                         'input-error' => $errors->first('form.name'),
                     ]) wire:model.live="form.name"
-                        placeholder="Nama lengkap tamu" />
+                        placeholder="contoh : Mas Arif dan keluarga" />
                 </label>
-
-                @if ($undangan)
-                    <p class="text-sm">
-                        {{ $undangan->link }}?{{ http_build_query(['yth' => $form->name]) }}
-                    </p>
-                @endif
 
                 @if ($form->message)
                     <label class="form-control">

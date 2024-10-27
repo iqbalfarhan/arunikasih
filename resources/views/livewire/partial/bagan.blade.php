@@ -24,14 +24,12 @@
                     <span>Tema Tampilan</span>
                 </a>
             </li>
-            @if (in_array('rsvp dan ucapan', $bagans))
-                <li>
-                    <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
-                        <x-tabler-users class="size-5" />
-                        <span>Daftar tamu</span>
-                    </a>
-                </li>
-            @endif
+            <li>
+                <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
+                    <x-tabler-users class="size-5" />
+                    <span>Daftar tamu</span>
+                </a>
+            </li>
             <li>
                 <a href="{{ route('undangan.share', $undangan) }}" @class(['active' => Route::is('undangan.share')]) wire:navigate>
                     <x-tabler-share class="size-5" />
