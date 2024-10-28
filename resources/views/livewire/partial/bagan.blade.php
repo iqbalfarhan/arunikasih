@@ -26,16 +26,16 @@
             </li>
             <li>
                 <a href="{{ route('undangan.guest', $undangan) }}" @class(['active' => Route::is('undangan.guest')]) wire:navigate>
-                    <x-tabler-users class="size-5" />
-                    <span>Daftar tamu</span>
+                    <x-tabler-share class="size-5" />
+                    <span>Share undangan</span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('undangan.share', $undangan) }}" @class(['active' => Route::is('undangan.share')]) wire:navigate>
                     <x-tabler-share class="size-5" />
                     <span>Share Undangan</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </li>
 
@@ -81,6 +81,14 @@
                         <a href="{{ route('undangan.story', $undangan) }}" @class(['active' => Route::is('undangan.story')]) wire:navigate>
                             <x-tabler-heart class="size-5" />
                             <span>Kisah Cinta</span>
+                        </a>
+                    </li>
+                @endif
+                @if (in_array('rsvp dan ucapan', $bagans))
+                    <li>
+                        <a href="{{ route('undangan.ucapan', $undangan) }}" @class(['active' => Route::is('undangan.ucapan')]) wire:navigate>
+                            <x-tabler-message class="size-5" />
+                            <span>Ucapan dan Doa</span>
                         </a>
                     </li>
                 @endif

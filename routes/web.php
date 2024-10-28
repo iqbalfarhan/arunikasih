@@ -60,5 +60,6 @@ Route::middleware('auth')->group(function(){
         Route::get('/rekening', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.rekening');
         Route::get('/anak', \App\Livewire\Pages\Undangan\Rekening::class)->name('undangan.anak');
         Route::get('/share', \App\Livewire\Pages\Undangan\Share::class)->name('undangan.share');
+        Route::get('/ucapan', \App\Livewire\Pages\Undangan\Ucapan::class)->name('undangan.ucapan');
     });
 });

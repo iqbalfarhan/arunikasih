@@ -12,6 +12,8 @@ class Tamu extends Model
     protected $fillable = [
         "name",
         "undangan_id",
+        "shared",
+        "read",
         "present",
         "message",
         "reply",

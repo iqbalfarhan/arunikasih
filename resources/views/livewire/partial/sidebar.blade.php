@@ -10,10 +10,10 @@
                     </a>
                 </li>
             @endcan
-            @can('undangan.table')
+            @can('undangan.index')
                 <li>
-                    <a href="{{ route('undangan.table') }}" @class([
-                        'active' => Route::is(['undangan.table', 'undangan.show']),
+                    <a href="{{ route('undangan.index') }}" @class([
+                        'active' => Route::is(['undangan.index', 'undangan.show']),
                     ]) wire:navigate>
                         <x-tabler-bookmarks class="size-5" />
                         <span>Data Undangan</span>

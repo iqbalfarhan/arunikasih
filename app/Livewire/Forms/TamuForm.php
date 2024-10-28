@@ -13,6 +13,8 @@ class TamuForm extends Form
 
     public $name;
     public $undangan_id;
+    public $shared = false;
+    public $read = false;
     public $present = false;
     public $message = "";
     public $reply = "";
@@ -22,6 +24,8 @@ class TamuForm extends Form
 
         $this->name = $tamu->name;
         $this->undangan_id = $tamu->undangan_id;
+        $this->shared = $tamu->shared;
+        $this->read = $tamu->read;
         $this->present = $tamu->present;
         $this->message = $tamu->message;
         $this->reply = $tamu->reply;
@@ -31,6 +35,8 @@ class TamuForm extends Form
         $valid = $this->validate([
             'name' => 'required',
             'undangan_id' => 'required',
+            'shared' => '',
+            'read' => '',
             'present' => '',
             'message' => '',
             'reply' => '',
@@ -45,6 +51,8 @@ class TamuForm extends Form
         $valid = $this->validate([
             'name' => 'required',
             'undangan_id' => 'required',
+            'shared' => '',
+            'read' => '',
             'present' => 'required',
             'message' => 'required',
             'reply' => '',
