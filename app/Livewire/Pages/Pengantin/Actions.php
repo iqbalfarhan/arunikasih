@@ -51,6 +51,8 @@ class Actions extends Component
             $this->form->store();
         }
 
+        $this->reset('photo');
+
         $this->resetForm();
         $this->alert('success', 'Data pengantin berhasil disimpan');
         $this->dispatch('reload');

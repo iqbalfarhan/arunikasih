@@ -89,11 +89,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="avatar">
-                                        <div class="w-32 bg-neutral rounded-full">
-                                            <img src="{{ $pengantin->image }}" alt="">
-                                        </div>
-                                    </div> --}}
                                         <h3 class="text-3xl font-semibold">{{ $pengantin->name }}</h3>
                                         <p>{{ $pengantin->text }}</p>
                                     </div>

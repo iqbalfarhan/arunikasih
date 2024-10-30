@@ -140,23 +140,18 @@
                         <table class="table">
                             <thead>
                                 <th>No</th>
-                                <th class="w-full">Nama</th>
+                                <th>Nama</th>
                                 <th>Kehadiran</th>
                             </thead>
                             <tbody>
                                 @foreach ($undangan->tamus as $tamu)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $tamu->name }}</td>
                                         <td>
-                                            <div class="flex flex-col">
-                                                <span>{{ $tamu->name }}</span>
-                                                <span class="text-xs opacity-50">{{ $tamu->message }}</span>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            @if ($tamu->present)
-                                                <span class="text-success">hadir</span>
-                                            @endif
+                                            <button @class(['btn btn-xs text-error', 'text-success' => $tamu->present])>
+                                                {{ $tamu->present ? 'Hadir' : 'Tidak hadir' }}
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

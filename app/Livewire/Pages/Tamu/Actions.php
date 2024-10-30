@@ -33,6 +33,14 @@ class Actions extends Component
         $this->form->setTamu($tamu);
     }
 
+    #[On("toggleShared")]
+    public function toggleShared(Tamu $tamu)
+    {
+        $tamu->shared = !$tamu->shared;
+        $tamu->save();
+        $this->form->setTamu($tamu);
+    }
+
     #[On("deleteTamu")]
     public function deleteTamu(Tamu $tamu)
     {

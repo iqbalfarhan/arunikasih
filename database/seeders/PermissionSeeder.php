@@ -48,6 +48,7 @@ class PermissionSeeder extends Seeder
             'tamu.create'           => ['user'],
             'tamu.edit'             => ['user'],
             'tamu.delete'           => ['user'],
+            'tamu.share'            => ['user'],
 
             'undangan.index'        => [],
             'undangan.create'       => ['user'],
@@ -73,6 +74,11 @@ class PermissionSeeder extends Seeder
             'pengantin.create'      => ['user'],
             'pengantin.edit'        => ['user'],
             'pengantin.delete'      => ['user'],
+
+            'event.index'           => ['user'],
+            'event.create'          => ['user'],
+            'event.edit'            => ['user'],
+            'event.delete'          => ['user'],
         ];
 
         foreach ($datas as $data => $roles) {

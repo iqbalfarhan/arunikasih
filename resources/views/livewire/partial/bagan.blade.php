@@ -88,7 +88,7 @@
                     <li>
                         <a href="{{ route('undangan.ucapan', $undangan) }}" @class(['active' => Route::is('undangan.ucapan')]) wire:navigate>
                             <x-tabler-message class="size-5" />
-                            <span>Ucapan dan Doa</span>
+                            <span>Ucapan & Doa</span>
                         </a>
                     </li>
                 @endif

@@ -10,6 +10,8 @@ class Ucapan extends Component
 {
     public Undangan $undangan;
 
+    protected $listeners = ['reload' => '$refresh'];
+
     public function mount(Undangan $undangan)
     {
         $this->undangan = $undangan;
@@ -19,6 +21,14 @@ class Ucapan extends Component
     {
         $this->undangan->shared = $this->undangan->shared ? false : true;
         $this->undangan->save();
+
+        $this->dispatch('reload');
+    }
+
+    public function resetReply(Tamu $tamu)
+    {
+        $tamu->reply = null;
+        $tamu->save();
 
         $this->dispatch('reload');
     }
