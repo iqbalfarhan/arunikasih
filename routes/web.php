@@ -10,7 +10,6 @@ Route::get('logout',  function(){
 })->name('logout');
 
 Route::middleware('guest')->group(function(){
-    // Route::get('/{katname}/{slug}', \App\Livewire\Pages\Publish::class)->name('publish');
     Route::get('/login', \App\Livewire\Auth\Login::class)->name('login');
     // Route::get('/register', \App\Livewire\Auth\Register::class)->name('register');
 });
@@ -63,3 +62,5 @@ Route::middleware('auth')->group(function(){
         Route::get('/ucapan', \App\Livewire\Pages\Undangan\Ucapan::class)->name('undangan.ucapan');
     });
 });
+
+Route::get('/{katname}/{slug}', \App\Livewire\Pages\Publish::class)->name('publish');

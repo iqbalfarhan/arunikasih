@@ -20,13 +20,13 @@ class Create extends Component
     public UndanganForm $form;
 
     public $steps = [
-        'kategori' => "Pilih kategori",
-        'paket' => "Pilih paket",
-        'name' => "Nama undangan",
-        'done' => "Selanjutnya"
+        0 => "Pilih kategori",
+        1 => "Pilih paket",
+        2 => "Nama undangan",
+        3 => "Selanjutnya",
     ];
 
-    public $step = 'kategori';
+    public $step = 0;
 
     public function resetForm()
     {

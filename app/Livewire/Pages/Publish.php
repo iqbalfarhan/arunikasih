@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Pages;
 
+use App\Models\Tamu;
 use App\Models\Undangan;
 use Livewire\Component;
 
@@ -9,6 +10,9 @@ class Publish extends Component
 {
     public $cover = true;
     public ?Undangan $undangan;
+    public ?Tamu $tamu;
+
+    protected $listeners = ['reload' => '$refresh'];
 
     public function mount($katname, $slug)
     {
@@ -17,6 +21,8 @@ class Publish extends Component
         ->whereHas('kategori', function($kat) use ($katname) {
             $kat->where('name', $katname);
         })->firstOrFail();
+
+        $this->tamu = Tamu::where('undangan_id', $this->undangan->id)->first();
     }
 
     public function toggleCover()

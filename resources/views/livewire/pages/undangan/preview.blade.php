@@ -64,7 +64,6 @@
                 </div>
             </section>
         @endif
-
         {{-- pengantin --}}
         @if ($undangan->can('data pengantin'))
             <section id="pengantin" class="card">
@@ -157,11 +156,13 @@
                         istimewa dari awal pertemuan hingga hari bahagia.</p>
 
 
-                    <ol class="text-left space-y-6">
+                    <ol class="steps steps-vertical">
                         @foreach ($undangan->kisahs as $kisah)
-                            <li class="space-y-2">
-                                <h5 class="font-semibold">{{ $kisah->title }}</h5>
-                                <p>{{ $kisah->content }}</p>
+                            <li class="step">
+                                <div class="font-semibold text-left py-4">
+                                    <div class="font-bold">{{ $kisah->title }}</div>
+                                    <p class="text-left">{{ $kisah->content }}</p>
+                                </div>
                             </li>
                         @endforeach
                     </ol>
@@ -181,29 +182,49 @@
                     <div class="flex flex-col text-left text-base w-full">
                         @foreach ($undangan->tamus->take(4) as $tamu)
                             <div class="chat chat-end">
-                                <div class="chat-bubble chat-bubble-accent">
-                                    <div class="chat-header">
+                                <div class="chat-image avatar">
+                                    <div class="w-10 rounded-full">
+                                        <img alt="Tailwind CSS chat bubble component"
+                                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                                    </div>
+                                </div>
+                                <div class="chat-bubble chat-bubble-accent space-y-1 max-w-lg text-sm">
+                                    <div class="chat-header flex justify-between">
+                                        <div class="chat-footer opacity-50 text-xs">
+                                            {{ $tamu->created_at->format('d M Y') }}
+                                        </div>
                                         <span class="font-bold">{{ $tamu->name }}</span>
                                     </div>
-                                    {{ $tamu->message }}
+                                    <p class="text-right">{{ $tamu->message }}</p>
                                 </div>
                             </div>
                             @if ($tamu->reply)
-                                <div class="chat chat-start">
-                                    <div class="chat-bubble chat-bubble-secondary">
-                                        <div class="chat-header">
-                                            <span class="font-bold">{{ $undangan->name }}</span>
+                                <div class="chat chat-start space-y-1">
+                                    <div class="chat-image avatar">
+                                        <div class="w-10 rounded-full">
+                                            <img alt="" src="{{ $undangan->image }}" />
                                         </div>
-                                        {{ $tamu->reply }}
+                                    </div>
+                                    <div class="chat-bubble chat-bubble-accent space-y-1 max-w-lg text-sm">
+                                        <div class="chat-header flex justify-between">
+                                            <span class="font-bold">{{ $undangan->name }}</span>
+                                            <div class="chat-footer opacity-50 text-xs">
+                                                {{ $tamu->created_at->format('d M Y') }}
+                                            </div>
+                                        </div>
+                                        <p>{{ $tamu->reply }}</p>
                                     </div>
                                 </div>
                             @endif
                         @endforeach
                     </div>
 
-                    <button class="btn btn-primary btn-circle">
+                    <button class="btn btn-primary" wire:click="dispatch('openChat', {tamu: {{ $tamu->id }}})">
                         <x-tabler-edit />
+                        <span>Tulis ucapan dan doa</span>
                     </button>
+
+                    @livewire('pages.undangan.chat')
                 </div>
             </section>
         @endif

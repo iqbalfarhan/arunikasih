@@ -10,11 +10,11 @@
         <div class="card-body">
             <ul class="steps steps-vertical md:steps-horizontal">
                 @foreach ($steps as $stepkey => $stepname)
-                    <li @class(['step', 'step-primary' => $stepkey == $step])>{{ $stepname }}</li>
+                    <li @class(['step', 'step-primary' => $stepkey <= $step])>{{ $stepname }}</li>
                 @endforeach
             </ul>
         </div>
-        @if ($step == 'kategori')
+        @if ($step == 0)
             <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Kategori undangan</h3>
@@ -35,7 +35,7 @@
                     @endforeach
                 </div>
             </div>
-        @elseif ($step == 'paket')
+        @elseif ($step == 1)
             <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Paket undangan</h3>
@@ -92,7 +92,7 @@
                     </div>
                 </div>
             </div>
-        @elseif ($step == 'name')
+        @elseif ($step == 2)
             <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Nama undangan</h3>
@@ -109,7 +109,7 @@
                         placeholder="Contoh : Galih & Ratna" />
                 </label>
             </div>
-        @elseif ($step == 'done')
+        @elseif ($step == 3)
             <div class="card-body space-y-6">
                 <div class="flex flex-col gap-2">
                     <h3 class="card-title">Undangan sudah siap dibuat</h3>
@@ -123,7 +123,7 @@
         @endif
         <div class="card-body space-y-6">
             <div class="card-actions justify-between">
-                @if ($step != 'kategori')
+                @if ($step != 0)
                     <button class="btn" wire:click="previousStep">
                         <x-tabler-arrow-left class="size-5" />
                         <span>Sebelumnya</span>
@@ -133,7 +133,7 @@
                 @endif
                 <div class="flex flex-col md:flex-row gap-3">
 
-                    @if ($step == 'done')
+                    @if ($step == 3)
                         <button class="btn btn-primary" wire:click="simpan">
                             <x-tabler-check class="size-5" />
                             <span>Selesai</span>
