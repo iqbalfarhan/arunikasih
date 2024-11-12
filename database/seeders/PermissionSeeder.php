@@ -79,6 +79,26 @@ class PermissionSeeder extends Seeder
             'event.create'          => ['user'],
             'event.edit'            => ['user'],
             'event.delete'          => ['user'],
+
+            'gallery.index'         => ['user'],
+            'gallery.create'        => ['user'],
+            'gallery.edit'          => ['user'],
+            'gallery.delete'        => ['user'],
+
+            'kisah.index'           => ['user'],
+            'kisah.create'          => ['user'],
+            'kisah.edit'            => ['user'],
+            'kisah.delete'          => ['user'],
+
+            'streaming.index'       => ['user'],
+            'streaming.create'      => ['user'],
+            'streaming.edit'        => ['user'],
+            'streaming.delete'      => ['user'],
+
+            'hadiah.index'          => ['user'],
+            'hadiah.create'         => ['user'],
+            'hadiah.edit'           => ['user'],
+            'hadiah.delete'         => ['user'],
         ];
 
         foreach ($datas as $data => $roles) {

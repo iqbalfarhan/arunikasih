@@ -20,7 +20,7 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Nama streaming</span>
+                        <span class="label-text">Url streaming</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',

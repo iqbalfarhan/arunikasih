@@ -13,56 +13,52 @@
                         <span>{{ $undangan->tema->name }}</span>
                     </button>
                 </div>
-                <div class="h-full rounded-box">
-                    <div class="grid md:grid-cols-4 gap-3">
-                        @foreach ($temas as $tema)
-                            <div @class([
-                                'card card-compact bg-base-200 cursor-pointer border-0 text-left',
-                                'ring ring-primary ring-inset ring-4' => $undangan->tema_id == $tema->id,
-                            ]) wire:click="updateTema({{ $tema->id }})"
-                                data-theme="{{ $tema->name }}">
-                                <div class="card-body">
-                                    <div class="flex justify-between w-full items-center">
-                                        <h4 class="text-base-content capitalize">{{ $tema->name }}</h4>
-                                        <div class="flex gap-1 bg-base-200 p-1 rounded-box">
-                                            @foreach (['bg-primary', 'bg-secondary', 'bg-accent', 'bg-info'] as $color)
-                                                <span class="size-3 rounded-box {{ $color }}"></span>
-                                            @endforeach
-                                        </div>
+                <div class="grid md:grid-cols-4">
+                    @foreach ($temas as $tema)
+                        <div @class([
+                            'card card-compact bg-base-100 cursor-pointer border-0 text-left rounded-none',
+                            'ring ring-primary ring-inset ring-4' => $undangan->tema_id == $tema->id,
+                        ]) wire:click="updateTema({{ $tema->id }})"
+                            data-theme="{{ $tema->name }}">
+                            <div class="card-body">
+                                <div class="flex justify-between w-full items-center">
+                                    <h4 class="text-base-content capitalize">{{ $tema->name }}</h4>
+                                    <div class="flex gap-1 bg-base-200 p-1 rounded-box">
+                                        @foreach (['bg-primary', 'bg-secondary', 'bg-accent', 'bg-info'] as $color)
+                                            <span class="size-3 rounded-box {{ $color }}"></span>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="card-body space-y-4">
                 <h3 class="card-title">Pilih ornamen undangan</h3>
-                <div class="rounded-box">
-                    <div class="grid md:grid-cols-4 gap-3">
-                        @foreach ($ornaments as $ornament)
-                            <div @class([
-                                'card card-compact bg-base-200 cursor-pointer border-0 text-left',
-                                'ring ring-primary ring-inset ring-4' =>
-                                    $undangan->ornament_id == $ornament->id,
-                            ]) wire:click="updateOrnament({{ $ornament->id }})">
-                                <div class="card-body">
-                                    <div class="flex gap-4 w-full items-center">
-                                        <div class="avatar placeholder">
-                                            <div class="w-10 bg-base-100">
-                                                @if ($ornament->ring)
-                                                    <img src="{{ Storage::url($ornament->ring) }}" alt="">
-                                                @else
-                                                    <x-tabler-photo></x-tabler-photo>
-                                                @endif
-                                            </div>
+                <div class="grid md:grid-cols-4">
+                    @foreach ($ornaments as $ornament)
+                        <div @class([
+                            'card card-compact bg-base-200 cursor-pointer border-0 text-left rounded-none',
+                            'ring ring-primary ring-inset ring-4' =>
+                                $undangan->ornament_id == $ornament->id,
+                        ]) wire:click="updateOrnament({{ $ornament->id }})">
+                            <div class="card-body">
+                                <div class="flex gap-4 w-full items-center justify-between">
+                                    <h4 class="text-sm capitalize">{{ $ornament->name }} ornament</h4>
+                                    <div class="avatar placeholder">
+                                        <div class="w-6">
+                                            @if ($ornament->ring)
+                                                <img src="{{ Storage::url($ornament->ring) }}" alt="">
+                                            @else
+                                                <x-tabler-photo class="size-6 opacity-10" />
+                                            @endif
                                         </div>
-                                        <h4 class="text-base capitalize">{{ $ornament->name }}</h4>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -130,13 +126,14 @@
                     <h3 class="card-title">Pilihan ayat</h3>
                     <button wire:click="hapusAyat" class="btn btn-sm">Reset</button>
                 </div>
-                <div class="grid md:grid-cols-3 gap-4 py-4">
+                <div class="grid md:grid-cols-3 py-4">
                     @foreach ($ayats as $ayat)
                         <div @class([
-                            'card ring-0 bg-base-200 h-fit',
-                            'ring-primary text-primary !ring-4' => $ayat->id == $undangan->ayat_id,
+                            'card card-compact ring-0 bg-base-200 rounded-none',
+                            'ring-primary ring-inset text-primary !ring-4' =>
+                                $ayat->id == $undangan->ayat_id,
                         ]) wire:click="updateAyat({{ $ayat->id }})">
-                            <div class="card-body text-center space-y-2">
+                            <div class="card-body justify-between">
                                 <q class="opacity-75 italic text-sm">{{ $ayat->content }}</q>
                                 <span class="italic">~ {{ $ayat->surah }} ~</span>
                             </div>

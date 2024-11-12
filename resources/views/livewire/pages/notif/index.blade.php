@@ -4,6 +4,10 @@
     ])
     <div class="table-filter-wrapper">
         <input type="search" wire:model.live="cari" class="input input-bordered" placeholder="Pencarian">
+        <div role="tablist" class="tabs tabs-boxed bg-base-300">
+            <button wire:click="toggleRead" role="tab" @class(['tab', 'tab-active' => !$read])>Belum dibaca</button>
+            <button wire:click="toggleRead" role="tab" @class(['tab', 'tab-active' => $read])>Sudah dibaca</button>
+        </div>
         @can('notif.create')
             <button class="btn btn-primary" wire:click="$dispatch('createNotif')">
                 <x-tabler-plus class="size-5" />
@@ -19,6 +23,9 @@
                 <th>Kepada</th>
                 <th>Pesan</th>
                 <th>Created</th>
+                @canany(['notif.read'])
+                    <th class="text-center">Read</th>
+                @endcanany
                 @canany(['notif.edit', 'notif.read', 'notif.delete'])
                     <th class="text-center">Actions</th>
                 @endcanany
@@ -28,17 +35,11 @@
                     <tr wire:key="{{ $data->id }}" @class(['opacity-50' => !$data->read])>
                         <td>{{ $no++ }}</td>
                         <td>{{ $data->user->name }}</td>
-                        <td>{{ $data->message }}</td>
+                        <td>{{ Str::limit($data->message, 40) }}</td>
                         <td>{{ $data->created_at->diffForHumans() }}</td>
-                        @canany(['notif.edit', 'notif.read', 'notif.delete'])
+                        @canany(['notif.read'])
                             <td>
                                 <div class="flex gap-1 justify-center">
-                                    @can('notif.edit')
-                                        <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('editNotif', {notif: {{ $data->id }}})">
-                                            <x-tabler-edit class="size-4" />
-                                        </button>
-                                    @endcan
                                     @can('notif.read')
                                         <button class="btn btn-xs btn-square btn-bordered"
                                             wire:click="$dispatch('readNotif', {notif: {{ $data->id }}})">
@@ -47,6 +48,18 @@
                                             @else
                                                 <x-tabler-check class="size-4" />
                                             @endif
+                                        </button>
+                                    @endcan
+                                </div>
+                            </td>
+                        @endcanany
+                        @canany(['notif.edit', 'notif.read', 'notif.delete'])
+                            <td>
+                                <div class="flex gap-1 justify-center">
+                                    @can('notif.edit')
+                                        <button class="btn btn-xs btn-square btn-bordered"
+                                            wire:click="$dispatch('editNotif', {notif: {{ $data->id }}})">
+                                            <x-tabler-edit class="size-4" />
                                         </button>
                                     @endcan
                                     @can('notif.delete')

@@ -11,12 +11,18 @@ class Index extends Component
     public $no = 1;
     public $cari;
 
+    public bool $read = false;
+
     protected $listeners = ['reload' => '$refresh'];
+
+    public function toggleRead(){
+        $this->read = !$this->read;
+    }
 
     public function render()
     {
         return view('livewire.pages.notif.index', [
-            'datas' => Notif::where('user_id', Auth::id())->latest()->get()
+            'datas' => Notif::where('read', $this->read)->where('user_id', Auth::id())->latest()->get()
         ]);
     }
 }

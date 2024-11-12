@@ -34,7 +34,7 @@
                 @endif
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Pemilik alamat atau rekening</span>
+                        <span class="label-text">Pemilik {{ $form->type }}</span>
                     </div>
                     <input type="text" @class([
                         'input input-bordered',
@@ -44,13 +44,12 @@
                 </label>
                 <label class="form-control">
                     <div class="label">
-                        <span class="label-text">Alamat atau nomor rekening</span>
+                        <span class="label-text">{{ $form->type == 'rekening' ? 'Nomor rekening' : 'Alamat' }}</span>
                     </div>
-                    <input type="text" @class([
-                        'input input-bordered',
-                        'input-error' => $errors->first('form.value'),
-                    ]) wire:model="form.value"
-                        placeholder="Nama lengkap hadiah" />
+                    <textarea type="text" @class([
+                        'textarea textarea-bordered',
+                        'textarea-error' => $errors->first('form.value'),
+                    ]) wire:model="form.value" rows="3"></textarea>
                 </label>
             </div>
             <div class="modal-action justify-between">

@@ -12,7 +12,7 @@
         @endcan
     </div>
 
-    <div class="grid md:grid-cols-4 gap-6">
+    <div class="grid md:grid-cols-3 gap-6">
         @foreach ($datas as $data)
             <div class="card">
                 <div class="card-body items-center text-center space-y-4">
@@ -44,61 +44,6 @@
             </div>
         @endforeach
     </div>
-
-    {{-- <div class="table-wrapper">
-        <table class="table">
-            <thead>
-                <th>No</th>
-                <th>Pengantin</th>
-                <th>Name</th>
-                <th>Anak ke</th>
-                <th>Ayah</th>
-                <th>Ibu</th>
-                @canany(['pengantin.edit', 'pengantin.delete'])
-                    <th class="text-center">Actions</th>
-                @endcanany
-            </thead>
-            <tbody>
-                @foreach ($datas as $data)
-                    <tr wire:key="{{ $data->id }}">
-                        <td>{{ $no++ }}</td>
-                        <td>{{ $data->gender }}</td>
-                        <td>
-                            <div class="flex items-center gap-2">
-                                <div class="avatar">
-                                    <div class="w-6 rounded-full">
-                                        <img src="{{ $data->image }}" alt="">
-                                    </div>
-                                </div>
-                                {{ $data->name }}
-                            </div>
-                        </td>
-                        <td>{{ $data->child }}</td>
-                        <td>{{ $data->father }}</td>
-                        <td>{{ $data->mother }}</td>
-                        @canany(['pengantin.edit', 'pengantin.delete'])
-                            <td>
-                                <div class="flex gap-1 justify-center">
-                                    @can('pengantin.edit')
-                                        <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('editPengantin', {pengantin: {{ $data->id }}})">
-                                            <x-tabler-edit class="size-4" />
-                                        </button>
-                                    @endcan
-                                    @can('pengantin.delete')
-                                        <button class="btn btn-xs btn-square btn-bordered"
-                                            wire:click="$dispatch('deletePengantin', {pengantin: {{ $data->id }}})">
-                                            <x-tabler-trash class="size-4" />
-                                        </button>
-                                    @endcan
-                                </div>
-                            </td>
-                        @endcanany
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div> --}}
 
     @livewire('pages.pengantin.actions')
 </div>
